@@ -1,0 +1,43 @@
+{
+  "created": 1594824159000,
+  "duration": 3600000,
+  "id": "271940927",
+  "name": "Front-end Coders - July Online Meetup",
+  "date_in_series_pattern": false,
+  "status": "past",
+  "time": 1595344500000,
+  "local_date": "2020-07-21",
+  "local_time": "19:15",
+  "updated": 1595350818000,
+  "utc_offset": 14400000,
+  "waitlist_count": 0,
+  "yes_rsvp_count": 13,
+  "venue": {
+    "id": 26906060,
+    "name": "Online event",
+    "repinned": false,
+    "country": "",
+    "localized_country_name": ""
+  },
+  "is_online_event": true,
+  "group": {
+    "created": 1434578707000,
+    "name": "Front-End Coders Mauritius",
+    "id": 18680604,
+    "join_mode": "open",
+    "lat": -20.260000228881836,
+    "lon": 57.470001220703125,
+    "urlname": "frontendcodersmauritius",
+    "who": "Front-End",
+    "localized_location": "Quatre Bornes, Mauritius",
+    "state": "",
+    "country": "mu",
+    "region": "en_US",
+    "timezone": "Indian/Mauritius"
+  },
+  "link": "https://www.meetup.com/frontendcodersmauritius/events/271940927/",
+  "description": "<p>Join us for an online meetup to talk about the front-end world and a few interesting topics!</p> <p># Topics<br/>- An introduction to Cypress with Vue (Jordan Bienvenue)<br/>- Do you think of accessibility when you build a website? ([guest speaker] Razvan Statescu AKA @the.dev.guy on Instagram)<br/>- Open Discussions about Front-end Topics ( Sandeep )</p> <p>Join on the following link:<br/><a href=\"https://meet.mscc.mu/FabulousFrontendFantasies\" class=\"linkified\">https://meet.mscc.mu/FabulousFrontendFantasies</a></p> <p>We only have simple rules:<br/>- Kindly mute your mic when you're not speaking<br/>- Use the chat to ask questions<br/>- Be nice<br/>- Be Friendly<br/>- Be Courteous</p> ",
+  "how_to_find_us": "https://meet.google.com/zwv-cquu-aqe",
+  "visibility": "public",
+  "member_pay_fee": false
+}
