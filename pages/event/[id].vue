@@ -56,9 +56,10 @@
               {{ eventDetails.name }}
             </h2>
             <div class="mt-6 text-gray-500 space-y-6">
-              <p class="text-md md:text-lg break-words">
-                {{ eventDetails.description.replace(/<\/?[^>]+>/gi, "") }}
-              </p>
+              <div
+                class="text-md md:text-lg"
+                v-html="eventDetails.description"
+              ></div>
             </div>
           </div>
 
@@ -331,4 +332,8 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+p {
+  display: block;
+}
+</style>
