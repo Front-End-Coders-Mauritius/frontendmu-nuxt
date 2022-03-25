@@ -289,8 +289,6 @@ export default {
   },
 };
 </script>
-<script>
-</script>
 <style>
 p {
   display: block;
