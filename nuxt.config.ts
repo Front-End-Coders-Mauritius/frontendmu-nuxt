@@ -24,10 +24,8 @@ export default defineNuxtConfig({
             name: 'description',
             content: 'my website description'
           },
-          { property: "og:image:width", content: "740" },
+          { property: "og:image:width", content: "500" },
           { property: "og:image:height", content: "300" },
-          { name: "twitter:site", content: "/img/meetupFEC.png" },
-          { name: "twitter:card", content: "/img/meetupFEC.png" },
         ],
       }
 })
