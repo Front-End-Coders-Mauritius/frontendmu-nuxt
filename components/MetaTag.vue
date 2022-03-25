@@ -19,8 +19,9 @@ export default {
 
     computed: {
         eventDetail() {
-            const eventDescript = this.eventDetails.replaceAll('<[^>]*>', '');
-            return eventDescript
+            const eventDescript = this.eventDetails.replace(/<\/?[^>]+>/gi, "");
+            console.log(eventDescript)
+            return eventDescript;
         }
     }
 }
