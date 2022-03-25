@@ -3,8 +3,8 @@
         <Head>
             <Title>{{ eventName }}</Title>
             <Meta name="description" :content="`${eventDetail}`" />
-            <Meta property="og:title" content="Front-End Coders" />
-            <Meta property="og:site_name" content="Front-End Coders" />
+            <Meta property="og:title" :content="`${eventName}`" />
+            <Meta property="og:site_name" :content="`${eventName}`" />
             <Meta property="og:url" content="https://front-end-coders-mauritius.netlify.app/" />
             <Meta property="og:description" content />
             <Meta property="og:type" content="website" />
@@ -20,7 +20,6 @@ export default {
     computed: {
         eventDetail() {
             const eventDescript = this.eventDetails.replace(/<\/?[^>]+>/gi, "");
-            console.log(eventDescript)
             return eventDescript;
         }
     }
