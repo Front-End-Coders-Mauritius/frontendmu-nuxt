@@ -1,15 +1,11 @@
 <template>
+  <MetaTag :eventName="eventName" :eventDetails="eventDetails.description" />
   <div class="relative">
     <div class="py-4 md:py-16">
       <div class="lg:mx-auto lg:max-w-7xl lg:px-4">
         <div class="relative">
-          <div
-            aria-hidden="true"
-            class="hidden sm:block lg:inset-y-0 lg:right-0 lg:w-screen"
-          >
-            <div
-              class="inset-y-0 right-1/2 w-full bg-gray-50 rounded-r-3xl lg:right-72"
-            />
+          <div aria-hidden="true" class="hidden sm:block lg:inset-y-0 lg:right-0 lg:w-screen">
+            <div class="inset-y-0 right-1/2 w-full bg-gray-50 rounded-r-3xl lg:right-72" />
             <svg
               class="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-auto lg:top-12"
               width="404"
@@ -26,40 +22,22 @@
                   height="20"
                   patternUnits="userSpaceOnUse"
                 >
-                  <rect
-                    x="0"
-                    y="0"
-                    width="4"
-                    height="4"
-                    class="text-gray-200"
-                    fill="currentColor"
-                  />
+                  <rect x="0" y="0" width="4" height="4" class="text-gray-200" fill="currentColor" />
                 </pattern>
               </defs>
-              <rect
-                width="404"
-                height="392"
-                fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)"
-              />
+              <rect width="404" height="392" fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)" />
             </svg>
           </div>
         </div>
 
-        <div
-          class="mx-auto md:mx-0 relative max-w-md sm:max-w-3xl sm:px-6 px-8 py-3 md:py-0"
-        >
+        <div class="mx-auto md:mx-0 relative max-w-md sm:max-w-3xl sm:px-6 px-8 py-3 md:py-0">
           <!-- Content area -->
           <div class>
             <h2
               class="text-3xl md:text-4xl lg:text-5xl text-gray-900 font-extrabold tracking-tight"
-            >
-              {{ eventDetails.name }}
-            </h2>
+            >{{ eventDetails.name }}</h2>
             <div class="mt-6 text-gray-500 space-y-6">
-              <div
-                class="text-md md:text-lg"
-                v-html="eventDetails.description"
-              ></div>
+              <div class="text-md md:text-lg" v-html="eventDetails.description"></div>
             </div>
           </div>
 
@@ -70,41 +48,31 @@
                 <dt class="text-base font-medium text-gray-500">Date</dt>
                 <dd
                   class="text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900"
-                >
-                  {{ new Date(eventDetails.local_date).toDateString() }}
-                </dd>
+                >{{ new Date(eventDetails.local_date).toDateString() }}</dd>
               </div>
               <div class="border-t-2 border-gray-100 pt-6">
                 <dt class="text-base font-medium text-gray-500">Venue</dt>
                 <dd
                   class="text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900"
-                >
-                  {{ eventDetails.venue.name }}
-                </dd>
+                >{{ eventDetails.venue.name }}</dd>
               </div>
               <div class="border-t-2 border-gray-100 pt-6">
                 <dt class="text-base font-medium text-gray-500">Attendees</dt>
                 <dd
                   class="text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900"
-                >
-                  {{ eventDetails.yes_rsvp_count }}
-                </dd>
+                >{{ eventDetails.yes_rsvp_count }}</dd>
               </div>
               <div class="border-t-2 border-gray-100 pt-6">
                 <dt class="text-base font-medium text-gray-500">Time</dt>
                 <dd
                   class="text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900"
-                >
-                  {{ eventDetails.local_time }}
-                </dd>
+                >{{ eventDetails.local_time }}</dd>
               </div>
               <div class="border-t-2 border-gray-100 pt-6">
                 <dt class="text-base font-medium text-gray-500">Location</dt>
                 <dd
                   class="text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900"
-                >
-                  {{ eventDetails.venue.address_1 }}
-                </dd>
+                >{{ eventDetails.venue.address_1 }}</dd>
               </div>
               <div class="border-t-2 border-gray-100 pt-6">
                 <dt class="text-base font-medium text-gray-500">Share</dt>
@@ -122,9 +90,7 @@
                       viewBox="0 0 20 20"
                       fill="currentColor"
                     >
-                      <path
-                        d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z"
-                      />
+                      <path d="M8 3a1 1 0 011-1h2a1 1 0 110 2H9a1 1 0 01-1-1z" />
                       <path
                         d="M6 3a2 2 0 00-2 2v11a2 2 0 002 2h8a2 2 0 002-2V5a2 2 0 00-2-2 3 3 0 01-3 3H9a3 3 0 01-3-3z"
                       />
@@ -141,9 +107,7 @@
         <div
           v-else
           class="pb-4 text-4xl md:text-5xl font-extrabold text-blue-700 text-center"
-        >
-          Gallery
-        </div>
+        >Gallery</div>
 
         <Gallery :eventImages="eventImages" :key="eventImages" />
       </div>
@@ -153,16 +117,10 @@
     <div
       class="dashboard-button absolute top-48 -right-16 md:-right-17 lg:-right-16 text-md md:text-lg rounded-b-lg font-medium py-2 md:py-4 px-8 rotate-90 text-white bg-yellow-500 hover:bg-yellow-400"
       @click="open = true"
-    >
-      View events list
-    </div>
+    >View events list</div>
     <!-- slide-over -->
     <TransitionRoot as="template" :show="open">
-      <Dialog
-        as="div"
-        class="fixed inset-0 overflow-hidden"
-        @close="open = false"
-      >
+      <Dialog as="div" class="fixed inset-0 overflow-hidden" @close="open = false">
         <div class="absolute inset-0 overflow-hidden">
           <DialogOverlay class="absolute inset-0" />
 
@@ -177,14 +135,10 @@
               leave-to="translate-x-full"
             >
               <div class="w-screen max-w-md">
-                <div
-                  class="h-full flex flex-col bg-white shadow-xl overflow-y-scroll"
-                >
+                <div class="h-full flex flex-col bg-white shadow-xl overflow-y-scroll">
                   <div class="p-6">
                     <div class="flex items-start justify-between">
-                      <DialogTitle class="text-lg font-medium text-gray-900"
-                        >Events List</DialogTitle
-                      >
+                      <DialogTitle class="text-lg font-medium text-gray-900">Events List</DialogTitle>
                       <div class="ml-3 h-7 flex items-center">
                         <button
                           type="button"
@@ -199,14 +153,10 @@
                   </div>
                   <div class="border-b border-gray-200">
                     <div class="px-6">
-                      <nav
-                        class="-mb-px flex space-x-6"
-                        x-descriptions="Tab component"
-                      >
+                      <nav class="-mb-px flex space-x-6" x-descriptions="Tab component">
                         <a
                           class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 'whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm', ]"
-                          >All events lists</a
-                        >
+                        >All events lists</a>
                       </nav>
                     </div>
                   </div>
@@ -236,10 +186,6 @@ import {
   TransitionRoot,
 } from "@headlessui/vue";
 
-definePageMeta({
-  layout: "custom",
-});
-
 import {
   XIcon,
   LocationMarkerIcon,
@@ -250,8 +196,14 @@ import {
 import eventsListJson from "~/data/myEventArray.json";
 import SliderEventList from "~/components/SliderEventList.vue";
 import Gallery from "~/components/Gallery.vue";
+import MetaTag from "~/components/MetaTag.vue"
+
+definePageMeta({
+  layout: "custom",
+});
 
 export default {
+  props: [''],
   components: {
     Dialog,
     DialogOverlay,
@@ -268,6 +220,7 @@ export default {
     XIcon,
     SliderEventList,
     Gallery,
+    MetaTag
   },
   data: () => {
     const open = ref(false);
@@ -289,6 +242,10 @@ export default {
         return [];
       }
       return this.eventsListJson;
+    },
+
+    eventName() {
+      return this.eventDetails.name
     },
 
     eventDetails() {
@@ -331,6 +288,8 @@ export default {
     this.eventDetails;
   },
 };
+</script>
+<script>
 </script>
 <style>
 p {

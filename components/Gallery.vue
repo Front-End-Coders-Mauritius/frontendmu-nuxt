@@ -1,6 +1,6 @@
 <template>
   <div>
-    <vue-picture-swipe :items="imagesList"></vue-picture-swipe>
+    <vue-picture-swipe :items="imagesList" :key="imagesList"></vue-picture-swipe>
   </div>
 </template>
 <script>
@@ -23,7 +23,6 @@ export default {
 
   computed: {
     imagesList() {
-      console.log(this.eventImages);
       if (this.eventImages === null) {
         return [];
       }

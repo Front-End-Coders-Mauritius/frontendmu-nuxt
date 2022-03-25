@@ -15,4 +15,7 @@ export default defineNuxtConfig({
     css: [
         "~/assets/css/tailwind.css"
     ],
+    head: {
+        link: [{ rel: 'icon', type: 'image/png', href: '/img/favicon.png' }]
+    }
 })

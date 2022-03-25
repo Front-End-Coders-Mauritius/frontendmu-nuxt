@@ -1,5 +1,6 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
+    <MetaTag :eventName="title" :eventDetails="description" />
     <div class="homepage-container">
         <div class="homepage-wrapper mx-auto max-w-7xl">
             <main class="lg:relative">
@@ -131,6 +132,7 @@
 import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
 import { ChevronDownIcon } from "@heroicons/vue/solid";
 import eventsListJson from "~/data/myEventArray.json";
+import MetaTag from "~~/components/MetaTag.vue";
 
 definePageMeta({
     layout: "custom",
@@ -142,6 +144,14 @@ export default {
         ClockIcon,
         MenuIcon,
         XIcon,
+        MetaTag
+    },
+
+    data: () => {
+        return {
+            title: "Front-End Coders Mauritus",
+            description: "yo"
+        }
     },
 
     computed: {

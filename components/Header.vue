@@ -2,19 +2,13 @@
   <nav class="relative shadow">
     <div class="max-w-7xl mx-auto px-4 sm:px-6">
       <div
-        class="flex justify-between items-center py-7 md:justify-start md:space-x-10"
+        class="flex justify-between items-center py-4 md:py-7 md:justify-start md:space-x-10"
       >
         <div class="logo-image flex justify-start lg:w-0 lg:flex-1">
-          <router-link to="/" class="flex flex-row-reverse gap-2">
+          <router-link to="/" class="flex justify-center items-center gap-1 md:gap-2">
             <span class="sr-only">Workflow</span>
-            <span
-              class="text-lg font-bold md:text-4xl text-gray-900 font-Pacifico tracking-tighter"
-            >
-              Front-End Coders
-            </span>
             <svg
-              width="47"
-              height="34"
+             class="w-8 h-8 md:w-12 md:h-12"
               viewBox="0 0 47 34"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -44,13 +38,19 @@
                 stroke-linecap="round"
               />
             </svg>
+            <span
+              class="text-lg font-bold md:text-4xl text-gray-900 font-Pacifico tracking-tighter"
+            >
+              Front-End Coders
+            </span>
+            
           </router-link>
         </div>
 
         <div class="md:flex items-center justify-end md:flex-1 lg:w-0">
           <router-link
             to="/events"
-            class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-red-600"
+            class="whitespace-nowrap text-sm md:text-base font-medium text-gray-500 hover:text-red-600"
             >All events</router-link
           >
         </div>

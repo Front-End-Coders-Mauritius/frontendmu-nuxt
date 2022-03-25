@@ -77,7 +77,7 @@
 <script>
 import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
 import { ChevronDownIcon } from "@heroicons/vue/solid";
-import eventsListJson from "~/data/myEventArray.json";
+import eventsListJson from "~~/data/myEventArray";
 
 definePageMeta({
     layout: "custom",
@@ -93,7 +93,6 @@ export default {
 
     computed: {
         eventsList() {
-            console.log("computed eventlist");
             if (this.eventsListJson.length === 0) {
                 return [];
             }
