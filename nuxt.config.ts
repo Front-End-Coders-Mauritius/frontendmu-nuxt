@@ -22,7 +22,7 @@ export default defineNuxtConfig({
           {
             hid: 'description',
             name: 'description',
-            content: 'my website description'
+            content: 'my website descriptions'
           },
           { property: "og:image:width", content: "500" },
           { property: "og:image:height", content: "300" },
