@@ -20,12 +20,12 @@ export default defineNuxtConfig({
           { charset: 'utf-8' },
           { name: 'viewport', content: 'width=device-width, initial-scale=1' },
           {
-            hid: 'description',
-            name: 'description',
-            content: 'my website descriptions'
+            hid: 'Front-end coders Mauritius',
+            name: 'Front-end coders Mauritius',
+            content: 'Front-end coders Mauritius'
           },
-          { property: "og:image:width", content: "500" },
-          { property: "og:image:height", content: "300" },
+          { property: "og:image:width", content: "1200" },
+          { property: "og:image:height", content: "900" },
         ],
       }
 })

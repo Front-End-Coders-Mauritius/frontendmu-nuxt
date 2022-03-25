@@ -2,7 +2,7 @@
     <Html>
         <Head>
             <Title>{{ eventName }}</Title>
-            <Meta name="description" :content="`${eventDetails}`" />
+            <Meta name="description" :content="`${eventDetails.replaceAll('<[^>]*>', '')}`" />
             <Meta property="og:title" content="Front-End Coders" />
             <Meta property="og:site_name" content="Front-End Coders" />
             <Meta property="og:url" content="https://front-end-coders-mauritius.netlify.app/" />
