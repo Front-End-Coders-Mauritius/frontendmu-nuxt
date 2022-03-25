@@ -80,10 +80,10 @@
             </span>
           </div>
           <div class="mt-6">
-            <h3 class="text-lg font-medium">
+            <h3 class="text-xl font-medium md:h-12 leading-5">
               <router-link
                 :to="{ name: 'event-id', params: { id: event.id } }"
-                class="focus:outline-none"
+                class="focus:outline-none w-96"
               >
                 <!-- Extend touch target to entire panel -->
                 <span class="absolute inset-0" aria-hidden="true" />
@@ -99,9 +99,17 @@
                 </p>
               </router-link>
             </h3>
-            <p class="mt-2 text-sm text-gray-500 line-clamp-3 max-w-lg">
-              {{ event.description.replace(/<\/?[^>]+>/gi, "") }}
-            </p>
+
+            <div class="flex flex-col border-gray-100 pt-4 md:pt-6 lg:pt-2">
+              <div class="text-base font-medium text-gray-400">
+                Venue: {{ event.venue.name }}
+              </div>
+              <div
+                class="text-base font-medium text-gray-400 leading-4 md:leading-0"
+              >
+                Attendees: {{ event.yes_rsvp_count }}
+              </div>
+            </div>
           </div>
           <span
             class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-red-400"

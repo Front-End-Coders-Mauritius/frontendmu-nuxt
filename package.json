@@ -7,6 +7,7 @@
   },
   "devDependencies": {
     "@heroicons/vue": "^1.0.6",
+    "@tailwindcss/line-clamp": "^0.3.1",
     "nuxt3": "latest",
     "tailwindcss": "^3.0.23"
   },
