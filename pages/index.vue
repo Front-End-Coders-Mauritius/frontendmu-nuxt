@@ -147,13 +147,6 @@ export default {
         MetaTag
     },
 
-    data: () => {
-        return {
-            title: "Front-End Coders Mauritus",
-            description: "yo"
-        }
-    },
-
     computed: {
         eventsList() {
             console.log("computed eventlist");
@@ -161,6 +154,14 @@ export default {
                 return [];
             }
             return this.eventsListJson;
+        },
+
+        title() {
+            return "Front-End Coders Mauritius"
+        },
+
+        description() {
+            return "Community of Front-End developers who share their passions for the web. Events, workshops and conferences occurs regularly."
         },
 
         sortedEventList() {

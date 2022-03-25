@@ -1,4 +1,6 @@
 <template>
+    <MetaTag :eventName="title" :eventDetails="description" />
+
     <div class="past-events-container bg-gray-50">
         <div class="past-events-wrapper md:max-w-2xl lg:max-w-7xl mx-auto py-8 px-4 md:px-0">
             <div
@@ -78,6 +80,7 @@
 import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
 import { ChevronDownIcon } from "@heroicons/vue/solid";
 import eventsListJson from "~~/data/myEventArray";
+import MetaTag from "~~/components/MetaTag.vue";
 
 definePageMeta({
     layout: "custom",
@@ -89,6 +92,7 @@ export default {
         ClockIcon,
         MenuIcon,
         XIcon,
+        MetaTag
     },
 
     computed: {
@@ -104,6 +108,14 @@ export default {
                 return new Date(b.local_date) - new Date(a.local_date);
             });
             return sortedList;
+        },
+
+        title() {
+            return "Front-End Coders Events"
+        },
+
+        description() {
+            return "Community of Front-End developers who share their passions for the web. Events, workshops and conferences occurs regularly."
         },
     },
     data: () => {
