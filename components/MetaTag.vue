@@ -2,7 +2,7 @@
     <Html>
         <Head>
             <Title>{{ eventName }}</Title>
-            <Meta name="description" :content="`${eventDetails.replaceAll('<[^>]*>', '')}`" />
+            <Meta name="description" :content="`${eventDetail}`" />
             <Meta property="og:title" content="Front-End Coders" />
             <Meta property="og:site_name" content="Front-End Coders" />
             <Meta property="og:url" content="https://front-end-coders-mauritius.netlify.app/" />
@@ -15,6 +15,12 @@
 </template>
 <script>
 export default {
-    props: ['eventName', 'eventDetails']
+    props: ['eventName', 'eventDetails'],
+
+    computed: {
+        eventDetail() {
+            return this.eventDetails.replaceAll('<[^>]*>', '')
+        }
+    }
 }
 </script>
