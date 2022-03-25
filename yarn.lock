@@ -4672,6 +4672,11 @@ vue-server-renderer@^2.6.14:
     serialize-javascript "^3.1.0"
     source-map "0.5.6"
 
+vue-vanta@^0.0.1:
+  version "0.0.1"
+  resolved "https://registry.yarnpkg.com/vue-vanta/-/vue-vanta-0.0.1.tgz#cdfb474f0ba284093309a84bc7bc1261c0544739"
+  integrity sha512-OGnl3zkf2mMqmrJxG3DefWTweLHt/0J3M1+hTOLxgHlqWSf45FNKvCgUQFIPqoW++IBfw/5Wc3HRt1HxUBpFXQ==
+
 vue3-picture-swipe@^3.0.5:
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/vue3-picture-swipe/-/vue3-picture-swipe-3.0.5.tgz#425cc672e2cdef280bd95cb353e483566b648089"

@@ -37,6 +37,8 @@
                 <div
                     class="relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full"
                 >
+                    <!-- <v-vanta effect="dots" :options="options"></v-vanta> -->
+
                     <img
                         class="absolute inset-0 w-full h-full object-cover"
                         src="/img/homepage2.jpg"
@@ -133,6 +135,7 @@ import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
 import { ChevronDownIcon } from "@heroicons/vue/solid";
 import eventsListJson from "~/data/myEventArray.json";
 import MetaTag from "~~/components/MetaTag.vue";
+import VVanta from 'vue-vanta';
 
 definePageMeta({
     layout: "custom",
@@ -144,7 +147,25 @@ export default {
         ClockIcon,
         MenuIcon,
         XIcon,
-        MetaTag
+        MetaTag,
+        VVanta
+    },
+
+    data: () => {
+        return {
+            options: {
+                mouseControls: true,
+                touchControls: true,
+                gyroControls: false,
+                minHeight: 700.00,
+                minWidth: 200.00,
+                scale: 1.00,
+                scaleMobile: 1.00,
+                colorMode: "lerpGradient",
+                color: 0x206eff,
+                color2: 0x846d5a
+            }
+        }
     },
 
     computed: {
