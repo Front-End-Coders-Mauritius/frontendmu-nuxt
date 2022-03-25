@@ -19,7 +19,8 @@ export default {
 
     computed: {
         eventDetail() {
-            return this.eventDetails.replaceAll('<[^>]*>', '')
+            const eventdescript = this.eventDetails.replaceAll('<[^>]*>', '');
+            return eventdescript
         }
     }
 }
