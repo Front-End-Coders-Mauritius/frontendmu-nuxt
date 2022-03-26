@@ -4,7 +4,7 @@
   <div class="homepage-container">
     <div class="homepage-wrapper">
       <main class="">
-        <div class="w-full h-[600px] md:h-[800px]">
+        <div class="w-full h-[700px] md:h-[800px]">
           <v-vanta
             class="relative opacity-20 md:opacity-100"
             effect="dots"
