@@ -12,7 +12,7 @@
               class="inset-y-0 right-1/2 w-full bg-gray-50 rounded-r-3xl lg:right-72"
             />
             <svg
-              class="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-[64%] lg:top-12"
+              class="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-[54%] lg:top-28"
               width="404"
               height="392"
               fill="none"
