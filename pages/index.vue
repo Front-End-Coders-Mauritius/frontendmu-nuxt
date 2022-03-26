@@ -106,13 +106,23 @@
             </h3>
 
             <div class="flex flex-col border-gray-100 pt-4 md:pt-6 lg:pt-2">
-              <div class="text-base font-medium text-gray-400">
-                Venue: {{ event.venue.name }}
+              <div
+                class="flex text-base justify-start items-center font-medium text-gray-400"
+              >
+                <LocationMarkerIcon
+                  class="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400 truncate"
+                  aria-hidden="true"
+                />
+                <div class="pt-1">Venue: {{ event.venue.name }}</div>
               </div>
               <div
-                class="text-base font-medium text-gray-400 leading-4 md:leading-0"
+                class="flex text-base justify-start items-center font-medium text-gray-400 leading-4"
               >
-                Attendees: {{ event.yes_rsvp_count }}
+                <UsersIcon
+                  class="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400 truncate"
+                  aria-hidden="true"
+                />
+                <div class="pt-1">Attendees: {{ event.yes_rsvp_count }}</div>
               </div>
             </div>
           </div>
@@ -145,6 +155,8 @@
 </template>
 
 <script>
+import { LocationMarkerIcon, UsersIcon } from "@heroicons/vue/solid";
+
 import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
 import { ChevronDownIcon } from "@heroicons/vue/solid";
 import eventsListJson from "~/data/myEventArray.json";
@@ -163,6 +175,8 @@ export default {
     XIcon,
     MetaTag,
     VVanta,
+    LocationMarkerIcon,
+    UsersIcon,
   },
 
   data: () => {
