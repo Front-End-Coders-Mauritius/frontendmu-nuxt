@@ -11,7 +11,7 @@
           >
             <span class="sr-only">Workflow</span>
             <svg
-              class="w-8 h-8 md:w-12 md:h-12"
+              class="w-12 h-12 md:w-12 md:h-12"
               viewBox="0 0 47 34"
               fill="none"
               xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +42,7 @@
               />
             </svg>
             <span
-              class="text-lg font-bold md:text-3xl text-gray-700 font-Acme tracking-tight"
+              class="text-lg font-bold md:text-3xl text-gray-700 font-Acme tracking-tight hidden md:block"
             >
               Front-End Coders
             </span>
@@ -52,7 +52,7 @@
         <div class="md:flex items-center justify-end md:flex-1 lg:w-0">
           <router-link
             to="/events"
-            class="whitespace-nowrap text-sm md:text-base font-medium text-gray-500 hover:text-red-600"
+            class="whitespace-nowrap text-md md:text-base font-medium text-gray-500 hover:text-red-600"
             >All events</router-link
           >
         </div>

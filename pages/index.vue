@@ -4,13 +4,18 @@
   <div class="homepage-container">
     <div class="homepage-wrapper">
       <main class="">
-        <div class="w-full h-[700px] md:h-[800px]">
-          <v-vanta class="relative" effect="dots" :options="options"> </v-vanta>
+        <div class="w-full h-[600px] md:h-[800px]">
+          <v-vanta
+            class="relative opacity-20 md:opacity-100"
+            effect="dots"
+            :options="options"
+          >
+          </v-vanta>
           <div
-            class="absolute flex flex-col justify-center items-start top-1/2 left-1/2 transform -translate-x-1/2 md:-translate-x-3/4 -translate-y-1/2 md:w-1/2"
+            class="absolute flex flex-col justify-center items-center md:items-start top-1/2 left-1/2 transform -translate-x-1/2 md:-translate-x-3/4 -translate-y-1/2 md:w-1/2"
           >
             <h1
-              class="text-4xl flex flex-col text-start tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
+              class="text-4xl flex flex-col justify-center items-center md:items-start md:w-[600px] tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
             >
               <span class="block xl:inline text-blue-500"
                 >Front-End Coders</span
@@ -22,7 +27,7 @@
               >
             </h1>
             <p
-              class="mt-3 text-lg text-gray-500 sm:text-xl md:mt-5 w-72 md:w-[700px] md:max-w-lg"
+              class="mt-3 text-center md:text-left text-lg text-gray-500 sm:text-xl md:mt-5 w-72 md:w-[700px] md:max-w-lg"
             >
               Front-End coders Mauritius is a free meetup that's dedicated to
               all aspect of Front-End development. it occurs in general one a
