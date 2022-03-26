@@ -85,7 +85,7 @@
             </span>
           </div>
           <div class="mt-6">
-            <h3 class="text-xl font-medium md:h-12 leading-5">
+            <h3 class="text-xl font-medium md:h-12 leading-2">
               <router-link
                 :to="{ name: 'event-id', params: { id: event.id } }"
                 class="focus:outline-none w-96"
@@ -97,7 +97,7 @@
                   :class="[
                     event.status === 'upcoming'
                       ? 'bg-green-100 text-green-800 tagStyle'
-                      : '',
+                      : 'hidden',
                   ]"
                 >
                   {{ event.status }}
