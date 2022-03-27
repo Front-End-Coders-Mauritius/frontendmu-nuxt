@@ -9,7 +9,9 @@
           <div
             class="fade-out absolute z-10 h-screen w-full bg-gradient-to-t from-white to-transparent"
           ></div>
-          <div class="relative text-center h-full z-20 grid place-items-center w-[600px] mx-auto">
+          <div
+            class="relative text-center h-full z-20 grid place-items-center max-w-[700px] mx-auto px-10"
+          >
             <div class="grid gap-10">
               <h1
                 class="text-4xl flex flex-col tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
