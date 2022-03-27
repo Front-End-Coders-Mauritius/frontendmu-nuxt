@@ -42,7 +42,7 @@
               />
             </svg>
             <span
-              class="text-lg font-bold md:text-3xl text-gray-700 font-Acme tracking-tight hidden md:block"
+              class="text-lg font-bold md:text-3xl text-gray-700 tracking-tight hidden md:block"
             >
               Front-End Coders
             </span>
