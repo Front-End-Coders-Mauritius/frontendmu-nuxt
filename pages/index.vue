@@ -3,45 +3,29 @@
   <MetaTag :eventName="title" :eventDetails="description" />
   <div class="homepage-container">
     <div class="homepage-wrapper">
-      <main class="">
-        <div class="w-full h-[700px] md:h-[800px]">
-          <v-vanta
-            class="relative opacity-20 md:opacity-100"
-            effect="dots"
-            :options="options"
-          >
-          </v-vanta>
+      <main class>
+        <div class="w-full h-[700px] md:h-[800px] relative z-0">
+          <v-vanta class="absolute w-full z-0" effect="rings" :options="options"></v-vanta>
           <div
-            class="absolute flex flex-col justify-center items-center md:items-start top-1/2 left-1/2 transform -translate-x-1/2 md:-translate-x-3/4 -translate-y-1/2 md:w-1/2"
-          >
-            <h1
-              class="text-4xl flex flex-col justify-center items-center md:items-start md:w-[600px] tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
-            >
-              <span class="block xl:inline text-blue-500"
-                >Front-End Coders</span
+            class="fade-out absolute z-10 h-screen w-full bg-gradient-to-t from-white to-transparent"
+          ></div>
+          <div class="relative text-center h-full z-20 grid place-items-center w-[600px] mx-auto">
+            <div class="grid gap-10">
+              <h1
+                class="text-4xl flex flex-col tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
               >
-
-              <span
-                class="block text-indigo-600 xl:inline text-transparent bg-clip-text bg-gradient-to-r from-red-400 via-yellow-500 to-green-600"
-                >Mauritius</span
-              >
-            </h1>
-            <p
-              class="mt-3 text-center md:text-left text-lg text-gray-500 sm:text-xl md:mt-5 w-72 md:w-[700px] md:max-w-lg"
-            >
-              Front-End coders Mauritius is a free meetup that's dedicated to
-              all aspect of Front-End development. it occurs in general one a
-              month at announced date and place. Feel free to join!
-            </p>
-            <div
-              class="mt-10 md:flex justify-start md:justify-center lg:justify-start gap-4"
-            >
-              <div class="rounded-md shadow">
+                <span class="block xl:inline text-black">Front-End Coders Mauritius</span>
+              </h1>
+              <p class="text-lg text-gray-700 sm:text-xl">
+                Front-End coders Mauritius is a free meetup that's dedicated to
+                all aspect of Front-End development. it occurs in general one a
+                month at announced date and place. Feel free to join!
+              </p>
+              <div>
                 <router-link
                   to="/events"
-                  class="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-yellow-500 hover:bg-yellow-400 md:py-4 md:text-lg md:px-10"
-                  >View Events</router-link
-                >
+                  class="rounded-md shadow w-64 mx-auto flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium text-white bg-yellow-500 hover:bg-yellow-400 md:py-4 md:text-lg md:px-10"
+                >View Events</router-link>
               </div>
             </div>
           </div>
@@ -49,14 +33,12 @@
       </main>
     </div>
   </div>
-  <div class="latest-events-container sm:py-6 md:pt-8">
-    <div
-      class="latest-events-wrapper md:max-w-2xl lg:max-w-7xl mx-auto pt-8 px-4 md:px-0"
-    >
+  <div class="latest-events-container sm:py-6 md:pt-8 relative z-20">
+    <div class="latest-events-wrapper md:max-w-2xl lg:max-w-7xl mx-auto pt-8 px-4 md:px-0">
       <div
         class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-5xl py-4 md:py-8"
       >
-        <h1 class="text-center text-black">Latest events</h1>
+        <h1 class="text-black">Latest events</h1>
       </div>
       <div
         class="rounded-lg bg-gray-200 overflow-hidden shadow-xl divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px"
@@ -77,9 +59,7 @@
           ]"
         >
           <div>
-            <span
-              class="rounded-lg inline-flex p-3 ring-4 ring-white bg-blue-50 text-blue-700"
-            >
+            <span class="rounded-lg inline-flex p-3 ring-4 ring-white bg-blue-50 text-blue-700">
               <ClockIcon class="h-6 w-6 mr-2" />
               <span>{{ new Date(event.local_date).toDateString() }}</span>
             </span>
@@ -99,16 +79,12 @@
                       ? 'bg-green-100 text-green-800 tagStyle'
                       : 'hidden',
                   ]"
-                >
-                  {{ event.status }}
-                </p>
+                >{{ event.status }}</p>
               </router-link>
             </h3>
 
             <div class="flex flex-col border-gray-100 pt-4 md:pt-6 lg:pt-2">
-              <div
-                class="flex text-base justify-start items-center font-medium text-gray-400"
-              >
+              <div class="flex text-base justify-start items-center font-medium text-gray-400">
                 <LocationMarkerIcon
                   class="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400 truncate"
                   aria-hidden="true"
@@ -147,8 +123,7 @@
         <router-link
           to="/events"
           class="text-center bg-blue-600 text-white text-md md:text-xl px-4 md:px-8 py-4 rounded-md font-medium w-48 md:w-64"
-          >View all events</router-link
-        >
+        >View all events</router-link>
       </div>
     </div>
   </div>
@@ -160,11 +135,11 @@ import { LocationMarkerIcon, UsersIcon } from "@heroicons/vue/solid";
 import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
 import { ChevronDownIcon } from "@heroicons/vue/solid";
 import eventsListJson from "~/data/myEventArray.json";
-import MetaTag from "~~/components/MetaTag.vue";
+import MetaTag from "~/components/MetaTag.vue";
 import VVanta from "vue-vanta";
 
 definePageMeta({
-  layout: "custom",
+  layout: "home",
 });
 
 export default {
@@ -186,16 +161,13 @@ export default {
         mouseControls: true,
         touchControls: true,
         gyroControls: false,
-        minHeight: 700,
-        scale: 1.0,
-        scaleMobile: 1.0,
-        color: 0x221f1b,
-        color2: 0x2a1503,
-        waveHeight: 19.0,
-        waveSpeed: 0.45,
-        zoom: 0.65,
+        minHeight: process.client ? window.innerHeight : 0,
+        minWidth: 200.00,
+        scale: 0.3,
+        scaleMobile: 1.00,
         backgroundColor: 0xffffff,
-        size: 2.7,
+        color: 0x59ff,
+        backgroundAlpha: 0.00
       },
     };
   },

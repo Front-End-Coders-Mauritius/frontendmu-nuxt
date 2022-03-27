@@ -1,9 +1,7 @@
 <template>
     <div>
-        <Header />
         <Transition class="page">
             <router-view :key="$route.params?.id" />
         </Transition>
     </div>
-</template>  
-
+</template>
