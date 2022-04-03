@@ -199,7 +199,7 @@ import {
   DotsVerticalIcon,
 } from "@heroicons/vue/solid";
 
-import eventsListJson from "~/data/myEventArray.json";
+import eventsListJson from "~/data/events.json";
 import SliderEventList from "~/components/SliderEventList.vue";
 import Gallery from "~/components/Gallery.vue";
 import MetaTag from "~/components/MetaTag.vue";

@@ -136,7 +136,7 @@ import { LocationMarkerIcon, UsersIcon } from "@heroicons/vue/solid";
 
 import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
 import { ChevronDownIcon } from "@heroicons/vue/solid";
-import eventsListJson from "~/data/myEventArray.json";
+import eventsListJson from "~/data/events.json";
 import MetaTag from "~/components/MetaTag.vue";
 import VVanta from "vue-vanta";
 

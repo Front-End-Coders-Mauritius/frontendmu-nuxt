@@ -79,7 +79,7 @@
 <script>
 import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
 import { ChevronDownIcon } from "@heroicons/vue/solid";
-import eventsListJson from "~~/data/myEventArray";
+import eventsListJson from "~~/data/events";
 import MetaTag from "~~/components/MetaTag.vue";
 
 definePageMeta({
