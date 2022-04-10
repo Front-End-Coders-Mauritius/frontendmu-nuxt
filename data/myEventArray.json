@@ -6,7 +6,7 @@
     "name": "Front-End Coders - 9 April 2022 Meetup",
     "rsvp_limit": 20,
     "date_in_series_pattern": false,
-    "status": "upcoming",
+    "status": "past",
     "time": 1469858400000,
     "local_date": "2022-04-09",
     "local_time": "10am to 2pm",
@@ -14,7 +14,7 @@
     "updated": 1470053358000,
     "utc_offset": 14400000,
     "waitlist_count": 0,
-    "yes_rsvp_count": 0,
+    "yes_rsvp_count": 27,
     "venue": {
       "id": 24574319,
       "name": "Prodigious Office",
