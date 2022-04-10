@@ -1,6 +1,8 @@
 <template>
   <div>
-    <vue-picture-swipe :items="imagesList" :key="imagesList"></vue-picture-swipe>
+    <client-only>
+      <vue-picture-swipe :items="imagesList" :key="imagesList"></vue-picture-swipe>
+    </client-only>
   </div>
 </template>
 <script>
