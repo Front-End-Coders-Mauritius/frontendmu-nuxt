@@ -1,29 +1,13 @@
-# Nuxt 3 Minimal Starter
-
-We recommend to look at the [documentation](https://v3.nuxtjs.org).
+# Front-End Coders Mauritius
+Front-End coders Mauritius is a free meetup that's dedicated to all aspect of Front-End development. it occurs in general one a month at announced date and place. Feel free to join!
 
 ## Setup
 
-Make sure to install the dependencies
-
-```bash
-yarn install
+```
+npm install
+```
+```
+npm run dev
 ```
 
-## Development
-
-Start the development server on http://localhost:3000
-
-```bash
-yarn dev
-```
-
-## Production
-
-Build the application for production:
-
-```bash
-yarn build
-```
-
-Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).
+## Feel free to contribute :D 
