@@ -28,5 +28,9 @@ export default defineNuxtConfig({
             { property: "og:image:width", content: "1200" },
             { property: "og:image:height", content: "900" },
         ],
-    }
+    },
+    modules: ["nuxt-directus"],
+    directus: {
+		url: "https://l4yporup.directus.app",
+	},
 })
