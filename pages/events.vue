@@ -46,11 +46,14 @@
                 <span class="absolute inset-0" aria-hidden="true" />
                 <span>{{ event.name }}</span>
                 <p
-                  :class="[
-                    event.status === 'upcoming'
-                      ? 'bg-green-100 text-green-800 tagStyle animate-bounce'
-                      : '',
-                  ]"
+                  :class="{
+                    'bg-yellow-100 text-yellow-800 tagStyle':
+                      event.status === 'past',
+                    'bg-green-100 text-green-800 tagStyle animate-bounce':
+                      event.status === 'upcoming',
+                    'bg-red-100 text-red-800 tagStyle':
+                      event.status === 'cancelled',
+                  }"
                 >
                   {{ event.status }}
                 </p>
