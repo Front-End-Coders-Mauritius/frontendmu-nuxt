@@ -8,11 +8,12 @@
   "devDependencies": {
     "@heroicons/vue": "^1.0.6",
     "@tailwindcss/line-clamp": "^0.3.1",
-    "nuxt3": "latest",
+    "nuxt3": "v3.0.0-27465767.70f067a",
     "tailwindcss": "^3.0.23"
   },
   "dependencies": {
     "@headlessui/vue": "^1.5.0",
+    "nuxt-directus": "^1.7.1",
     "vue-vanta": "^0.0.1",
     "vue3-picture-swipe": "^3.0.5"
   }
