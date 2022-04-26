@@ -1,7 +1,12 @@
 <template>
   <div></div>
   <ul role="list" class="divide-y divide-gray-200 overflow-y-auto">
-    <li v-for="(event, index) in sortedEventList" :key="event" :value="index" active-class="red">
+    <li
+      v-for="(event, index) in sortedEventList"
+      :key="event"
+      :value="index"
+      active-class="red"
+    >
       <router-link
         :to="{
           name: 'event-id',
@@ -13,21 +18,27 @@
           <div class="flex flex-col-reverse gap-2">
             <p
               class="event-name text-sm md:text-lg font-medium text-indigo-600 line-clamp-2"
-            >{{ event.name }}</p>
+            >
+              {{ event.name }}
+            </p>
             <div class="event-tags flex justify-end">
               <p
                 :class="{
                   'bg-yellow-100 text-yellow-800 tagStyle':
                     event.status === 'past',
-                  'bg-green-100 text-green-800 tagStyle':
+                  'bg-green-100 text-green-800 tagStyle animate-pulse':
                     event.status === 'upcoming',
                   'bg-red-100 text-red-800 tagStyle':
                     event.status === 'cancelled',
                 }"
-              >{{ event.status }}</p>
+              >
+                {{ event.status }}
+              </p>
             </div>
           </div>
-          <p class="text-gray-400 line-clamp-2">{{ event.description.replace(/<\/?[^>]+>/gi, "") }}</p>
+          <p class="text-gray-400 line-clamp-2">
+            {{ event.description.replace(/<\/?[^>]+>/gi, "") }}
+          </p>
           <div class="flex flex-col gap-2">
             <div class="flex flex-col gap-4">
               <p class="flex items-center text-sm text-gray-500 mt-0">
@@ -39,7 +50,10 @@
               </p>
             </div>
             <div class="flex items-center text-sm text-gray-500 h-5">
-              <CalendarIcon class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400" aria-hidden="true" />
+              <CalendarIcon
+                class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                aria-hidden="true"
+              />
               <p>{{ new Date(event.local_date).toDateString() }}</p>
             </div>
           </div>

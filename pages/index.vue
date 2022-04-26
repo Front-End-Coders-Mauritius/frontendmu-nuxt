@@ -89,7 +89,7 @@
                 <p
                   :class="[
                     event.status === 'upcoming'
-                      ? 'bg-green-100 text-green-800 tagStyle'
+                      ? 'bg-green-100 text-green-800 tagStyle animate-bounce'
                       : 'hidden',
                   ]"
                 >
