@@ -49,7 +49,7 @@
       <div
         class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-5xl py-4 md:py-8"
       >
-        <h1 class="text-black">Latest events</h1>
+        <h1 class="text-black text-center md:text-left">Latest events</h1>
       </div>
       <div
         class="rounded-lg bg-gray-200 overflow-hidden shadow-xl divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px"
