@@ -9,7 +9,7 @@
             class="hidden sm:block lg:inset-y-0 lg:right-0 lg:w-screen"
           >
             <div
-              class="inset-y-0 right-1/2 w-full bg-gray-50 rounded-r-3xl lg:right-72"
+              class="inset-y-0 right-1/2 w-full rounded-r-3xl bg-gray-50 lg:right-72"
             />
             <svg
               class="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-[54%] lg:top-28"
@@ -47,18 +47,18 @@
         </div>
 
         <div
-          class="mx-auto md:mx-0 relative max-w-md sm:max-w-3xl sm:px-6 px-8 py-3 md:py-0"
+          class="relative mx-auto max-w-md px-8 py-3 sm:max-w-3xl sm:px-6 md:mx-0 md:py-0"
         >
           <!-- Content area -->
           <div class>
-            <div class="w-full flex justify-end items-center">
+            <div class="flex w-full items-center justify-end">
               <p
                 :class="{
-                  'bg-yellow-100 text-yellow-800 tagStyle':
+                  'tagStyle bg-yellow-100 text-yellow-800':
                     eventDetails.status === 'past',
-                  'bg-green-100 text-green-800 tagStyle animate-bounce':
+                  'tagStyle animate-bounce bg-green-100 text-green-800':
                     eventDetails.status === 'upcoming',
-                  'bg-red-100 text-red-800 tagStyle':
+                  'tagStyle bg-red-100 text-red-800':
                     eventDetails.status === 'cancelled',
                 }"
               >
@@ -66,13 +66,13 @@
               </p>
             </div>
             <h2
-              class="text-3xl md:text-4xl lg:text-5xl text-gray-900 font-extrabold tracking-tight"
+              class="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl lg:text-5xl"
             >
               {{ eventDetails.name }}
             </h2>
-            <div class="mt-6 text-gray-500 space-y-6">
+            <div class="mt-6 space-y-6 text-gray-500">
               <div
-                class="text-md md:text-lg"
+                class="text-md prose md:text-lg"
                 v-html="eventDetails.description"
               ></div>
             </div>
@@ -84,7 +84,7 @@
               <div class="border-t-2 border-gray-100 pt-6">
                 <dt class="text-base font-medium text-gray-500">Date</dt>
                 <dd
-                  class="text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900"
+                  class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                 >
                   {{ new Date(eventDetails.local_date).toDateString() }}
                 </dd>
@@ -92,7 +92,7 @@
               <div class="border-t-2 border-gray-100 pt-6">
                 <dt class="text-base font-medium text-gray-500">Venue</dt>
                 <dd
-                  class="text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900"
+                  class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                 >
                   {{ eventDetails.venue.name }}
                 </dd>
@@ -103,7 +103,7 @@
               >
                 <dt class="text-base font-medium text-gray-500">Attendees</dt>
                 <dd
-                  class="text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900"
+                  class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                 >
                   {{ eventDetails.yes_rsvp_count }}
                 </dd>
@@ -113,7 +113,7 @@
                   Seats available
                 </dt>
                 <dd
-                  class="text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900"
+                  class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                 >
                   {{ eventDetails.rsvp_limit }}
                 </dd>
@@ -121,7 +121,7 @@
               <div class="border-t-2 border-gray-100 pt-6">
                 <dt class="text-base font-medium text-gray-500">Time</dt>
                 <dd
-                  class="text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900"
+                  class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                 >
                   {{ eventDetails.local_time }}
                 </dd>
@@ -129,7 +129,7 @@
               <div class="border-t-2 border-gray-100 pt-6">
                 <dt class="text-base font-medium text-gray-500">Location</dt>
                 <dd
-                  class="text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900"
+                  class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                 >
                   {{ eventDetails.venue.address_1 }}
                 </dd>
@@ -137,9 +137,9 @@
 
               <div class="border-t-2 border-gray-100 pt-6">
                 <dt class="text-base font-medium text-gray-500">Share</dt>
-                <dd class="flex bg-gray-100 rounded-md px-2 py-1 sm:w-[450px]">
+                <dd class="flex rounded-md bg-gray-100 px-2 py-1 sm:w-[450px]">
                   <input
-                    class="text-md tracking-tight text-gray-600 line-clamp-3 bg-gray-100 sm:w-[500px] pr-2 break-words"
+                    class="text-md break-words bg-gray-100 pr-2 tracking-tight text-gray-600 line-clamp-3 sm:w-[500px]"
                     type="text"
                     :value="`front-end-coders-mauritius.netlify.app/event/${eventID}/`"
                     id="myInput"
@@ -164,7 +164,7 @@
               <div class="border-y-2 border-gray-100 py-6">
                 <dt class="text-base font-medium text-gray-500">Seats Limit</dt>
                 <dd
-                  class="text-2xl md:text-3xl font-extrabold tracking-tight text-gray-900"
+                  class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                 >
                   {{ eventDetails.rsvp_limit }}
                 </dd>
@@ -173,11 +173,11 @@
           </div>
         </div>
       </div>
-      <div class="images lg:mx-auto lg:max-w-7xl md:mt-16 mt-16 px-4">
+      <div class="images mt-16 px-4 md:mt-16 lg:mx-auto lg:max-w-7xl">
         <div v-if="eventDetails.images === null">{{ eventDetails.images }}</div>
         <div
           v-else
-          class="pb-4 md:pb-8 text-4xl md:text-5xl font-extrabold text-blue-700 text-center"
+          class="pb-4 text-center text-4xl font-extrabold text-blue-700 md:pb-8 md:text-5xl"
         >
           Gallery
         </div>
@@ -188,7 +188,7 @@
 
     <!-- view-dashboard button -->
     <div
-      class="dashboard-button absolute top-48 -right-16 md:-right-17 lg:-right-16 text-md md:text-lg rounded-b-lg font-medium py-2 md:py-4 px-8 rotate-90 text-white bg-yellow-500 hover:bg-yellow-400"
+      class="dashboard-button md:-right-17 text-md absolute top-48 -right-16 rotate-90 rounded-b-lg bg-yellow-500 py-2 px-8 font-medium text-white hover:bg-yellow-400 md:py-4 md:text-lg lg:-right-16"
       @click="open = true"
     >
       View events list
@@ -203,7 +203,7 @@
         <div class="absolute inset-0 overflow-hidden">
           <DialogOverlay class="absolute inset-0" />
 
-          <div class="fixed inset-y-0 right-0 pl-10 max-w-full flex sm:pl-16">
+          <div class="fixed inset-y-0 right-0 flex max-w-full pl-10 sm:pl-16">
             <TransitionChild
               as="template"
               enter="transform transition ease-in-out duration-500 sm:duration-700"
@@ -215,17 +215,17 @@
             >
               <div class="w-screen max-w-md">
                 <div
-                  class="h-full flex flex-col bg-white shadow-xl overflow-y-scroll"
+                  class="flex h-full flex-col overflow-y-scroll bg-white shadow-xl"
                 >
                   <div class="p-6">
                     <div class="flex items-start justify-between">
                       <DialogTitle class="text-lg font-medium text-gray-900"
                         >Events List</DialogTitle
                       >
-                      <div class="ml-3 h-7 flex items-center">
+                      <div class="ml-3 flex h-7 items-center">
                         <button
                           type="button"
-                          class="bg-white rounded-md text-gray-400 hover:text-gray-500 focus:ring-2 focus:ring-indigo-500"
+                          class="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:ring-2 focus:ring-indigo-500"
                           @click="open = false"
                         >
                           <span class="sr-only">Close panel</span>
@@ -241,7 +241,7 @@
                         x-descriptions="Tab component"
                       >
                         <a
-                          class="border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 'whitespace-nowrap pb-4 px-1 border-b-2 font-medium text-sm', ]"
+                          class="'whitespace-nowrap text-sm', ] border-b-2 border-transparent px-1 pb-4 font-medium text-gray-500 hover:border-gray-300 hover:text-gray-700"
                           >All events lists</a
                         >
                       </nav>

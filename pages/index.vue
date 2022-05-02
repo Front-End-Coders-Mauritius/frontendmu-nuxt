@@ -4,9 +4,9 @@
   <div class="homepage-container">
     <div class="homepage-wrapper">
       <main class>
-        <div class="w-full h-[700px] md:h-[800px] relative z-0">
+        <div class="relative z-0 h-[700px] w-full md:h-[800px]">
           <v-vanta
-            class="absolute w-full z-0"
+            class="absolute z-0 w-full"
             effect="rings"
             :options="options"
           ></v-vanta>
@@ -14,13 +14,13 @@
             class="fade-out absolute z-10 h-screen w-full bg-gradient-to-t from-white to-transparent"
           ></div>
           <div
-            class="relative text-center h-full z-20 grid place-items-center max-w-[700px] mx-auto px-10"
+            class="relative z-20 mx-auto grid h-full max-w-[700px] place-items-center px-10 text-center"
           >
             <div class="grid gap-10">
               <h1
-                class="text-4xl flex flex-col tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
+                class="flex flex-col text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
               >
-                <span class="block xl:inline text-black"
+                <span class="block text-black xl:inline"
                   >Front-End Coders Mauritius</span
                 >
               </h1>
@@ -32,7 +32,7 @@
               <div>
                 <router-link
                   to="/events"
-                  class="rounded-md shadow w-64 mx-auto flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium text-white bg-yellow-500 hover:bg-yellow-400 md:py-4 md:text-lg md:px-10"
+                  class="mx-auto flex w-64 items-center justify-center rounded-md border border-transparent bg-yellow-500 px-8 py-3 text-base font-medium text-white shadow hover:bg-yellow-400 md:py-4 md:px-10 md:text-lg"
                   >View Events</router-link
                 >
               </div>
@@ -42,17 +42,17 @@
       </main>
     </div>
   </div>
-  <div class="latest-events-container sm:py-6 md:pt-8 relative z-20">
+  <div class="latest-events-container relative z-20 sm:py-6 md:pt-8">
     <div
-      class="latest-events-wrapper md:max-w-2xl lg:max-w-7xl mx-auto pt-8 px-4 md:px-0"
+      class="latest-events-wrapper mx-auto px-4 pt-8 md:max-w-2xl md:px-0 lg:max-w-7xl"
     >
       <div
-        class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-5xl py-4 md:py-8"
+        class="py-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:py-8 md:text-5xl"
       >
-        <h1 class="text-black text-center md:text-left">Latest events</h1>
+        <h1 class="text-center text-black md:text-left">Latest events</h1>
       </div>
       <div
-        class="rounded-lg bg-gray-200 overflow-hidden shadow-xl divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px"
+        class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow-xl sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0"
       >
         <div
           v-for="(event, eventID) in sortedEventList.slice(0, 6)"
@@ -66,22 +66,22 @@
             eventID === sortedEventList.length - 1
               ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none'
               : '',
-            'relative group bg-white p-6',
+            'group relative bg-white p-6',
           ]"
         >
           <div>
             <span
-              class="rounded-lg inline-flex p-3 ring-4 ring-white bg-blue-50 text-blue-700"
+              class="inline-flex rounded-lg bg-blue-50 p-3 text-blue-700 ring-4 ring-white"
             >
-              <ClockIcon class="h-6 w-6 mr-2" />
+              <ClockIcon class="mr-2 h-6 w-6" />
               <span>{{ new Date(event.local_date).toDateString() }}</span>
             </span>
           </div>
           <div class="mt-6">
-            <h3 class="text-xl font-medium md:h-12 leading-2">
+            <h3 class="leading-2 text-xl font-medium md:h-12">
               <router-link
                 :to="{ name: 'event-id', params: { id: event.id } }"
-                class="focus:outline-none w-96"
+                class="w-96 focus:outline-none"
               >
                 <!-- Extend touch target to entire panel -->
                 <span class="absolute inset-0" aria-hidden="true" />
@@ -89,7 +89,7 @@
                 <p
                   :class="[
                     event.status === 'upcoming'
-                      ? 'bg-green-100 text-green-800 tagStyle animate-bounce'
+                      ? 'tagStyle animate-bounce bg-green-100 text-green-800'
                       : 'hidden',
                   ]"
                 >
@@ -100,24 +100,25 @@
 
             <div class="flex flex-col border-gray-100 pt-4 md:pt-6 lg:pt-2">
               <div
-                class="flex text-base justify-start items-center font-medium text-gray-400"
+                class="flex items-center justify-start text-base font-medium text-gray-400"
               >
                 <LocationMarkerIcon
-                  class="flex-shrink-0 mr-1.5 h-4 w-4 text-gray-400 truncate"
+                  class="mr-1.5 h-4 w-4 flex-shrink-0 truncate text-gray-400"
                   aria-hidden="true"
                 />
                 <div class="pt-1">Venue: {{ event.venue.name }}</div>
               </div>
               <div
-                class="flex text-base justify-start items-center font-medium text-gray-400 leading-5"
+                class="flex items-center justify-start text-base font-medium leading-5 text-gray-400"
               >
                 <UsersIcon
-                  class="flex-shrink-0 mr-1.5 h-[15px] w-[15px] text-gray-400 truncate"
+                  class="mr-1.5 h-[15px] w-[15px] flex-shrink-0 truncate text-gray-400"
                   aria-hidden="true"
                 />
-                <div class="pt-[2px]">
+                <div class="pt-[2px]" v-if="event.yes_rsvp_count !== 0">
                   Attendees: {{ event.yes_rsvp_count }}
                 </div>
+                <div class="pt-[2px]" v-else>Seats: {{ event.rsvp_limit }}</div>
               </div>
             </div>
           </div>
@@ -138,10 +139,10 @@
           </span>
         </div>
       </div>
-      <div class="flex justify-center items-center h-32">
+      <div class="flex h-32 items-center justify-center">
         <router-link
           to="/events"
-          class="text-center bg-blue-600 text-white text-md md:text-xl px-4 md:px-8 py-4 rounded-md font-medium w-48 md:w-64"
+          class="text-md w-48 rounded-md bg-blue-600 px-4 py-4 text-center font-medium text-white md:w-64 md:px-8 md:text-xl"
           >View all events</router-link
         >
       </div>
