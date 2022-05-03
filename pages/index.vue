@@ -42,7 +42,9 @@
       </main>
     </div>
   </div>
-  <div class="latest-events-container relative z-20 sm:py-6 md:pt-8">
+  <div
+    class="latest-events-container relative z-20 sm:py-6 md:pt-8 md:px-8 px-0"
+  >
     <div
       class="latest-events-wrapper mx-auto px-4 pt-8 md:max-w-2xl md:px-0 lg:max-w-7xl"
     >
