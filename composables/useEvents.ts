@@ -1,3 +1,4 @@
+
 export default function () {
     const { getItems } = useDirectusItems();
 
@@ -12,4 +13,4 @@ export default function () {
         refresh,
         data,
     }
-} 
+}  
