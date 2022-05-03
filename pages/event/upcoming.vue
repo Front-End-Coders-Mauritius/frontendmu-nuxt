@@ -1,15 +1,10 @@
 <template>
-  <div v-if="!pending">
-    {{ data }}
+  <div>
+    <div v-if="pending">loading...</div>
+    <div v-else>{{ data }}</div>
   </div>
-  <div v-else>loading...</div>
 </template>
 
 <script setup>
-// const { getItems } = useDirectusItems();
-// const events = await getItems({ collection: "Events" });
-
-const { data, pending, error, refresh } = await useAsyncData("events", () =>
-  $fetch("https://l4yporup.directus.app/items/Events")
-);
+const { data, pending } = useEvents();
 </script>

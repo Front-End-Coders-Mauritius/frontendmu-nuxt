@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt3'
+import { defineNuxtConfig } from 'nuxt'
 
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
@@ -31,6 +31,6 @@ export default defineNuxtConfig({
     },
     modules: ["nuxt-directus"],
     directus: {
-		url: "https://l4yporup.directus.app",
-	},
+        url: "https://l4yporup.directus.app",
+    },
 })
