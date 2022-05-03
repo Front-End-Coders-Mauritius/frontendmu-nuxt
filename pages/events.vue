@@ -3,15 +3,15 @@
 
   <div class="past-events-container bg-gray-50">
     <div
-      class="past-events-wrapper md:max-w-2xl lg:max-w-7xl mx-auto py-8 px-4 md:px-0"
+      class="past-events-wrapper mx-auto py-8 px-4 md:max-w-2xl md:px-0 lg:max-w-7xl"
     >
       <div
-        class="text-4xl tracking-tight font-extrabold text-gray-900 sm:text-5xl md:text-4xl py-4 md:py-8"
+        class="py-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:py-8 md:text-4xl"
       >
         <h1 class="text-center text-black">All events</h1>
       </div>
       <div
-        class="rounded-lg bg-gray-200 overflow-hidden shadow-xl divide-y divide-gray-200 sm:divide-y-0 sm:grid sm:grid-cols-2 sm:gap-px"
+        class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow-xl sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0"
       >
         <div
           v-for="(event, eventID) in sortedEventList"
@@ -25,15 +25,15 @@
             eventID === sortedEventList.length - 1
               ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none'
               : '',
-            'relative group bg-white p-6',
+            'group relative bg-white p-6',
           ]"
         >
           <div>
             <span
-              class="rounded-lg inline-flex p-3 ring-4 ring-white bg-blue-50 text-blue-700"
+              class="inline-flex rounded-lg bg-blue-50 p-3 text-blue-700 ring-4 ring-white"
             >
-              <ClockIcon class="h-6 w-6 mr-2" />
-              <span>{{ new Date(event.local_date).toDateString() }}</span>
+              <ClockIcon class="mr-2 h-6 w-6" />
+              <span>{{ new Date(event?.local_date).toDateString() }}</span>
             </span>
           </div>
           <div class="mt-6">
@@ -44,23 +44,23 @@
               >
                 <!-- Extend touch target to entire panel -->
                 <span class="absolute inset-0" aria-hidden="true" />
-                <span>{{ event.name }}</span>
+                <span>{{ event?.name }}</span>
                 <p
                   :class="{
-                    'bg-yellow-100 text-yellow-800 tagStyle':
-                      event.status === 'past',
-                    'bg-green-100 text-green-800 tagStyle animate-bounce':
-                      event.status === 'upcoming',
-                    'bg-red-100 text-red-800 tagStyle':
-                      event.status === 'cancelled',
+                    'tagStyle bg-yellow-100 text-yellow-800':
+                      event?.status === 'past',
+                    'tagStyle animate-bounce bg-green-100 text-green-800':
+                      event?.status === 'upcoming',
+                    'tagStyle bg-red-100 text-red-800':
+                      event?.status === 'cancelled',
                   }"
                 >
-                  {{ event.status }}
+                  {{ event?.status }}
                 </p>
               </router-link>
             </h3>
-            <p class="mt-2 text-sm text-gray-500 line-clamp-3 max-w-lg">
-              {{ event.description.replace(/<\/?[^>]+>/gi, "") }}
+            <p class="mt-2 max-w-lg text-sm text-gray-500 line-clamp-3">
+              {{ event?.description.replace(/<\/?[^>]+>/gi, "") }}
             </p>
           </div>
           <span
@@ -86,8 +86,8 @@
 <script>
 import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
 import { ChevronDownIcon } from "@heroicons/vue/solid";
-import eventsListJson from "~~/data/events";
-import MetaTag from "~~/components/MetaTag.vue";
+import eventsListJson from "~/data/events";
+import MetaTag from "~/components/MetaTag.vue";
 
 definePageMeta({
   layout: "custom",
@@ -112,7 +112,7 @@ export default {
 
     sortedEventList() {
       const sortedList = this.eventsList.sort((a, b) => {
-        return new Date(b.local_date) - new Date(a.local_date);
+        return new Date(b?.local_date) - new Date(a?.local_date);
       });
       return sortedList;
     },

@@ -74,7 +74,7 @@
               class="inline-flex rounded-lg bg-blue-50 p-3 text-blue-700 ring-4 ring-white"
             >
               <ClockIcon class="mr-2 h-6 w-6" />
-              <span>{{ new Date(event.local_date).toDateString() }}</span>
+              <span>{{ new Date(event?.local_date).toDateString() }}</span>
             </span>
           </div>
           <div class="mt-6">
@@ -85,15 +85,15 @@
               >
                 <!-- Extend touch target to entire panel -->
                 <span class="absolute inset-0" aria-hidden="true" />
-                {{ event.name }}
+                {{ event?.name }}
                 <p
                   :class="[
-                    event.status === 'upcoming'
+                    event?.status === 'upcoming'
                       ? 'tagStyle animate-bounce bg-green-100 text-green-800'
                       : 'hidden',
                   ]"
                 >
-                  {{ event.status }}
+                  {{ event?.status }}
                 </p>
               </router-link>
             </h3>
@@ -106,7 +106,7 @@
                   class="mr-1.5 h-4 w-4 flex-shrink-0 truncate text-gray-400"
                   aria-hidden="true"
                 />
-                <div class="pt-1">Venue: {{ event.venue.name }}</div>
+                <div class="pt-1">Venue: {{ event?.venue?.name }}</div>
               </div>
               <div
                 class="flex items-center justify-start text-base font-medium leading-5 text-gray-400"
@@ -115,10 +115,12 @@
                   class="mr-1.5 h-[15px] w-[15px] flex-shrink-0 truncate text-gray-400"
                   aria-hidden="true"
                 />
-                <div class="pt-[2px]" v-if="event.yes_rsvp_count !== 0">
-                  Attendees: {{ event.yes_rsvp_count }}
+                <div class="pt-[2px]" v-if="event?.yes_rsvp_count !== 0">
+                  Attendees: {{ event?.yes_rsvp_count }}
                 </div>
-                <div class="pt-[2px]" v-else>Seats: {{ event.rsvp_limit }}</div>
+                <div class="pt-[2px]" v-else>
+                  Seats: {{ event?.rsvp_limit }}
+                </div>
               </div>
             </div>
           </div>
@@ -211,7 +213,7 @@ export default {
 
     sortedEventList() {
       const sortedList = this.eventsList.sort((a, b) => {
-        return new Date(b.local_date) - new Date(a.local_date);
+        return new Date(b?.local_date) - new Date(a?.local_date);
       });
       return sortedList;
     },

@@ -22,8 +22,11 @@ export default {
 
   computed: {
     eventDetail() {
-      const eventDescript = this.eventDetails.replace(/<\/?[^>]+>/gi, "");
-      return eventDescript;
+      if (this.eventDetail) {
+        const eventDescript = this.eventDetails.replace(/<\/?[^>]+>/gi, "");
+        return eventDescript;
+      }
+      return "";
     },
   },
 };

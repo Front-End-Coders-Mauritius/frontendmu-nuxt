@@ -1,5 +1,5 @@
 <template>
-  <MetaTag :eventName="eventName" :eventDetails="eventDetails.description" />
+  <MetaTag :eventName="eventName" :eventDetails="eventDetails?.description" />
   <div class="relative">
     <div class="py-4 md:py-16">
       <div class="lg:mx-auto lg:max-w-[1400px] lg:px-4">
@@ -55,25 +55,25 @@
               <p
                 :class="{
                   'tagStyle bg-yellow-100 text-yellow-800':
-                    eventDetails.status === 'past',
+                    eventDetails?.status === 'past',
                   'tagStyle animate-bounce bg-green-100 text-green-800':
-                    eventDetails.status === 'upcoming',
+                    eventDetails?.status === 'upcoming',
                   'tagStyle bg-red-100 text-red-800':
-                    eventDetails.status === 'cancelled',
+                    eventDetails?.status === 'cancelled',
                 }"
               >
-                {{ eventDetails.status }}
+                {{ eventDetails?.status }}
               </p>
             </div>
             <h2
               class="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl lg:text-5xl"
             >
-              {{ eventDetails.name }}
+              {{ eventDetails?.name }}
             </h2>
             <div class="mt-6 space-y-6 text-gray-500">
               <div
                 class="text-md prose md:text-lg"
-                v-html="eventDetails.description"
+                v-html="eventDetails?.description"
               ></div>
             </div>
           </div>
@@ -86,7 +86,7 @@
                 <dd
                   class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                 >
-                  {{ new Date(eventDetails.local_date).toDateString() }}
+                  {{ new Date(eventDetails?.local_date).toDateString() }}
                 </dd>
               </div>
               <div class="border-t-2 border-gray-100 pt-6">
@@ -94,18 +94,18 @@
                 <dd
                   class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                 >
-                  {{ eventDetails.venue.name }}
+                  {{ eventDetails?.venue?.name }}
                 </dd>
               </div>
               <div
                 class="border-t-2 border-gray-100 pt-6"
-                v-if="eventDetails.yes_rsvp_count !== 0"
+                v-if="eventDetails?.yes_rsvp_count !== 0"
               >
                 <dt class="text-base font-medium text-gray-500">Attendees</dt>
                 <dd
                   class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                 >
-                  {{ eventDetails.yes_rsvp_count }}
+                  {{ eventDetails?.yes_rsvp_count }}
                 </dd>
               </div>
               <div class="border-t-2 border-gray-100 pt-6" v-else>
@@ -115,7 +115,7 @@
                 <dd
                   class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                 >
-                  {{ eventDetails.rsvp_limit }}
+                  {{ eventDetails?.rsvp_limit }}
                 </dd>
               </div>
               <div class="border-t-2 border-gray-100 pt-6">
@@ -123,7 +123,7 @@
                 <dd
                   class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                 >
-                  {{ eventDetails.local_time }}
+                  {{ eventDetails?.local_time }}
                 </dd>
               </div>
               <div class="border-t-2 border-gray-100 pt-6">
@@ -131,7 +131,7 @@
                 <dd
                   class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                 >
-                  {{ eventDetails.venue.address_1 }}
+                  {{ eventDetails?.venue.address_1 }}
                 </dd>
               </div>
 
@@ -166,7 +166,7 @@
                 <dd
                   class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                 >
-                  {{ eventDetails.rsvp_limit }}
+                  {{ eventDetails?.rsvp_limit }}
                 </dd>
               </div>
             </dl>
@@ -174,7 +174,9 @@
         </div>
       </div>
       <div class="images mt-16 px-4 md:mt-16 lg:mx-auto lg:max-w-7xl">
-        <div v-if="eventDetails.images === null">{{ eventDetails.images }}</div>
+        <div v-if="eventDetails?.images === null">
+          {{ eventDetails?.images }}
+        </div>
         <div
           v-else
           class="pb-4 text-center text-4xl font-extrabold text-blue-700 md:pb-8 md:text-5xl"
@@ -332,7 +334,7 @@ export default {
     },
 
     eventName() {
-      return this.eventDetails.name;
+      return this.eventDetails?.name;
     },
 
     eventDetails() {
@@ -344,13 +346,13 @@ export default {
 
     sortedEventList() {
       const sortedList = this.eventsList.sort((a, b) => {
-        return new Date(b.local_date) - new Date(a.local_date);
+        return new Date(b?.local_date) - new Date(a?.local_date);
       });
       return sortedList;
     },
 
     eventImages() {
-      return this.eventDetails.images;
+      return this.eventDetails?.images;
     },
   },
   methods: {
@@ -371,7 +373,7 @@ export default {
 
   updated() {
     this.eventsList;
-    this.imagesList;
+    this?.imagesList;
     this.eventDetails;
   },
 };

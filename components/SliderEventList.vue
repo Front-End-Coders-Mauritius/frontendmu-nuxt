@@ -17,18 +17,18 @@
         <div class="flex flex-col gap-4 px-8 py-4">
           <div class="flex flex-col-reverse gap-2">
             <p
-              class="event-name text-sm md:text-lg font-medium text-indigo-600 line-clamp-2"
+              class="event-name text-sm font-medium text-indigo-600 line-clamp-2 md:text-lg"
             >
-              {{ event.name }}
+              {{ event?.name }}
             </p>
-            <div class="event-tags flex justify-end">
+            <div class="event-tags flex justify-end" v-if="event?.status">
               <p
                 :class="{
-                  'bg-yellow-100 text-yellow-800 tagStyle':
+                  'tagStyle bg-yellow-100 text-yellow-800':
                     event.status === 'past',
-                  'bg-green-100 text-green-800 tagStyle animate-pulse':
+                  'tagStyle animate-pulse bg-green-100 text-green-800':
                     event.status === 'upcoming',
-                  'bg-red-100 text-red-800 tagStyle':
+                  'tagStyle bg-red-100 text-red-800':
                     event.status === 'cancelled',
                 }"
               >
@@ -37,24 +37,24 @@
             </div>
           </div>
           <p class="text-gray-400 line-clamp-2">
-            {{ event.description.replace(/<\/?[^>]+>/gi, "") }}
+            {{ event?.description.replace(/<\/?[^>]+>/gi, "") }}
           </p>
           <div class="flex flex-col gap-2">
             <div class="flex flex-col gap-4">
-              <p class="flex items-center text-sm text-gray-500 mt-0">
+              <p class="mt-0 flex items-center text-sm text-gray-500">
                 <LocationMarkerIcon
-                  class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400 truncate"
+                  class="mr-1.5 h-5 w-5 flex-shrink-0 truncate text-gray-400"
                   aria-hidden="true"
                 />
-                <span class="truncate">{{ event.venue.address_1 }}</span>
+                <span class="truncate">{{ event?.venue.address_1 }}</span>
               </p>
             </div>
-            <div class="flex items-center text-sm text-gray-500 h-5">
+            <div class="flex h-5 items-center text-sm text-gray-500">
               <CalendarIcon
-                class="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
+                class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
                 aria-hidden="true"
               />
-              <p>{{ new Date(event.local_date).toDateString() }}</p>
+              <p>{{ new Date(event?.local_date).toDateString() }}</p>
             </div>
           </div>
         </div>
