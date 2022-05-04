@@ -13,6 +13,7 @@
             <h1 class="text-center text-black">All events</h1>
           </div>
           <div
+            v-if="data"
             class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow-xl sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0"
           >
             <div
@@ -63,8 +64,17 @@
                     </div>
                   </router-link>
                 </h3>
-                <p class="mt-2 max-w-lg text-sm text-gray-500 line-clamp-3">
-                  {{ event?.description.replace(/<\/?[^>]+>/gi, "") }}
+                <p
+                  class="mt-2 max-w-lg text-sm text-gray-500 line-clamp-3"
+                  v-if="event.description"
+                >
+                  {{ event.description.replace(/<\/?[^>]+>/gi, "") }}
+                </p>
+                <p
+                  class="mt-2 max-w-lg text-sm text-gray-500 line-clamp-3"
+                  v-else
+                >
+                  No description.
                 </p>
               </div>
               <span
@@ -84,6 +94,7 @@
               </span>
             </div>
           </div>
+          <div v-else>Something went wrong.</div>
         </div>
       </div>
       <!-- ends -->
@@ -92,7 +103,5 @@
 </template>
 
 <script setup lang="ts">
-import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
-import { ChevronDownIcon } from "@heroicons/vue/solid";
 const { data, pending } = useEvents();
 </script>
