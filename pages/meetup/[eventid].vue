@@ -1,26 +1,33 @@
 <template>
   <div>
+    <div>
+      {{ eventid }}
+    </div>
     <div v-if="pending">loading...</div>
     <div v-else>
-      <!-- {{ data }} -->
-
       <div class="prose">
         <pre>      {{ getCurrentEvent }}</pre>
       </div>
+
+      <!-- start  -->
+
+      <!-- ends -->
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import { IEvent } from "~/types/types";
-const { data, pending } = useEvents();
 
-const id = ref(19);
+const { data, pending } = useEvents();
+const route = useRoute();
+
+const eventid = computed(() => route.params.eventid);
 
 const getCurrentEvent = computed(() => {
   if (data.value) {
     return data.value.filter(
-      (event: IEvent) => event.id.toString() === id.value.toString()
+      (event: IEvent) => event.id.toString() === eventid.value.toString()
     )[0];
   }
 });

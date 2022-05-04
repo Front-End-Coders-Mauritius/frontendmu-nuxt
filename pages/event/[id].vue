@@ -51,7 +51,10 @@
         >
           <!-- Content area -->
           <div class>
-            <div class="flex w-full items-center justify-end">
+            <div
+              class="flex w-full items-center justify-end"
+              v-if="eventDetails.status"
+            >
               <p
                 :class="{
                   'tagStyle bg-yellow-100 text-yellow-800':
