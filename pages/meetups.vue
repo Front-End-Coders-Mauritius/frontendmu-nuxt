@@ -42,7 +42,7 @@
               <div class="mt-6">
                 <h3 class="text-lg font-medium">
                   <router-link
-                    :to="{ name: 'event-id', params: { id: event.id } }"
+                    :to="{ name: 'meetup-id', params: { id: event.id } }"
                     class="focus:outline-none"
                   >
                     <!-- Extend touch target to entire panel -->
@@ -105,6 +105,10 @@
 <script setup lang="ts">
 import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
 import { ChevronDownIcon } from "@heroicons/vue/solid";
+
+definePageMeta({
+  layout: "custom",
+});
 
 const { data, pending } = useEvents();
 </script>

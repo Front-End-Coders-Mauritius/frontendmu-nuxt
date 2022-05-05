@@ -17,12 +17,30 @@
 </template>
 
 <script setup lang="ts">
+import {
+  Dialog,
+  DialogOverlay,
+  DialogTitle,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+  TransitionChild,
+  TransitionRoot,
+} from "@headlessui/vue";
+
+import {
+  XIcon,
+  LocationMarkerIcon,
+  CalendarIcon,
+  DotsVerticalIcon,
+} from "@heroicons/vue/solid";
 import { IEvent } from "~/types/types";
 
 const { data, pending } = useEvents();
 const route = useRoute();
 
-const eventid = computed(() => route.params.eventid);
+const eventid = computed(() => route.params.id);
 
 const getCurrentEvent = computed(() => {
   if (data.value) {
