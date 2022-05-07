@@ -76,7 +76,7 @@
                           <p
                             class="event-name text-sm font-medium text-indigo-600 line-clamp-2 md:text-lg"
                           >
-                            {{ event?.name }}
+                            {{ event?.title }}
                           </p>
                           <div
                             class="event-tags flex justify-end"
@@ -102,7 +102,7 @@
                                 aria-hidden="true"
                               />
                               <span class="truncate">
-                                {{ event?.venue.address_1 }}
+                                {{ event?.Location }}
                               </span>
                             </p>
                           </div>
@@ -114,7 +114,7 @@
                               aria-hidden="true"
                             />
                             <p>
-                              {{ new Date(event?.local_date).toDateString() }}
+                              {{ new Date(event?.Date).toDateString() }}
                             </p>
                           </div>
                         </div>

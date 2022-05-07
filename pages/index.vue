@@ -82,7 +82,7 @@
           <div class="mt-6">
             <h3 class="leading-2 text-xl font-medium md:h-12">
               <router-link
-                :to="{ name: 'event-id', params: { id: event.id } }"
+                :to="{ name: 'meetup-id', params: { id: event.id } }"
                 class="w-96 focus:outline-none"
               >
                 <!-- Extend touch target to entire panel -->

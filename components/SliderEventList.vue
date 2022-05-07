@@ -9,7 +9,7 @@
     >
       <router-link
         :to="{
-          name: 'event-id',
+          name: 'meetup-id',
           params: { id: event.id },
         }"
         class="block hover:bg-gray-50"
@@ -19,7 +19,7 @@
             <p
               class="event-name text-sm font-medium text-indigo-600 line-clamp-2 md:text-lg"
             >
-              {{ event?.name }}
+              {{ event?.title }}
             </p>
             <div class="event-tags flex justify-end" v-if="event?.status">
               <p
@@ -46,7 +46,7 @@
                   class="mr-1.5 h-5 w-5 flex-shrink-0 truncate text-gray-400"
                   aria-hidden="true"
                 />
-                <span class="truncate">{{ event?.venue.address_1 }}</span>
+                <span class="truncate">{{ event?.Location }}</span>
               </p>
             </div>
             <div class="flex h-5 items-center text-sm text-gray-500">
@@ -54,7 +54,7 @@
                 class="mr-1.5 h-5 w-5 flex-shrink-0 text-gray-400"
                 aria-hidden="true"
               />
-              <p>{{ new Date(event?.local_date).toDateString() }}</p>
+              <p>{{ new Date(event?.Location).toDateString() }}</p>
             </div>
           </div>
         </div>
