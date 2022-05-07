@@ -104,29 +104,6 @@
                       {{ props.getCurrentEvent?.Venue }}
                     </dd>
                   </div>
-                  <div
-                    class="border-t-2 border-gray-100 pt-4 md:pt-6"
-                    v-if="props.getCurrentEvent?.Attendees !== 0"
-                  >
-                    <dt class="text-base font-medium text-gray-500">
-                      Attendees
-                    </dt>
-                    <dd
-                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
-                    >
-                      {{ props.getCurrentEvent?.Attendees }}
-                    </dd>
-                  </div>
-                  <div class="border-t-2 border-gray-100 pt-4 md:pt-6" v-else>
-                    <dt class="text-base font-medium text-gray-500">
-                      Seats available
-                    </dt>
-                    <dd
-                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
-                    >
-                      {{ props.getCurrentEvent?.Attendees }}
-                    </dd>
-                  </div>
                   <div class="border-t-2 border-gray-100 pt-4 md:pt-6">
                     <dt class="text-base font-medium text-gray-500">Time</dt>
                     <dd
@@ -145,16 +122,26 @@
                       {{ props.getCurrentEvent?.Location }}
                     </dd>
                   </div>
+                  <div class="border-t-2 border-gray-100 pt-6">
+                    <dt class="text-base font-medium text-gray-500">
+                      Seats Limit
+                    </dt>
+                    <dd
+                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
+                    >
+                      {{ props.getCurrentEvent?.Attendees }}
+                    </dd>
+                  </div>
 
-                  <div class="border-t-2 border-gray-100 pt-4 md:pt-6">
+                  <div class="border-y-2 border-gray-100 pt-4 md:pt-6">
                     <dt class="text-base font-medium text-gray-500">Share</dt>
                     <dd
-                      class="flex rounded-md bg-gray-100 px-2 py-1 sm:w-[450px]"
+                      class="flex justify-between rounded-md bg-gray-100 mt-2 px-2 py-1 sm:w-[450px]"
                     >
                       <input
-                        class="text-md break-words bg-gray-100 pr-2 tracking-tight text-gray-600 line-clamp-3 sm:w-[500px]"
+                        class="text-md break-words bg-gray-100pr-2 tracking-tight bg-gray-100 text-gray-600 line-clamp-3 w-[500px]"
                         type="text"
-                        :value="`front-end-coders-mauritius.netlify.app/event/${eventID}/`"
+                        :value="`front-end-coders-mauritius.netlify.app/event/${meetupId}/`"
                         id="myInput"
                       />
                       <div @click="copy" class="cursor-pointer">
@@ -172,16 +159,6 @@
                           />
                         </svg>
                       </div>
-                    </dd>
-                  </div>
-                  <div class="border-y-2 border-gray-100 py-6">
-                    <dt class="text-base font-medium text-gray-500">
-                      Seats Limit
-                    </dt>
-                    <dd
-                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
-                    >
-                      {{ props.getCurrentEvent?.Attendees }}
                     </dd>
                   </div>
                 </dl>
@@ -301,11 +278,16 @@ import {
   DotsVerticalIcon,
 } from "@heroicons/vue/solid";
 import { IEvent } from "~/types/types";
+const route = useRoute();
 
 const props = defineProps({
   getCurrentEvent: [],
   data: Number,
   pending: Boolean,
+});
+
+const meetupId = computed(() => {
+  return route.params.id;
 });
 
 const open = ref(false);
