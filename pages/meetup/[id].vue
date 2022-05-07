@@ -1,4 +1,8 @@
 <template>
+  <MetaTag
+    :eventName="getCurrentEvent?.title"
+    :eventDetails="getCurrentEvent?.description"
+  />
   <Meetup
     :getCurrentEvent="getCurrentEvent"
     :data="data"
