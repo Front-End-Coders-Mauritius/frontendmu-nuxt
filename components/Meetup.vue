@@ -53,33 +53,37 @@
             >
               <!-- Content area -->
               <div>
-                <!-- <div
-                  class="flex w-full items-center justify-end"
-                  v-if="props.getCurrentEvent.status"
-                >
+                <div class="flex w-full items-center justify-end" v-if="status">
                   <p
                     :class="{
                       'tagStyle bg-yellow-100 text-yellow-800':
-                        props.getCurrentEvent?.status === 'past',
+                        status === 'past',
                       'tagStyle animate-bounce bg-green-100 text-green-800':
-                        props.getCurrentEvent?.status === 'upcoming',
+                        status === 'upcoming',
                       'tagStyle bg-red-100 text-red-800':
-                        props.getCurrentEvent?.status === 'cancelled',
+                        status === 'cancelled',
                     }"
                   >
-                    {{ props.getCurrentEvent?.status }}
+                    {{ status }}
                   </p>
-                </div> -->
+                </div>
+                <div v-else></div>
                 <h2
                   class="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl lg:text-5xl"
                 >
                   {{ props.getCurrentEvent?.title }}
                 </h2>
-                <div class="mt-6 space-y-6 text-gray-500">
+                <div
+                  class="mt-6 space-y-6 text-gray-500"
+                  v-if="props.getCurrentEvent.description"
+                >
                   <div
                     class="text-md prose md:text-lg"
-                    v-html="props.getCurrentEvent?.description"
+                    v-html="props.getCurrentEvent.description"
                   ></div>
+                </div>
+                <div class="text-md prose md:text-lg" v-else>
+                  Please add a description.
                 </div>
               </div>
 
@@ -88,48 +92,63 @@
                 <dl
                   class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 md:gap-y-8"
                 >
-                  <div class="border-t-2 border-gray-100 pt-6">
+                  <div
+                    class="border-t-2 border-gray-100 pt-6"
+                    v-if="props.getCurrentEvent.Date"
+                  >
                     <dt class="text-base font-medium text-gray-500">Date</dt>
                     <dd
                       class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
-                      {{ new Date(props.getCurrentEvent?.Date).toDateString() }}
+                      {{ new Date(props.getCurrentEvent.Date).toDateString() }}
                     </dd>
                   </div>
-                  <div class="border-t-2 border-gray-100 pt-4 md:pt-6">
+                  <div
+                    class="border-t-2 border-gray-100 pt-4 md:pt-6"
+                    v-if="props.getCurrentEvent.Venue"
+                  >
                     <dt class="text-base font-medium text-gray-500">Venue</dt>
                     <dd
                       class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
-                      {{ props.getCurrentEvent?.Venue }}
+                      {{ props.getCurrentEvent.Venue }}
                     </dd>
                   </div>
-                  <div class="border-t-2 border-gray-100 pt-4 md:pt-6">
+                  <div
+                    class="border-t-2 border-gray-100 pt-4 md:pt-6"
+                    v-if="props.getCurrentEvent.Time"
+                  >
                     <dt class="text-base font-medium text-gray-500">Time</dt>
                     <dd
                       class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
-                      {{ props.getCurrentEvent?.Time }}
+                      {{ props.getCurrentEvent.Time }}
                     </dd>
                   </div>
-                  <div class="border-t-2 border-gray-100 pt-4 md:pt-6">
+                  <div
+                    class="border-t-2 border-gray-100 pt-4 md:pt-6"
+                    v-if="props.getCurrentEvent.Location"
+                  >
                     <dt class="text-base font-medium text-gray-500">
                       Location
                     </dt>
                     <dd
                       class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
-                      {{ props.getCurrentEvent?.Location }}
+                      {{ props.getCurrentEvent.Location }}
                     </dd>
                   </div>
-                  <div class="border-t-2 border-gray-100 pt-6">
+                  <div
+                    class="border-t-2 border-gray-100 pt-6"
+                    v-if="props.getCurrentEvent.Attendees"
+                  >
                     <dt class="text-base font-medium text-gray-500">
                       Seats Limit
                     </dt>
                     <dd
                       class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
-                      {{ props.getCurrentEvent?.Attendees }}
+                      {{ props.getCurrentEvent.Attendees }}
                     </dd>
                   </div>
 
@@ -278,6 +297,7 @@ import {
   DotsVerticalIcon,
 } from "@heroicons/vue/solid";
 import { IEvent } from "~/types/types";
+const open = ref(false);
 const route = useRoute();
 
 const props = defineProps({
@@ -290,5 +310,23 @@ const meetupId = computed(() => {
   return route.params.id;
 });
 
-const open = ref(false);
+// to get past or upcoming value base in Date
+const dateInPast = function (firstDate, secondDate) {
+  if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0)) {
+    return true;
+  }
+  return false;
+};
+
+let past = new Date(props.getCurrentEvent.Date);
+const today = new Date();
+const verifyValue = dateInPast(past, today);
+
+const status = computed(() => {
+  if (verifyValue) {
+    return "past";
+  } else {
+    return "upcoming";
+  }
+});
 </script>

@@ -26,24 +26,4 @@ const getCurrentEvent = computed(() => {
     )[0];
   }
 });
-
-// to get past or upcoming value base in Date
-const dateInPast = function (firstDate, secondDate) {
-  if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0)) {
-    return true;
-  }
-  return false;
-};
-
-let past = new Date("2027-05-20");
-const today = new Date();
-const verifyValue = dateInPast(past, today);
-
-const verifyDate = computed(() => {
-  if (verifyValue) {
-    return "past";
-  } else {
-    return "upcoming";
-  }
-});
 </script>
