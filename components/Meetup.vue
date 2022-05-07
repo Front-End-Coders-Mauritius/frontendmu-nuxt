@@ -302,7 +302,7 @@ const route = useRoute();
 
 const props = defineProps({
   getCurrentEvent: [],
-  data: Number,
+  data: [],
   pending: Boolean,
 });
 
