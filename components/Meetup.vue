@@ -301,8 +301,8 @@ const open = ref(false);
 const route = useRoute();
 
 const props = defineProps({
-  getCurrentEvent: [],
-  data: [],
+  getCurrentEvent: {},
+  data: {},
   pending: Boolean,
 });
 
