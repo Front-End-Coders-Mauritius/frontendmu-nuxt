@@ -53,21 +53,17 @@
             >
               <!-- Content area -->
               <div>
-                <div class="flex w-full items-center justify-end" v-if="status">
+                <div class="flex w-full items-center justify-end">
                   <p
-                    :class="{
-                      'tagStyle bg-yellow-100 text-yellow-800':
-                        status === 'past',
-                      'tagStyle animate-bounce bg-green-100 text-green-800':
-                        status === 'upcoming',
-                      'tagStyle bg-red-100 text-red-800':
-                        status === 'cancelled',
-                    }"
+                    :class="[
+                      isUpcoming
+                        ? 'tagStyle bg-yellow-100 text-yellow-800'
+                        : 'tagStyle animate-bounce bg-green-100 text-green-800',
+                    ]"
                   >
-                    {{ status }}
+                    {{ isUpcoming ? "upcoming" : "past" }}
                   </p>
                 </div>
-                <div v-else></div>
                 <h2
                   class="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl lg:text-5xl"
                 >
@@ -296,12 +292,13 @@ import {
   CalendarIcon,
   DotsVerticalIcon,
 } from "@heroicons/vue/solid";
+import { ComputedRef, PropType, Ref } from "vue";
 import { IEvent } from "~/types/types";
-const open = ref(false);
+const open: Ref<Boolean> = ref(false);
 const route = useRoute();
 
 const props = defineProps({
-  getCurrentEvent: {},
+  getCurrentEvent: {} as PropType<IEvent>,
   data: {},
   pending: Boolean,
 });
@@ -311,22 +308,17 @@ const meetupId = computed(() => {
 });
 
 // to get past or upcoming value base in Date
-const dateInPast = function (firstDate, secondDate) {
+const dateInPast = function (firstDate: Date, secondDate: Date) {
   if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0)) {
     return true;
   }
   return false;
 };
 
-let past = new Date(props.getCurrentEvent.Date);
-const today = new Date();
-const verifyValue = dateInPast(past, today);
-
-const status = computed(() => {
-  if (verifyValue) {
-    return "past";
-  } else {
-    return "upcoming";
-  }
+const isUpcoming: ComputedRef<Boolean> = computed(() => {
+  let past = new Date(props.getCurrentEvent.Date);
+  const today = new Date();
+  const verifyValue = dateInPast(past, today);
+  return verifyValue;
 });
 </script>

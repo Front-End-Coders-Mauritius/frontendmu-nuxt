@@ -43,23 +43,20 @@
                 <h3 class="text-lg font-medium">
                   <router-link
                     :to="{ name: 'meetup-id', params: { id: event.id } }"
-                    class="focus:outline-none"
+                    class="focus:outline-none flex"
                   >
                     <!-- Extend touch target to entire panel -->
                     <span class="absolute inset-0" aria-hidden="true" />
                     <span>{{ event?.title }}</span>
-                    <div v-if="event.status">
+                    <div>
                       <p
-                        :class="{
-                          'tagStyle bg-yellow-100 text-yellow-800':
-                            event.status === 'past',
-                          'tagStyle animate-bounce bg-green-100 text-green-800':
-                            event.status === 'upcoming',
-                          'tagStyle bg-red-100 text-red-800':
-                            event.status === 'cancelled',
-                        }"
+                        :class="[
+                          isUpcoming(event.Date)
+                            ? 'tagStyle bg-yellow-100 text-yellow-800'
+                            : 'tagStyle animate-bounce bg-green-100 text-green-800',
+                        ]"
                       >
-                        {{ event.status }}
+                        {{ isUpcoming(event.Date) ? "past" : "upcoming" }}
                       </p>
                     </div>
                   </router-link>
@@ -113,4 +110,19 @@ definePageMeta({
 
 const { data, pending } = useEvents();
 // to add past or upcoming status
+
+// to get past or upcoming value base in Date
+const dateInPast = function (firstDate: Date, secondDate: Date) {
+  if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0)) {
+    return true;
+  }
+  return false;
+};
+
+const isUpcoming = (currentEventDate: string) => {
+  let past = new Date(currentEventDate);
+  const today = new Date();
+  const verifyValue = dateInPast(past, today);
+  return verifyValue;
+};
 </script>
