@@ -166,6 +166,9 @@ import VVanta from "vue-vanta";
 
 definePageMeta({
   layout: "home",
+  transition: {
+    name: "index",
+  },
 });
 
 const { data, pending } = useEvents();

@@ -106,6 +106,12 @@ import { IEvent } from "~/types/types";
 
 definePageMeta({
   layout: "custom",
+  transition: {
+    name: "meetups",
+  },
+  keepAlive: {
+    exclude: ["modal"],
+  },
 });
 
 const { data, pending } = useEvents();
