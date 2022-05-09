@@ -10,7 +10,7 @@
           <div
             class="py-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:py-8 md:text-4xl"
           >
-            <h1 class="text-center text-black">All events</h1>
+            <h1 class="text-center text-black">All meetups</h1>
           </div>
           <div
             v-if="data"
@@ -47,7 +47,7 @@
                   >
                     <!-- Extend touch target to entire panel -->
                     <span class="absolute inset-0" aria-hidden="true" />
-                    <span>{{ event?.title }}</span>
+                    <span>{{ event.title }}</span>
                     <div>
                       <p
                         :class="[
@@ -125,4 +125,6 @@ const isUpcoming = (currentEventDate: string) => {
   const verifyValue = dateInPast(past, today);
   return verifyValue;
 };
+
+// to do : update index.vue routes button
 </script>

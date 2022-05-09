@@ -2,7 +2,7 @@
   <div></div>
   <ul role="list" class="divide-y divide-gray-200 overflow-y-auto">
     <li
-      v-for="(event, index) in sortedEventList"
+      v-for="(event, index) in data"
       :key="event"
       :value="index"
       active-class="red"
@@ -21,18 +21,15 @@
             >
               {{ event?.title }}
             </p>
-            <div class="event-tags flex justify-end" v-if="event?.status">
+            <div class="event-tags flex justify-end">
               <p
-                :class="{
-                  'tagStyle bg-yellow-100 text-yellow-800':
-                    event.status === 'past',
-                  'tagStyle animate-pulse bg-green-100 text-green-800':
-                    event.status === 'upcoming',
-                  'tagStyle bg-red-100 text-red-800':
-                    event.status === 'cancelled',
-                }"
+                :class="[
+                  isUpcoming(event.Date)
+                    ? 'tagStyle bg-yellow-100 text-yellow-800'
+                    : 'tagStyle animate-bounce bg-green-100 text-green-800',
+                ]"
               >
-                {{ event.status }}
+                {{ isUpcoming(event.Date) ? "past" : "upcoming" }}
               </p>
             </div>
           </div>
@@ -63,20 +60,28 @@
   </ul>
 </template>
 
-<script>
+<script setup lang="ts">
 import { LocationMarkerIcon, CalendarIcon } from "@heroicons/vue/solid";
+import { IEvent } from "~~/types/types";
+import { PropType } from "vue";
 
-export default {
-  props: ["sortedEventList"],
+const props = defineProps({
+  data: {},
+});
 
-  components: {
-    CalendarIcon,
-    LocationMarkerIcon,
-  },
+// to get past or upcoming value base in Date
+const dateInPast = function (firstDate: Date, secondDate: Date) {
+  if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0)) {
+    return true;
+  }
+  return false;
+};
 
-  data: () => {
-    return {};
-  },
+const isUpcoming = (currentEventDate: string) => {
+  let past = new Date(currentEventDate);
+  const today = new Date();
+  const verifyValue = dateInPast(past, today);
+  return verifyValue;
 };
 </script>
 <style>

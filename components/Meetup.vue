@@ -61,7 +61,7 @@
                         : 'tagStyle animate-bounce bg-green-100 text-green-800',
                     ]"
                   >
-                    {{ isUpcoming ? "upcoming" : "past" }}
+                    {{ isUpcoming ? "past" : "upcoming" }}
                   </p>
                 </div>
                 <h2
@@ -260,7 +260,7 @@
                       </div>
 
                       <!-- events list -->
-                      <SliderEventList :sortedEventList="data" />
+                      <SliderEventList :data="data" />
                     </div>
                   </div>
                 </TransitionChild>

@@ -31,9 +31,9 @@
               </p>
               <div>
                 <router-link
-                  to="/events"
+                  :to="{ path: '/meetups' }"
                   class="mx-auto flex w-64 items-center justify-center rounded-md border border-transparent bg-yellow-500 px-8 py-3 text-base font-medium text-white shadow hover:bg-yellow-400 md:py-4 md:px-10 md:text-lg"
-                  >View Events</router-link
+                  >View Meetups</router-link
                 >
               </div>
             </div>
@@ -46,37 +46,37 @@
     class="latest-events-container relative z-20 sm:py-6 md:pt-8 md:px-8 px-0"
   >
     <div
-      class="latest-events-wrapper mx-auto px-4 pt-8 md:max-w-2xl md:px-0 lg:max-w-7xl"
+      class="latest-events-wrapper mx-auto px-4 pt-8 md:max-w-3xl md:px-0 lg:max-w-7xl"
     >
       <div
         class="py-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:py-8 md:text-5xl"
       >
-        <h1 class="text-center text-black md:text-left">Latest events</h1>
+        <h1 class="text-center text-black md:text-left">Latest meetups</h1>
       </div>
       <div
         class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow-xl sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0"
       >
         <div
-          v-for="(event, eventID) in sortedEventList.slice(0, 6)"
+          v-for="(event, eventID) in data.slice(0, 6)"
           :key="event.title"
           :class="[
             eventID === 0
               ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none'
               : '',
             eventID === 1 ? 'sm:rounded-tr-lg' : '',
-            eventID === sortedEventList.length - 2 ? 'sm:rounded-bl-lg' : '',
-            eventID === sortedEventList.length - 1
+            eventID === data.length - 2 ? 'sm:rounded-bl-lg' : '',
+            eventID === data.length - 1
               ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none'
               : '',
             'group relative bg-white p-6',
           ]"
         >
-          <div>
+          <div v-if="event.Date">
             <span
               class="inline-flex rounded-lg bg-blue-50 p-3 text-blue-700 ring-4 ring-white"
             >
               <ClockIcon class="mr-2 h-6 w-6" />
-              <span>{{ new Date(event?.local_date).toDateString() }}</span>
+              <span>{{ new Date(event.Date).toDateString() }}</span>
             </span>
           </div>
           <div class="mt-6">
@@ -87,15 +87,16 @@
               >
                 <!-- Extend touch target to entire panel -->
                 <span class="absolute inset-0" aria-hidden="true" />
-                {{ event?.name }}
+                {{ event?.title }}
+
                 <p
                   :class="[
-                    event?.status === 'upcoming'
-                      ? 'tagStyle animate-bounce bg-green-100 text-green-800'
-                      : 'hidden',
+                    isUpcoming(event.Date)
+                      ? 'tagStyle bg-yellow-100 text-yellow-800'
+                      : 'tagStyle animate-bounce bg-green-100 text-green-800',
                   ]"
                 >
-                  {{ event?.status }}
+                  {{ isUpcoming(event.Date) ? "past" : "upcoming" }}
                 </p>
               </router-link>
             </h3>
@@ -103,13 +104,15 @@
             <div class="flex flex-col border-gray-100 pt-4 md:pt-6 lg:pt-2">
               <div
                 class="flex items-center justify-start text-base font-medium text-gray-400"
+                v-if="event.Venue"
               >
                 <LocationMarkerIcon
                   class="mr-1.5 h-4 w-4 flex-shrink-0 truncate text-gray-400"
                   aria-hidden="true"
                 />
-                <div class="pt-1">Venue: {{ event?.venue?.name }}</div>
+                <div class="pt-1">Venue: {{ event.Venue }}</div>
               </div>
+              <div v-else>No venue added.</div>
               <div
                 class="flex items-center justify-start text-base font-medium leading-5 text-gray-400"
               >
@@ -117,12 +120,10 @@
                   class="mr-1.5 h-[15px] w-[15px] flex-shrink-0 truncate text-gray-400"
                   aria-hidden="true"
                 />
-                <div class="pt-[2px]" v-if="event?.yes_rsvp_count !== 0">
-                  Attendees: {{ event?.yes_rsvp_count }}
+                <div class="pt-[2px]" v-if="event?.Attendees !== 0">
+                  Attendees: {{ event?.Attendees }}
                 </div>
-                <div class="pt-[2px]" v-else>
-                  Seats: {{ event?.rsvp_limit }}
-                </div>
+                <div class="pt-[2px]" v-else>Seats: {{ event?.Attendees }}</div>
               </div>
             </div>
           </div>
@@ -145,16 +146,16 @@
       </div>
       <div class="flex h-32 items-center justify-center">
         <router-link
-          to="/events"
+          :to="{ path: '/meetups' }"
           class="text-md w-48 rounded-md bg-blue-600 px-4 py-4 text-center font-medium text-white md:w-64 md:px-8 md:text-xl"
-          >View all events</router-link
+          >View all meetups</router-link
         >
       </div>
     </div>
   </div>
 </template>
 
-<script>
+<script setup lang="ts">
 import { LocationMarkerIcon, UsersIcon } from "@heroicons/vue/solid";
 
 import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
@@ -167,58 +168,37 @@ definePageMeta({
   layout: "home",
 });
 
-export default {
-  components: {
-    ChevronDownIcon,
-    ClockIcon,
-    MenuIcon,
-    XIcon,
-    MetaTag,
-    VVanta,
-    LocationMarkerIcon,
-    UsersIcon,
-  },
+const { data, pending } = useEvents();
 
-  data: () => {
-    return {
-      eventsListJson,
-      options: {
-        mouseControls: true,
-        touchControls: true,
-        gyroControls: false,
-        minHeight: process.client ? window.innerHeight : 0,
-        minWidth: 200.0,
-        scale: 0.3,
-        scaleMobile: 1.0,
-        backgroundColor: 0xffffff,
-        color: 0x59ff,
-        backgroundAlpha: 0.0,
-      },
-    };
-  },
-  computed: {
-    eventsList() {
-      console.log("computed eventlist");
-      if (this.eventsListJson.length === 0) {
-        return [];
-      }
-      return this.eventsListJson;
-    },
+const options = ref({
+  mouseControls: true,
+  touchControls: true,
+  gyroControls: false,
+  minHeight: process.client ? window.innerHeight : 0,
+  minWidth: 200.0,
+  scale: 0.3,
+  scaleMobile: 1.0,
+  backgroundColor: 0xffffff,
+  color: 0x59ff,
+  backgroundAlpha: 0.0,
+});
 
-    title() {
-      return "Front-End Coders Mauritius";
-    },
-
-    description() {
-      return "Community of Front-End developers who share their passions for the web. Events, workshops and conferences occurs regularly.";
-    },
-
-    sortedEventList() {
-      const sortedList = this.eventsList.sort((a, b) => {
-        return new Date(b?.local_date) - new Date(a?.local_date);
-      });
-      return sortedList;
-    },
-  },
+// to get past or upcoming value base in Date
+const dateInPast = function (firstDate: Date, secondDate: Date) {
+  if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0)) {
+    return true;
+  }
+  return false;
 };
+
+const isUpcoming = (currentEventDate: string) => {
+  let past = new Date(currentEventDate);
+  const today = new Date();
+  const verifyValue = dateInPast(past, today);
+  return verifyValue;
+};
+
+const description =
+  "Community of Front-End developers who share their passions for the web. Events, workshops and conferences occurs regularly.";
+const title = "Front-End Coders Mauritius";
 </script>

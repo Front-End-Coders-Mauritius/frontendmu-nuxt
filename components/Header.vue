@@ -53,7 +53,7 @@
           <router-link
             to="/events"
             class="whitespace-nowrap text-md md:text-base font-medium text-gray-500 hover:text-red-600"
-            >All events</router-link
+            >All meetups</router-link
           >
         </div>
       </div>
