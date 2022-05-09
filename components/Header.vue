@@ -51,7 +51,7 @@
 
         <div class="md:flex items-center justify-end md:flex-1 lg:w-0">
           <router-link
-            to="/events"
+            to="/meetups"
             class="whitespace-nowrap text-md md:text-base font-medium text-gray-500 hover:text-red-600"
             >All meetups</router-link
           >
