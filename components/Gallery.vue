@@ -1,7 +1,10 @@
 <template>
   <div>
     <client-only>
-      <vue-picture-swipe :items="imagesList" :key="imagesList"></vue-picture-swipe>
+      <vue-picture-swipe
+        :items="imagesList"
+        :key="imagesList"
+      ></vue-picture-swipe>
     </client-only>
   </div>
 </template>
@@ -30,8 +33,8 @@ export default {
       }
       this.eventImages.forEach((element) => {
         this.myArray.push({
-          src: element,
-          thumbnail: element,
+          src: element.imagename,
+          thumbnail: element.imagename,
           w: 1280,
           h: 720,
         });
@@ -57,7 +60,7 @@ export default {
 }
 
 .my-gallery figure {
-  @apply block w-full overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100;
+  @apply block w-full h-[200px] overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100;
 }
 
 .pswp img {

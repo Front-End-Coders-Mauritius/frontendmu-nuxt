@@ -180,19 +180,22 @@
               </div>
             </div>
           </div>
-          <!-- <div class="images mt-16 px-4 md:mt-16 lg:mx-auto lg:max-w-7xl">
-        <div v-if="props.getCurrentEvent?.images === null">
-          {{ props.getCurrentEvent?.images }}
-        </div>
-        <div
-          v-else
-          class="pb-4 text-center text-4xl font-extrabold text-blue-700 md:pb-8 md:text-5xl"
-        >
-          Gallery
-        </div>
+          <div class="lg:mx-auto lg:max-w-[1400px]">
+            <div
+              v-if="props.getCurrentEvent?.images"
+              class="images mt-16 px-4 md:mt-48"
+            >
+              <div
+                class="pb-4 text-center text-4xl font-extrabold text-black md:pb-8 md:text-6xl"
+              >
+                Gallery
+              </div>
 
-        <Gallery :eventImages="eventImages" :key="eventImages" />
-      </div> -->
+              <Gallery :eventImages="eventImages" :key="eventImages" />
+            </div>
+
+            <div v-else></div>
+          </div>
         </div>
 
         <!-- view-dashboard button -->
@@ -251,6 +254,13 @@ const dateInPast = function (firstDate: Date, secondDate: Date) {
   }
   return false;
 };
+
+const eventImages: ComputedRef<String[]> = computed(() => {
+  return props.getCurrentEvent.images;
+});
+const eventGallery: ComputedRef<String[]> = computed(() => {
+  return props.getCurrentEvent.images;
+});
 
 const isUpcoming: ComputedRef<Boolean> = computed(() => {
   let past = new Date(props.getCurrentEvent.Date);
