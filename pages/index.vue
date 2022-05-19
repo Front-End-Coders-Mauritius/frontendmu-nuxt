@@ -157,7 +157,6 @@
 
 <script setup lang="ts">
 import { LocationMarkerIcon, UsersIcon } from "@heroicons/vue/solid";
-
 import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
 import { ChevronDownIcon } from "@heroicons/vue/solid";
 import eventsListJson from "~/data/events.json";

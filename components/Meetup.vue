@@ -182,6 +182,21 @@
           </div>
           <div class="lg:mx-auto lg:max-w-[1400px]">
             <div
+              v-if="props.getCurrentEvent.gallery.length > 0"
+              class="images mt-16 px-4 md:mt-48"
+            >
+              <div
+                class="pb-4 text-center text-4xl font-extrabold text-black md:pb-8 md:text-6xl"
+              >
+                Gallery
+              </div>
+
+              <Gallery :eventImages="eventGallery" :key="eventGallery" />
+            </div>
+
+            <div v-else></div>
+
+            <div
               v-if="props.getCurrentEvent?.images"
               class="images mt-16 px-4 md:mt-48"
             >
@@ -259,7 +274,7 @@ const eventImages: ComputedRef<String[]> = computed(() => {
   return props.getCurrentEvent.images;
 });
 const eventGallery: ComputedRef<String[]> = computed(() => {
-  return props.getCurrentEvent.images;
+  return props.getCurrentEvent.gallery;
 });
 
 const isUpcoming: ComputedRef<Boolean> = computed(() => {

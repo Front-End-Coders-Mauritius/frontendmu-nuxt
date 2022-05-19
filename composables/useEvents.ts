@@ -1,16 +1,19 @@
-
 export default function () {
-    const { getItems } = useDirectusItems();
+  const { getItems } = useDirectusItems();
 
-    const { data, pending, error, refresh } = useAsyncData(
-        "events",
-        async () => await getItems({ collection: "Events" })
-    );
+  const { data, pending, error, refresh } = useAsyncData(
+    "events",
+    async () =>
+      await getItems({
+        collection: "Events",
+        params: { fields: ["*.*"] },
+      })
+  );
 
-    return {
-        pending,
-        error,
-        refresh,
-        data,
-    }
-}  
+  return {
+    pending,
+    error,
+    refresh,
+    data,
+  };
+}

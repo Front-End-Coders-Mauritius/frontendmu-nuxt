@@ -2,8 +2,8 @@
   <div>
     <client-only>
       <vue-picture-swipe
-        :items="imagesList"
-        :key="imagesList"
+        :items="imagesList === null ? galleryList : imagesList"
+        :key="imagesList === null ? galleryList : imagesList"
       ></vue-picture-swipe>
     </client-only>
   </div>
@@ -27,6 +27,22 @@ export default {
   },
 
   computed: {
+    galleryList() {
+      if (this.eventImages === null) {
+        return [];
+      }
+      this.eventImages.forEach((element) => {
+        this.myArray.push({
+          src: `https://l4yporup.directus.app/assets/${element.directus_files_id}`,
+          thumbnail: `https://l4yporup.directus.app/assets/${element.directus_files_id}`,
+          w: 1280,
+          h: 720,
+        });
+      });
+
+      return this.myArray;
+    },
+
     imagesList() {
       if (this.eventImages === null) {
         return [];
@@ -47,6 +63,10 @@ export default {
       this.myArray.length = 0;
       this.count = 0;
     },
+  },
+
+  mounted() {
+    console.log(this.eventImages);
   },
 
   beforeUpdate() {
