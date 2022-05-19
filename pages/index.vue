@@ -101,30 +101,30 @@
               </router-link>
             </h3>
 
-            <div class="flex flex-col border-gray-100 pt-4 md:pt-6 lg:pt-2">
+            <div class="flex gap-1 flex-col border-gray-100 md:pt-2 lg:pt-0">
               <div
-                class="flex items-center justify-start text-base font-medium text-gray-400"
-                v-if="event.Venue"
-              >
-                <LocationMarkerIcon
-                  class="mr-1.5 h-4 w-4 flex-shrink-0 truncate text-gray-400"
-                  aria-hidden="true"
-                />
-                <div class="pt-1">Venue: {{ event.Venue }}</div>
-              </div>
-              <div v-else>No venue added.</div>
-              <div
-                class="flex items-center justify-start text-base font-medium leading-5 text-gray-400"
+                class="flex gap-1 md:gap-0 items-center justify-start text-base font-medium leading-3 md:leading-5 text-gray-500"
               >
                 <UsersIcon
-                  class="mr-1.5 h-[15px] w-[15px] flex-shrink-0 truncate text-gray-400"
+                  class="mr-1.5 h-[15px] w-[15px] flex-shrink-0 truncate text-gray-700"
                   aria-hidden="true"
                 />
                 <div class="pt-[2px]" v-if="event?.Attendees !== 0">
-                  Attendees: {{ event?.Attendees }}
+                  Attendees {{ event?.Attendees }}
                 </div>
                 <div class="pt-[2px]" v-else>Seats: {{ event?.Attendees }}</div>
               </div>
+              <div
+                class="flex gap-1 md:gap-0 items-center justify-start text-base font-medium text-gray-500"
+                v-if="event.Venue"
+              >
+                <LocationMarkerIcon
+                  class="ml-[-1px] mr-1.5 h-4 w-4 flex-shrink-0 truncate text-red-400"
+                  aria-hidden="true"
+                />
+                <div class="pt-1">{{ event.Venue }}</div>
+              </div>
+              <div v-else>No venue added.</div>
             </div>
           </div>
           <span
