@@ -9,9 +9,9 @@
   "devDependencies": {
     "@nuxt/kit": "^3.0.0-rc.2",
     "@tailwindcss/line-clamp": "^0.3.1",
+    "node-fetch": "^3.2.4",
     "nuxt": "^3.0.0-rc.2",
-    "tailwindcss": "^3.0.23",
-    "node-fetch": "^3.2.4"
+    "tailwindcss": "^3.0.23"
   },
   "dependencies": {
     "@headlessui/vue": "^1.6.0",

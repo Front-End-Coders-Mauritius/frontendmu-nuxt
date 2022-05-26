@@ -70,7 +70,7 @@
                     ? 'tagStyle bg-yellow-100 text-yellow-800'
                     : 'tagStyle animate-bounce bg-green-100 text-green-800',
                 ]">
-                  {{ isUpcoming(event.Date) ? "past" : "upcoming" }}
+                  {{ isUpcoming(event.Date) ? " " : "upcoming" }}
                 </p>
               </router-link>
             </h3>
@@ -89,7 +89,7 @@
               </div>
               <div class="flex gap-1 md:gap-0 items-center justify-start text-base font-medium text-gray-500"
                 v-if="event.Venue">
-                <LocationMarkerIcon class="ml-[-1px] mr-1.5 h-4 w-4 flex-shrink-0 truncate text-red-400"
+                <LocationMarkerIcon class="ml-[-1px] mr-1.5 h-4 w-4 flex-shrink-0 truncate text-gray-400"
                   aria-hidden="true" />
                 <div class="pt-1">{{ event.Venue }}</div>
               </div>
@@ -98,13 +98,7 @@
           </div>
           <span class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-red-400"
             aria-hidden="true">
-            <svg class="h-6 w-6"
-              xmlns="http://www.w3.org/2000/svg"
-              fill="currentColor"
-              viewBox="0 0 24 24">
-              <path
-                d="M20 4h1a1 1 0 00-1-1v1zm-1 12a1 1 0 102 0h-2zM8 3a1 1 0 000 2V3zM3.293 19.293a1 1 0 101.414 1.414l-1.414-1.414zM19 4v12h2V4h-2zm1-1H8v2h12V3zm-.707.293l-16 16 1.414 1.414 16-16-1.414-1.414z" />
-            </svg>
+            <TrendingUpIcon class="h-6 w-6" />
           </span>
         </div>
       </div>
@@ -119,11 +113,8 @@
 
 <script setup lang="ts">
 import { LocationMarkerIcon, UsersIcon } from "@heroicons/vue/solid";
-import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
+import { MenuIcon, XIcon, ClockIcon, TrendingUpIcon } from "@heroicons/vue/outline";
 import MetaTag from "~/components/MetaTag.vue";
-import VVanta from "vue-vanta";
-import { Ref } from "vue";
-
 definePageMeta({
   layout: "home",
   transition: {
