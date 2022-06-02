@@ -1,33 +1,35 @@
-<template>
-  <MetaTag
-    :eventName="getCurrentEvent?.title"
-    :eventDetails="getCurrentEvent?.description"
-  />
-  <Meetup
-    :getCurrentEvent="getCurrentEvent"
-    :data="data"
-    :pending="pending"
-    :key="getCurrentEvent.id"
-  />
-</template>
-
 <script setup lang="ts">
-import { IEvent } from "~/types/types";
+import type { IEvent } from '~/types/types'
 
 definePageMeta({
-  layout: "custom",
-});
+  layout: 'custom',
+  scrollToTop: true,
 
-const { data, pending } = useEvents();
-const route = useRoute();
+})
 
-const eventid = computed(() => route.params.id);
+const { data, pending } = useEvents()
+const route = useRoute()
+
+const eventid = computed(() => route.params.id)
 
 const getCurrentEvent = computed(() => {
   if (data.value) {
     return data.value.filter(
-      (event: IEvent) => event.id.toString() === eventid.value.toString()
-    )[0];
+      (event: IEvent) => event.id.toString() === eventid.value.toString(),
+    )[0]
   }
-});
+})
 </script>
+
+<template>
+  <MetaTag
+    :event-name="getCurrentEvent?.title"
+    :event-details="getCurrentEvent?.description"
+  />
+  <Meetup
+    :key="getCurrentEvent.id"
+    :get-current-event="getCurrentEvent"
+    :data="data"
+    :pending="pending"
+  />
+</template>

@@ -1,5 +1,61 @@
+<script>
+import { ClockIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
+import { ChevronDownIcon } from '@heroicons/vue/solid'
+import eventsListJson from '~/data/events'
+import MetaTag from '~/components/MetaTag.vue'
+
+definePageMeta({
+  layout: 'custom',
+})
+
+export default {
+  components: {
+    ClockIcon,
+    MenuIcon,
+    XIcon,
+    MetaTag,
+  },
+  data: () => {
+    return {
+      eventsListJson,
+    }
+  },
+
+  computed: {
+    eventsList() {
+      if (this.eventsListJson.length === 0)
+        return []
+
+      return this.eventsListJson
+    },
+
+    sortedEventList() {
+      const sortedList = this.eventsList.sort((a, b) => {
+        return new Date(b?.local_date) - new Date(a?.local_date)
+      })
+      return sortedList
+    },
+
+    title() {
+      return 'Front-End Coders Events'
+    },
+
+    description() {
+      return 'Community of Front-End developers who share their passions for the web. Events, workshops and conferences occurs regularly.'
+    },
+  },
+  mounted() {
+    scrollTo({
+      top: 0,
+      left: 0,
+      behavior: 'smooth',
+    })
+  },
+}
+</script>
+
 <template>
-  <MetaTag :eventName="title" :eventDetails="description" />
+  <MetaTag :event-name="title" :event-details="description" />
 
   <div class="past-events-container bg-gray-50">
     <div
@@ -16,7 +72,7 @@
         <div
           v-for="(event, eventID) in sortedEventList"
           :key="event.title"
-          :class="[
+          class="group relative bg-white p-6" :class="[
             eventID === 0
               ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none'
               : '',
@@ -25,7 +81,6 @@
             eventID === sortedEventList.length - 1
               ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none'
               : '',
-            'group relative bg-white p-6',
           ]"
         >
           <div>
@@ -83,62 +138,7 @@
     </div>
   </div>
 </template>
-<script>
-import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
-import { ChevronDownIcon } from "@heroicons/vue/solid";
-import eventsListJson from "~/data/events";
-import MetaTag from "~/components/MetaTag.vue";
 
-definePageMeta({
-  layout: "custom",
-});
-
-export default {
-  components: {
-    ChevronDownIcon,
-    ClockIcon,
-    MenuIcon,
-    XIcon,
-    MetaTag,
-  },
-
-  computed: {
-    eventsList() {
-      if (this.eventsListJson.length === 0) {
-        return [];
-      }
-      return this.eventsListJson;
-    },
-
-    sortedEventList() {
-      const sortedList = this.eventsList.sort((a, b) => {
-        return new Date(b?.local_date) - new Date(a?.local_date);
-      });
-      return sortedList;
-    },
-
-    title() {
-      return "Front-End Coders Events";
-    },
-
-    description() {
-      return "Community of Front-End developers who share their passions for the web. Events, workshops and conferences occurs regularly.";
-    },
-  },
-  data: () => {
-    return {
-      eventsListJson,
-    };
-  },
-  mounted() {
-    scrollTo({
-      top: 0,
-      left: 0,
-      behavior: "smooth",
-    });
-  },
-};
-</script>
 <style>
 .tagStyle {
   @apply ml-2 inline-flex rounded-full px-2 text-xs font-semibold leading-5;
