@@ -1,18 +1,23 @@
 <script setup lang="ts">
-import { LocationMarkerIcon, UsersIcon } from '@heroicons/vue/solid'
-import { CalendarIcon, MenuIcon, TrendingUpIcon, XIcon } from '@heroicons/vue/outline'
+import { LocationMarkerIcon, UsersIcon } from "@heroicons/vue/solid";
+import {
+  CalendarIcon,
+  MenuIcon,
+  TrendingUpIcon,
+  XIcon,
+} from "@heroicons/vue/outline";
 
 interface Meetup {
-  id: string
-  title: string
-  Date: string
-  Attendees: number
-  Venue: string
-  description: string
-  Location: string
-  Time: string
-  images?: []
-  gallery?: []
+  id: string;
+  title: string;
+  Date: string;
+  Attendees: number;
+  Venue: string;
+  description: string;
+  Location: string;
+  Time: string;
+  images?: [];
+  gallery?: [];
 }
 
 const props = defineProps({
@@ -20,52 +25,58 @@ const props = defineProps({
     type: Object as PropType<Meetup>,
     default: () => ({}),
   },
-})
+});
 
-const { data, pending } = useEvents()
+const { data, pending } = useEvents();
 
 const filteredData = computed(() => {
   // Sort by date
   const sortedData = data.value.sort((a: Meetup, b: Meetup) => {
-    return new Date(b.Date).getTime() - new Date(a.Date).getTime()
-  })
-  return sortedData.slice(0, 6)
-})
+    return new Date(b.Date).getTime() - new Date(a.Date).getTime();
+  });
+  return sortedData.slice(0, 6);
+});
 
 // to get past or upcoming value base in Date
 const dateInPast = function (firstDate: Date, secondDate: Date) {
   if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0))
-    return true
+    return true;
 
-  return false
-}
+  return false;
+};
 
 const isUpcoming = (currentEventDate: string) => {
-  const past = new Date(currentEventDate)
-  const today = new Date()
-  const verifyValue = dateInPast(past, today)
-  return verifyValue
-}
+  const past = new Date(currentEventDate);
+  const today = new Date();
+  const verifyValue = dateInPast(past, today);
+  return verifyValue;
+};
 </script>
 
 <template>
-  <div class="relative rounded-xl flex items-center gap-8 group bg-white p-6 shadow-md">
-    <div v-if="event.Date">
-      <span class="inline-flex rounded-lg p-3  ring-4 ring-white" :class="isUpcoming(event.Date) ? 'bg-gray-50 text-gray-700' : 'bg-green-50 text-green-600 font-bold'">
+  <div
+    class="mt-4 relative rounded-xl flex flex-col md:flex-row items-center md:justify-start justify-center gap-8 group bg-white p-6 shadow-md"
+  >
+    <div v-if="event.Date" class="">
+      <span
+        class="inline-flex rounded-lg p-3 ring-4 ring-white"
+        :class="
+          isUpcoming(event.Date)
+            ? 'bg-gray-50 text-gray-700'
+            : 'bg-green-50 text-green-600 font-bold'
+        "
+      >
         <CalendarIcon class="mr-2 h-6 w-6" />
         <span>{{ new Date(event.Date).toDateString() }}</span>
       </span>
     </div>
-    <div>
+    <div class="flex flex-col gap-4 md:gap-0">
       <h3 class="leading-2 text-2xl font-medium md:h-12">
         <router-link
           :to="{ name: 'meetup-id', params: { id: event.id } }"
-          class="w-96 focus:outline-none"
+          class="w-[300px] md:w-96 focus:outline-none"
         >
-          <span
-            class="absolute inset-0"
-            aria-hidden="true"
-          />
+          <span class="absolute inset-0" aria-hidden="true" />
           {{ event?.title }}
 
           <p
@@ -79,7 +90,7 @@ const isUpcoming = (currentEventDate: string) => {
           </p>
         </router-link>
       </h3>
-      <div class="flex gap-4  border-gray-100 md:pt-2 lg:pt-0">
+      <div class="flex gap-4 border-gray-100">
         <div
           class="flex gap-1 md:gap-0 items-center justify-start text-base font-medium leading-3 md:leading-5 text-gray-500"
         >
@@ -87,16 +98,10 @@ const isUpcoming = (currentEventDate: string) => {
             class="mr-1.5 h-[15px] w-[15px] flex-shrink-0 truncate text-gray-500"
             aria-hidden="true"
           />
-          <div
-            v-if="event?.Attendees !== 0"
-            class="pt-[2px]"
-          >
+          <div v-if="event?.Attendees !== 0" class="pt-[2px]">
             Attendees {{ event?.Attendees }}
           </div>
-          <div
-            v-else
-            class="pt-[2px]"
-          >Seats: {{ event?.Attendees }}</div>
+          <div v-else class="pt-[2px]">Seats: {{ event?.Attendees }}</div>
         </div>
         <div
           v-if="event.Venue"
