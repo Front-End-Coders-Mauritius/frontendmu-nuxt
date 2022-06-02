@@ -12,7 +12,7 @@
           >Join the community, ask questions, livestream, chill!
         </template>
         <template #icon>
-          <icon-discord class="w-16 md:w-16" />
+          <icon-discord class="w-14 md:w-16" />
         </template>
       </social-card>
 

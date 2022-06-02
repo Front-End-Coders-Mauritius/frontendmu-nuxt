@@ -60,7 +60,7 @@ const isUpcoming = (currentEventDate: string) => {
         <h1 class="text-center text-black md:text-left">Latest meetups</h1>
       </div>
 
-      <div class="sm:grid sm:grid-cols-1 gap-8">
+      <div class="sm:grid sm:grid-cols-1 gap-8 px-4 md:px-0">
         <template
           v-for="(event, eventID) in (filteredData as Meetup)"
           :key="eventID"
