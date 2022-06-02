@@ -156,7 +156,7 @@
                       <input
                         class="text-md break-words bg-gray-100pr-2 tracking-tight bg-gray-100 text-gray-600 line-clamp-3 w-[500px]"
                         type="text"
-                        :value="`front-end-coders-mauritius.netlify.app/event/${meetupId}/`"
+                        :value="`frontend.mu/event/${meetupId}/`"
                         id="myInput"
                       />
                       <div @click="copy" class="cursor-pointer">

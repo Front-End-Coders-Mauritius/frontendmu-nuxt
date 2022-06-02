@@ -5,10 +5,7 @@
       <Meta name="description" :content="`${eventDetail}`" />
       <Meta property="og:title" :content="`${eventName}`" />
       <Meta property="og:site_name" :content="`${eventName}`" />
-      <Meta
-        property="og:url"
-        content="https://front-end-coders-mauritius.netlify.app/"
-      />
+      <Meta property="og:url" content="https://frontend.mu/" />
       <Meta property="og:description" content />
       <Meta property="og:type" content="website" />
       <Meta property="og:image" content="/img/ogimage2.png" />
