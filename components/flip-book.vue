@@ -2,8 +2,8 @@
   <div>
     <div class="imgLoader"></div>
 
-    <div class="container">
-      <div class="book">
+    <div class="container h-[310px] md:h-[420px]">
+      <div class="book scale-90 md:scale-100 lg::scale-125">
         <div class="gap"></div>
         <div class="pages">
           <div class="page"></div>
@@ -86,7 +86,7 @@
 .container {
   position: relative;
   width: 420px;
-  height: 420px;
+  /* height: 420px; */
 }
 
 .title {
@@ -111,7 +111,7 @@
   position: relative;
   perspective: 630px;
   perspective-origin: center 50px;
-  transform: scale(1.2);
+  /* transform: scale(0.9); */
   filter: drop-shadow(0px 10px 5px rgba(0, 0, 0, 0.25));
 }
 
