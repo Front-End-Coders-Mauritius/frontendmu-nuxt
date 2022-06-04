@@ -3,7 +3,7 @@
     <div class="imgLoader"></div>
 
     <div class="container h-[250px] md:h-[420px]">
-      <div class="book scale-75 md:scale-100 lg::scale-125">
+      <div class="book scale-75 md:scale-100 lg:scale-125">
         <div class="gap"></div>
         <div class="pages">
           <div class="page"></div>
