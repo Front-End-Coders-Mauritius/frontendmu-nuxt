@@ -24,6 +24,4 @@ const description =
   <home-social-presence />
 
   <home-latest-meetups />
-
-  <sponsors />
 </template>

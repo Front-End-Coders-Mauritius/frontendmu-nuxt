@@ -3,7 +3,7 @@
     <div v-if="pending">loading...</div>
     <div v-else>
       <!-- start  -->
-      <div class="past-events-container bg-gray-50">
+      <div class="past-events-container bg-gray-50 pb-4 md:pb-16">
         <div
           class="past-events-wrapper mx-auto py-8 px-4 md:max-w-4xl lg:px-0 lg:max-w-7xl"
         >
@@ -14,11 +14,11 @@
           </div>
           <div
             v-if="data"
-            class="px-8 md:px-0 divide-y divide-gray-200 overflow-hidden rounded-lg drop-shadow-xl sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0"
+            class="mx-0 md:mx-8 divide-y divide-gray-200 overflow-hidden rounded-lg drop-shadow-xl sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0"
           >
             <div
-              v-for="(event, eventID) in data"
-              :key="event.title"
+              v-for="(event, eventID) in data.reverse()"
+              :key="event"
               :class="[
                 eventID === 0
                   ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none'

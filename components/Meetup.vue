@@ -3,7 +3,7 @@
     <div v-if="pending">loading...</div>
     <div v-else>
       <div class="relative">
-        <div class="py-4 md:py-16">
+        <div class="py-4 md:pt-16 md:pb-24">
           <div class="lg:mx-auto lg:max-w-[1400px] lg:px-4">
             <div class="relative">
               <div
