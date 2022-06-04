@@ -5,7 +5,7 @@
       <!-- start  -->
       <div class="past-events-container bg-gray-50">
         <div
-          class="past-events-wrapper mx-auto py-8 px-4 md:max-w-2xl md:px-0 lg:max-w-7xl"
+          class="past-events-wrapper mx-auto py-8 px-4 md:max-w-4xl lg:px-0 lg:max-w-7xl"
         >
           <div
             class="py-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:py-8 md:text-4xl"
@@ -14,7 +14,7 @@
           </div>
           <div
             v-if="data"
-            class="divide-y divide-gray-200 overflow-hidden rounded-lg bg-gray-200 shadow-xl sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0"
+            class="px-8 md:px-0 divide-y divide-gray-200 overflow-hidden rounded-lg drop-shadow-xl sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0"
           >
             <div
               v-for="(event, eventID) in data"
