@@ -10,7 +10,7 @@
             class="relative z-20 mx-auto grid h-full max-w-[950px] place-items-center px-10 text-center"
           >
             <div
-              class="flex flex-col justify-center items-center gap-2 md:gap-8"
+              class="flex flex-col justify-center items-center gap-4 md:gap-8"
             >
               <h1
                 class="flex flex-col text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:text-6xl lg:text-5xl xl:text-6xl"
@@ -19,8 +19,8 @@
                   >Front-End Coders Mauritius</span
                 >
               </h1>
-              <flip-book class="mt-[-12%]" />
-              <p class="text-lg text-gray-700 sm:text-xl">
+              <flip-book class="mt-[-16%] md:mt-[-12%]" />
+              <p class="text-md md:text-lg text-gray-700">
                 Front-End coders Mauritius is a free meetup that's dedicated to
                 all aspect of Front-End development. it occurs in general one a
                 month at announced date and place. Feel free to join!
