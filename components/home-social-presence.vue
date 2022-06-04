@@ -1,7 +1,7 @@
 <template>
   <div class="bg-gray-900">
     <div
-      class="max-w-6xl mx-auto py-24 grid gap-8 grid-rows-4 grid-cols-0 md:grid-cols-2 md:grid-rows-none px-8 md:px-4"
+      class="max-w-6xl mx-auto py-24 grid gap-8 grid-rows-4 grid-cols-0 md:grid-cols-2 md:grid-rows-none px-8 md:px-16"
     >
       <social-card
         href="https://discord.gg/WxXW9Jvv6k"
