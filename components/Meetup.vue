@@ -3,7 +3,7 @@
     <div v-if="pending">loading...</div>
     <div v-else>
       <div class="relative">
-        <div class="py-16 md:pt-16 md:pb-24">
+        <div class="pt-8 pb-10 md:pt-16 md:pb-24">
           <div class="lg:mx-auto lg:max-w-[1400px] lg:px-4">
             <div class="relative">
               <div
@@ -155,7 +155,7 @@
                       <input
                         class="text-md break-words bg-gray-100pr-2 tracking-tight bg-gray-100 text-gray-600 line-clamp-3 w-[500px]"
                         type="text"
-                        :value="`frontend.mu/event/${meetupId}/`"
+                        :value="`https://frontend.mu/event/${meetupId}/`"
                         id="myInput"
                       />
                       <div @click="copy" class="cursor-pointer">
@@ -177,7 +177,7 @@
                   </div>
 
                   <div
-                    class="md:border-t-2 border-gray-100 pt-8 flex flex-col justify-center items-center md:items-start gap-4"
+                    class="md:border-t-2 border-gray-100 pt-4 md:pt-8 flex flex-col justify-center items-center md:items-start gap-4"
                     v-if="props.getCurrentEvent.Attendees"
                   >
                     <dd
@@ -302,4 +302,11 @@ const isUpcoming: ComputedRef<Boolean> = computed(() => {
   const verifyValue = dateInPast(past, today);
   return verifyValue;
 });
+
+function copy() {
+  let copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value);
+}
 </script>
