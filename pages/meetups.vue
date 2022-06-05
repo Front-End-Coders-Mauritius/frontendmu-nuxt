@@ -1,3 +1,47 @@
+<script setup lang="ts">
+import { ClockIcon, MenuIcon, XIcon } from '@heroicons/vue/outline'
+import { ChevronDownIcon } from '@heroicons/vue/solid'
+import { IEvent } from '~/types/types'
+
+definePageMeta({
+  layout: 'custom',
+  transition: {
+    name: 'meetups',
+  },
+  keepAlive: {
+    exclude: ['modal'],
+  },
+})
+
+const { data, pending } = useEvents()
+// to add past or upcoming status
+
+const filteredData = computed(() => {
+  // Sort by date
+  const sortedData = data.value.sort((a: Meetup, b: Meetup) => {
+    return new Date(b.Date).getTime() - new Date(a.Date).getTime()
+  })
+  return sortedData
+})
+
+// to get past or upcoming value base in Date
+const dateInPast = function (firstDate: Date, secondDate: Date) {
+  if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0))
+    return true
+
+  return false
+}
+
+const isUpcoming = (currentEventDate: string) => {
+  const past = new Date(currentEventDate)
+  const today = new Date()
+  const verifyValue = dateInPast(past, today)
+  return verifyValue
+}
+
+// to do : update index.vue routes button
+</script>
+
 <template>
   <div>
     <div v-if="pending">loading...</div>
@@ -12,14 +56,15 @@
           >
             <h1 class="text-center text-black">All meetups</h1>
           </div>
+
           <div
-            v-if="data"
+            v-if="filteredData"
             class="mx-0 md:mx-8 divide-y divide-gray-200 overflow-hidden rounded-lg drop-shadow-xl sm:grid sm:grid-cols-2 sm:gap-px sm:divide-y-0"
           >
             <div
-              v-for="(event, eventID) in data.reverse()"
+              v-for="(event, eventID) in filteredData"
               :key="event"
-              :class="[
+              class="group relative bg-white p-6" :class="[
                 eventID === 0
                   ? 'rounded-tl-lg rounded-tr-lg sm:rounded-tr-none'
                   : '',
@@ -28,7 +73,6 @@
                 eventID === data.length - 1
                   ? 'rounded-bl-lg rounded-br-lg sm:rounded-bl-none'
                   : '',
-                'group relative bg-white p-6',
               ]"
             >
               <div>
@@ -62,14 +106,14 @@
                   </router-link>
                 </h3>
                 <p
-                  class="mt-2 max-w-lg text-sm text-gray-500 line-clamp-3"
                   v-if="event.description"
+                  class="mt-2 max-w-lg text-sm text-gray-500 line-clamp-3"
                 >
                   {{ event.description.replace(/<\/?[^>]+>/gi, "") }}
                 </p>
                 <p
-                  class="mt-2 max-w-lg text-sm text-gray-500 line-clamp-3"
                   v-else
+                  class="mt-2 max-w-lg text-sm text-gray-500 line-clamp-3"
                 >
                   No description.
                 </p>
@@ -98,39 +142,3 @@
     </div>
   </div>
 </template>
-
-<script setup lang="ts">
-import { MenuIcon, XIcon, ClockIcon } from "@heroicons/vue/outline";
-import { ChevronDownIcon } from "@heroicons/vue/solid";
-import { IEvent } from "~/types/types";
-
-definePageMeta({
-  layout: "custom",
-  transition: {
-    name: "meetups",
-  },
-  keepAlive: {
-    exclude: ["modal"],
-  },
-});
-
-const { data, pending } = useEvents();
-// to add past or upcoming status
-
-// to get past or upcoming value base in Date
-const dateInPast = function (firstDate: Date, secondDate: Date) {
-  if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0)) {
-    return true;
-  }
-  return false;
-};
-
-const isUpcoming = (currentEventDate: string) => {
-  let past = new Date(currentEventDate);
-  const today = new Date();
-  const verifyValue = dateInPast(past, today);
-  return verifyValue;
-};
-
-// to do : update index.vue routes button
-</script>
