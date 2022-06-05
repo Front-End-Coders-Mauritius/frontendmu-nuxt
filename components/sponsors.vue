@@ -1,17 +1,5 @@
-<script setup lang="ts">
-import Vue from "vue";
-
-const props = defineProps({
-  backgroundColor: String,
-});
-
-console.log(props.backgroundColor);
-</script>
-
 <template>
-  <section
-    :class="`${backgroundColor} flex flex-col justify-center items-center px-4`"
-  >
+  <section class="flex flex-col justify-center items-center px-4">
     <div
       class="flex flex-col justify-center items-center gap-6 md:gap-8 py-8 md:pt-16 md:pb-10"
     >
