@@ -187,7 +187,7 @@
                         v-if="props.getCurrentEvent.rsvplink"
                         :href="props.getCurrentEvent.rsvplink"
                         target="_blank"
-                        class="flex gap-4 w-96 md:w-48 items-center justify-center md:justify-left rounded-md border border-transparent bg-teal-600 px-8 py-3 text-base tracking-wide font-extrabold text-white drop-shadow-2xl hover:bg-teal-700 md:py-2 md:px-4 md:text-lg italic"
+                        class="flex gap-4 w-96 md:w-48 items-center justify-center md:justify-left rounded-md border border-transparent bg-yellow-500 px-8 py-3 text-base tracking-wide font-extrabold text-white drop-shadow-2xl hover:bg-yellow-600 md:py-2 md:px-4 md:text-lg italic"
                       >
                         <span>Book my seat</span>
 
