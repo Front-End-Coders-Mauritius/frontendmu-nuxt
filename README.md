@@ -6,10 +6,12 @@ Live website : https://frontend.mu/
 
 ## Setup
 
-```npm install
+```
+npm install
 ```
 
-```npm run dev
+```
+npm run dev
 ```
 
 ## Feel free to contribute :D
