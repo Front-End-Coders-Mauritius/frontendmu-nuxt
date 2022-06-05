@@ -3,7 +3,7 @@
     <div v-if="pending">loading...</div>
     <div v-else>
       <div class="relative">
-        <div class="py-4 md:pt-16 md:pb-24">
+        <div class="py-16 md:pt-16 md:pb-24">
           <div class="lg:mx-auto lg:max-w-[1400px] lg:px-4">
             <div class="relative">
               <div
@@ -175,14 +175,26 @@
                       </div>
                     </dd>
                   </div>
-                  <a
-                    v-if="props.getCurrentEvent.rsvplink"
-                    :href="props.getCurrentEvent.rsvplink"
-                    target="_blank"
-                    class="animate-bounce flex w-64 items-center justify-center rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white shadow hover:bg-blue-400 md:py-4 md:px-10 md:text-lg"
+
+                  <div
+                    class="md:border-t-2 border-gray-100 pt-8 flex flex-col justify-center items-center md:items-start gap-4"
+                    v-if="props.getCurrentEvent.Attendees"
                   >
-                    Book my seat</a
-                  >
+                    <dd
+                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
+                    >
+                      <a
+                        v-if="props.getCurrentEvent.rsvplink"
+                        :href="props.getCurrentEvent.rsvplink"
+                        target="_blank"
+                        class="flex gap-4 w-96 md:w-48 items-center justify-center md:justify-left rounded-md border border-transparent bg-teal-600 px-8 py-3 text-base tracking-wide font-extrabold text-white drop-shadow-2xl hover:bg-teal-700 md:py-2 md:px-4 md:text-lg italic"
+                      >
+                        <span>Book my seat</span>
+
+                        <icon-arrow-right class="md:animate-bounce" />
+                      </a>
+                    </dd>
+                  </div>
                 </dl>
               </div>
             </div>

@@ -22,7 +22,7 @@ const props = defineProps({
     <div
       class="w-96 md:w-[700px] lg:w-[1050px] border-t-2 border-gray-100 p-4 text-center text-gray-500 font-light text-xs md:text-normal"
     >
-      Copyright © 2022-present Front-End Coders Mauritius
+      2022-present Front-End Coders Mauritius
     </div>
   </section>
 </template>
