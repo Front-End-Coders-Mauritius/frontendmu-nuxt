@@ -11,23 +11,10 @@
                 class="hidden sm:block lg:inset-y-0 lg:right-0 lg:w-screen"
               >
                 <div
-                  class="
-                    inset-y-0
-                    right-1/2
-                    w-full
-                    rounded-r-3xl
-                    bg-gray-50
-                    lg:right-72
-                  "
+                  class="inset-y-0 right-1/2 w-full rounded-r-3xl bg-gray-50 lg:right-72"
                 />
                 <svg
-                  class="
-                    absolute
-                    top-8
-                    left-1/2
-                    -ml-3
-                    lg:-right-8 lg:left-[54%] lg:top-28
-                  "
+                  class="absolute top-8 left-1/2 -ml-3 lg:-right-8 lg:left-[54%] lg:top-28"
                   width="404"
                   height="392"
                   fill="none"
@@ -62,15 +49,7 @@
             </div>
 
             <div
-              class="
-                relative
-                mx-auto
-                max-w-md
-                px-8
-                py-3
-                sm:max-w-3xl sm:px-6
-                md:mx-0 md:py-0
-              "
+              class="relative mx-auto max-w-md px-8 py-3 sm:max-w-3xl sm:px-6 md:mx-0 md:py-0"
             >
               <!-- Content area -->
               <div>
@@ -86,14 +65,7 @@
                   </p>
                 </div>
                 <h2
-                  class="
-                    text-3xl
-                    font-extrabold
-                    tracking-tight
-                    text-gray-900
-                    md:text-4xl
-                    lg:text-5xl
-                  "
+                  class="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl lg:text-5xl"
                 >
                   {{ props.getCurrentEvent?.title }}
                 </h2>
@@ -113,12 +85,7 @@
               <!-- Stats section -->
               <div class="mt-10">
                 <dl
-                  class="
-                    grid grid-cols-1
-                    md:grid-cols-2
-                    gap-x-4 gap-y-4
-                    md:gap-y-8
-                  "
+                  class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 md:gap-y-8"
                 >
                   <div
                     class="border-t-2 border-gray-100 pt-6"
@@ -126,13 +93,7 @@
                   >
                     <dt class="text-base font-medium text-gray-500">Date</dt>
                     <dd
-                      class="
-                        text-2xl
-                        font-extrabold
-                        tracking-tight
-                        text-gray-900
-                        md:text-3xl
-                      "
+                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
                       {{ new Date(props.getCurrentEvent.Date).toDateString() }}
                     </dd>
@@ -143,13 +104,7 @@
                   >
                     <dt class="text-base font-medium text-gray-500">Venue</dt>
                     <dd
-                      class="
-                        text-2xl
-                        font-extrabold
-                        tracking-tight
-                        text-gray-900
-                        md:text-3xl
-                      "
+                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
                       {{ props.getCurrentEvent.Venue }}
                     </dd>
@@ -160,13 +115,7 @@
                   >
                     <dt class="text-base font-medium text-gray-500">Time</dt>
                     <dd
-                      class="
-                        text-2xl
-                        font-extrabold
-                        tracking-tight
-                        text-gray-900
-                        md:text-3xl
-                      "
+                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
                       {{ props.getCurrentEvent.Time }}
                     </dd>
@@ -179,13 +128,7 @@
                       Location
                     </dt>
                     <dd
-                      class="
-                        text-2xl
-                        font-extrabold
-                        tracking-tight
-                        text-gray-900
-                        md:text-3xl
-                      "
+                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
                       {{ props.getCurrentEvent.Location }}
                     </dd>
@@ -198,13 +141,7 @@
                       Seats Limit
                     </dt>
                     <dd
-                      class="
-                        text-2xl
-                        font-extrabold
-                        tracking-tight
-                        text-gray-900
-                        md:text-3xl
-                      "
+                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
                       {{ props.getCurrentEvent.Attendees }}
                     </dd>
@@ -213,28 +150,10 @@
                   <div class="border-y-2 border-gray-100 pt-4 md:pt-6">
                     <dt class="text-base font-medium text-gray-500">Share</dt>
                     <dd
-                      class="
-                        flex
-                        justify-between
-                        rounded-md
-                        bg-gray-100
-                        mt-2
-                        px-2
-                        py-1
-                        sm:w-[450px]
-                      "
+                      class="flex justify-between rounded-md bg-gray-100 mt-2 px-2 py-1 sm:w-[450px]"
                     >
                       <input
-                        class="
-                          text-md
-                          break-words
-                          bg-gray-100pr-2
-                          tracking-tight
-                          bg-gray-100
-                          text-gray-600
-                          line-clamp-3
-                          w-[500px]
-                        "
+                        class="text-md break-words bg-gray-100pr-2 tracking-tight bg-gray-100 text-gray-600 line-clamp-3 w-[500px]"
                         type="text"
                         :value="`frontend.mu/event/${meetupId}/`"
                         id="myInput"
@@ -260,24 +179,7 @@
                     v-if="props.getCurrentEvent.rsvplink"
                     :href="props.getCurrentEvent.rsvplink"
                     target="_blank"
-                    class="
-                      animate-bounce
-                      flex
-                      w-64
-                      items-center
-                      justify-center
-                      rounded-md
-                      border border-transparent
-                      bg-blue-600
-                      px-8
-                      py-3
-                      text-base
-                      font-medium
-                      text-white
-                      shadow
-                      hover:bg-blue-400
-                      md:py-4 md:px-10 md:text-lg
-                    "
+                    class="animate-bounce flex w-64 items-center justify-center rounded-md border border-transparent bg-blue-600 px-8 py-3 text-base font-medium text-white shadow hover:bg-blue-400 md:py-4 md:px-10 md:text-lg"
                   >
                     Book my seat</a
                   >
@@ -291,13 +193,7 @@
               class="images mt-16 px-4 md:mt-48"
             >
               <div
-                class="
-                  pb-4
-                  text-center text-4xl
-                  font-extrabold
-                  text-black
-                  md:pb-8 md:text-6xl
-                "
+                class="pb-4 text-center text-4xl font-extrabold text-black md:pb-8 md:text-6xl"
               >
                 Gallery
               </div>
@@ -312,13 +208,7 @@
               class="images mt-16 px-4 md:mt-48"
             >
               <div
-                class="
-                  pb-4
-                  text-center text-4xl
-                  font-extrabold
-                  text-black
-                  md:pb-8 md:text-6xl
-                "
+                class="pb-4 text-center text-4xl font-extrabold text-black md:pb-8 md:text-6xl"
               >
                 Gallery
               </div>
@@ -332,24 +222,7 @@
 
         <!-- view-dashboard button -->
         <div
-          class="
-            dashboard-button
-            md:-right-17
-            text-md
-            absolute
-            top-48
-            -right-16
-            rotate-90
-            rounded-b-lg
-            bg-yellow-500
-            py-2
-            px-8
-            font-medium
-            text-white
-            hover:bg-yellow-400
-            md:py-4 md:text-lg
-            lg:-right-16
-          "
+          class="dashboard-button md:-right-17 text-md absolute top-48 -right-16 rotate-90 rounded-b-lg bg-yellow-500 py-2 px-8 font-medium text-white hover:bg-yellow-400 md:py-4 md:text-lg lg:-right-16"
           @click="open = true"
         >
           View meetups list
