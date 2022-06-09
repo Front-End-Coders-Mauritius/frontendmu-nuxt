@@ -71,7 +71,7 @@ const isUpcoming = (currentEventDate: string) => {
       </span>
     </div>
     <div class="flex flex-col gap-4 md:gap-0">
-      <h3 class="leading-2 text-2xl font-medium md:h-12">
+      <h3 class="leading-2 text-xl md:text-2xl font-medium md:h-12">
         <router-link
           :to="{ name: 'meetup-id', params: { id: event.id } }"
           class="w-[300px] md:w-96 focus:outline-none"
