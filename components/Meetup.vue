@@ -289,6 +289,7 @@
                           gap-4
                           w-96
                           md:w-48
+                          lg:w-56
                           items-center
                           justify-center
                           md:justify-left
