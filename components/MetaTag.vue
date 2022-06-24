@@ -9,6 +9,17 @@
       <Meta property="og:description" content />
       <Meta property="og:type" content="website" />
       <Meta property="og:image" content="/img/ogimage2.png" />
+      <meta name="twitter:title" :content="`${eventName}`" />
+      <meta
+        name="twitter:description"
+        :content="`${eventDetail}`" 
+      />
+      <meta
+        name="twitter:image"
+        content="/img/ogimage2.png"
+      />
+      <meta name="twitter:card" content="summary_large_image" />
+
       <Link rel="icon" type="image/png" href="/img/favicon.png" />
     </Head>
   </Html>

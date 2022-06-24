@@ -1,3 +1,90 @@
+<script setup lang="ts">
+import {
+  Dialog,
+  DialogOverlay,
+  DialogTitle,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuItems,
+  TransitionChild,
+  TransitionRoot,
+} from "@headlessui/vue";
+
+import {
+  CalendarIcon,
+  DotsVerticalIcon,
+  LocationMarkerIcon,
+  XIcon,
+} from "@heroicons/vue/solid";
+
+import type { ComputedRef, PropType, Ref } from "vue";
+import type { IEvent } from "~/types/types";
+const props = defineProps({
+  getCurrentEvent: {} as PropType<IEvent>,
+  data: {},
+  pending: Boolean,
+});
+const open: Ref<Boolean> = ref(false);
+const route = useRoute();
+
+const meetupId = computed(() => {
+  return route.params.id;
+});
+
+const absoluteUrl = computed(() => window.location.href);
+
+// to get past or upcoming value base in Date
+const dateInPast = function (firstDate: Date, secondDate: Date) {
+  if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0))
+    return true;
+
+  return false;
+};
+
+const eventImages: ComputedRef<String[]> = computed(() => {
+  return props.getCurrentEvent.images;
+});
+const eventGallery: ComputedRef<String[]> = computed(() => {
+  return props.getCurrentEvent.gallery;
+});
+
+const isUpcoming: ComputedRef<Boolean> = computed(() => {
+  const past = new Date(props.getCurrentEvent.Date);
+  const today = new Date();
+  const verifyValue = dateInPast(past, today);
+  return verifyValue;
+});
+
+function copy() {
+  const copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  navigator.clipboard.writeText(copyText.value);
+}
+
+function shareOnFacebook() {
+  const navUrl =
+    "https://www.facebook.com/sharer/sharer.php?u=" + `${absoluteUrl.value}`;
+  window.open(navUrl, "_blank");
+}
+
+function shareOnTwitter() {
+  const str = encodeURIComponent(" #mauritius #frontendcoders ");
+  const navUrl =
+    `https://twitter.com/intent/tweet?text=${props.getCurrentEvent.title}${str}` +
+    `${absoluteUrl.value}`;
+  window.open(navUrl, "_blank");
+}
+
+function shareOnLinkedIn() {
+  const navUrl =
+    "http://www.linkedin.com/shareArticle?mini=true&url=" +
+    `${absoluteUrl.value}`;
+  window.open(navUrl, "_blank");
+}
+</script>
+
 <template>
   <div>
     <div v-if="pending">loading...</div>
@@ -98,15 +185,15 @@
                   {{ props.getCurrentEvent?.title }}
                 </h2>
                 <div
-                  class="mt-6 space-y-6 text-gray-500"
                   v-if="props.getCurrentEvent.description"
+                  class="mt-6 space-y-6 text-gray-500"
                 >
                   <div
                     class="text-md prose md:text-lg"
                     v-html="props.getCurrentEvent.description"
-                  ></div>
+                  />
                 </div>
-                <div class="text-md prose md:text-lg" v-else>
+                <div v-else class="text-md prose md:text-lg">
                   Please add a description.
                 </div>
               </div>
@@ -121,8 +208,8 @@
                   "
                 >
                   <div
-                    class="border-t-2 border-gray-100 pt-6"
                     v-if="props.getCurrentEvent.Date"
+                    class="border-t-2 border-gray-100 pt-6"
                   >
                     <dt class="text-base font-medium text-gray-500">Date</dt>
                     <dd
@@ -138,8 +225,8 @@
                     </dd>
                   </div>
                   <div
-                    class="border-t-2 border-gray-100 pt-4 md:pt-6"
                     v-if="props.getCurrentEvent.Venue"
+                    class="border-t-2 border-gray-100 pt-4 md:pt-6"
                   >
                     <dt class="text-base font-medium text-gray-500">Venue</dt>
                     <dd
@@ -155,8 +242,8 @@
                     </dd>
                   </div>
                   <div
-                    class="border-t-2 border-gray-100 pt-4 md:pt-6"
                     v-if="props.getCurrentEvent.Time"
+                    class="border-t-2 border-gray-100 pt-4 md:pt-6"
                   >
                     <dt class="text-base font-medium text-gray-500">Time</dt>
                     <dd
@@ -172,8 +259,8 @@
                     </dd>
                   </div>
                   <div
-                    class="border-t-2 border-gray-100 pt-4 md:pt-6"
                     v-if="props.getCurrentEvent.Location"
+                    class="border-t-2 border-gray-100 pt-4 md:pt-6"
                   >
                     <dt class="text-base font-medium text-gray-500">
                       Location
@@ -191,8 +278,8 @@
                     </dd>
                   </div>
                   <div
-                    class="border-t-2 border-gray-100 pt-6"
                     v-if="props.getCurrentEvent.Attendees"
+                    class="border-t-2 border-gray-100 pt-6"
                   >
                     <dt class="text-base font-medium text-gray-500">
                       Seats Limit
@@ -212,6 +299,26 @@
 
                   <div class="border-y-2 border-gray-100 pt-4 md:pt-6">
                     <dt class="text-base font-medium text-gray-500">Share</dt>
+                    <div class="flex gap-8 py-4">
+                      <button
+                        @click="shareOnFacebook"
+                        class="hover:text-[#4267B2]"
+                      >
+                        <icon-facebook class="w-10 md:w-12" />
+                      </button>
+                      <button
+                        @click="shareOnTwitter"
+                        class="hover:text-[#00acee]"
+                      >
+                        <icon-twitter class="w-10 md:w-12" />
+                      </button>
+                      <button
+                        @click="shareOnLinkedIn"
+                        class="hover:text-[#007db1]"
+                      >
+                        <icon-linkedin class="w-10 md:w-12" />
+                      </button>
+                    </div>
                     <dd
                       class="
                         flex
@@ -225,21 +332,12 @@
                       "
                     >
                       <input
-                        class="
-                          text-md
-                          break-words
-                          bg-gray-100pr-2
-                          tracking-tight
-                          bg-gray-100
-                          text-gray-600
-                          line-clamp-3
-                          w-[500px]
-                        "
-                        type="text"
-                        :value="`https://frontend.mu/event/${meetupId}/`"
                         id="myInput"
+                        class="text-md break-words bg-gray-100pr-2 tracking-tight bg-gray-100 text-gray-600 line-clamp-3 w-[500px]"
+                        type="text"
+                        :value="`https://frontend.mu/meetup/${meetupId}/`"
                       />
-                      <div @click="copy" class="cursor-pointer">
+                      <div class="cursor-pointer" @click="copy">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           class="h-5 w-5"
@@ -270,6 +368,7 @@
                       gap-4
                     "
                     v-if="props.getCurrentEvent.Attendees"
+                    class="md:border-t-2 border-gray-100 pt-4 md:pt-8 flex flex-col justify-center items-center md:items-start gap-4"
                   >
                     <dd
                       class="
@@ -335,10 +434,10 @@
                 Gallery
               </div>
 
-              <Gallery :eventImages="eventGallery" :key="eventGallery" />
+              <Gallery :key="eventGallery" :event-images="eventGallery" />
             </div>
 
-            <div v-else></div>
+            <div v-else />
 
             <div
               v-if="props.getCurrentEvent?.images"
@@ -356,10 +455,10 @@
                 Gallery
               </div>
 
-              <Gallery :eventImages="eventImages" :key="eventImages" />
+              <Gallery :key="eventImages" :event-images="eventImages" />
             </div>
 
-            <div v-else></div>
+            <div v-else />
           </div>
         </div>
 
@@ -392,67 +491,3 @@
     </div>
   </div>
 </template>
-<script setup lang="ts">
-import {
-  Dialog,
-  DialogOverlay,
-  DialogTitle,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  TransitionChild,
-  TransitionRoot,
-} from "@headlessui/vue";
-
-import {
-  XIcon,
-  LocationMarkerIcon,
-  CalendarIcon,
-  DotsVerticalIcon,
-} from "@heroicons/vue/solid";
-
-import { ComputedRef, PropType, Ref } from "vue";
-import { IEvent } from "~/types/types";
-const open: Ref<Boolean> = ref(false);
-const route = useRoute();
-
-const props = defineProps({
-  getCurrentEvent: {} as PropType<IEvent>,
-  data: {},
-  pending: Boolean,
-});
-
-const meetupId = computed(() => {
-  return route.params.id;
-});
-
-// to get past or upcoming value base in Date
-const dateInPast = function (firstDate: Date, secondDate: Date) {
-  if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0)) {
-    return true;
-  }
-  return false;
-};
-
-const eventImages: ComputedRef<String[]> = computed(() => {
-  return props.getCurrentEvent.images;
-});
-const eventGallery: ComputedRef<String[]> = computed(() => {
-  return props.getCurrentEvent.gallery;
-});
-
-const isUpcoming: ComputedRef<Boolean> = computed(() => {
-  let past = new Date(props.getCurrentEvent.Date);
-  const today = new Date();
-  const verifyValue = dateInPast(past, today);
-  return verifyValue;
-});
-
-function copy() {
-  let copyText = document.getElementById("myInput");
-  copyText.select();
-  copyText.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(copyText.value);
-}
-</script>
