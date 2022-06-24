@@ -368,7 +368,6 @@ function shareOnLinkedIn() {
                       gap-4
                     "
                     v-if="props.getCurrentEvent.Attendees"
-                    class="md:border-t-2 border-gray-100 pt-4 md:pt-8 flex flex-col justify-center items-center md:items-start gap-4"
                   >
                     <dd
                       class="
