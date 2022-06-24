@@ -8,7 +8,7 @@
       <div class="absolute inset-0 overflow-hidden">
         <DialogOverlay class="absolute inset-0" />
 
-        <div class="fixed inset-y-0 right-0 flex max-w-full pl-10 sm:pl-16">
+        <div class="fixed inset-y-0 right-0 flex max-w-full">
           <TransitionChild
             as="template"
             enter="transform transition ease-in-out duration-500 sm:duration-700"

@@ -2,7 +2,16 @@
   <div>
     <div class="imgLoader"></div>
 
-    <div class="container h-[250px] md:h-[420px]">
+    <div
+      class="
+        container
+        w-[310px]
+        md:w-[420px]
+        h-[250px]
+        md:h-[320px]
+        lg:h-[420px]
+      "
+    >
       <div class="book scale-75 md:scale-100 lg:scale-125">
         <div class="gap"></div>
         <div class="pages">
@@ -85,8 +94,6 @@
 
 .container {
   position: relative;
-  width: 420px;
-  /* height: 420px; */
 }
 
 .title {
