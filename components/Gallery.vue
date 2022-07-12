@@ -3,7 +3,7 @@
     <client-only>
       <Splide :options="{ rewind: true }" aria-label="My Favorite Images">
           <SplideSlide v-for="item in galleryList" :key="item">
-            <img :src="item" alt="Sample 1">
+            <img :src="item" alt="images">
           </SplideSlide>
       </Splide>
     </client-only>
@@ -55,11 +55,14 @@ export default {
 
       return this.myArray;
     },
-
     clear() {
       this.myArray.length = 0;
       this.count = 0;
     },
+  },
+
+  mounted() {
+        console.log('imagelist', this.imagesList)
   },
 
   beforeUpdate() {

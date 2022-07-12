@@ -273,7 +273,7 @@ function shareOnLinkedIn() {
 
             <div v-else />
 
-            <div
+            <!-- <div
               v-if="props.getCurrentEvent?.images"
               class="images mt-16 px-4 md:mt-48"
             >
@@ -286,7 +286,7 @@ function shareOnLinkedIn() {
               <Gallery :key="eventImages" :event-images="eventImages" />
             </div>
 
-            <div v-else />
+            <div v-else /> -->
           </div>
         </div>
 
