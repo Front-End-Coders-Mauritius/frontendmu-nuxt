@@ -61,10 +61,6 @@ export default {
     },
   },
 
-  mounted() {
-        console.log('imagelist', this.imagesList)
-  },
-
   beforeUpdate() {
     this.clear;
   },
