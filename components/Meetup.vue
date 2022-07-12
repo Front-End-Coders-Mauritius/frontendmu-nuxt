@@ -1,25 +1,7 @@
 <script setup lang="ts">
-import {
-  Dialog,
-  DialogOverlay,
-  DialogTitle,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuItems,
-  TransitionChild,
-  TransitionRoot,
-} from "@headlessui/vue";
-
-import {
-  CalendarIcon,
-  DotsVerticalIcon,
-  LocationMarkerIcon,
-  XIcon,
-} from "@heroicons/vue/solid";
-
 import type { ComputedRef, PropType, Ref } from "vue";
 import type { IEvent } from "~/types/types";
+
 const props = defineProps({
   getCurrentEvent: {} as PropType<IEvent>,
   data: {},
@@ -98,66 +80,14 @@ function shareOnLinkedIn() {
                 class="hidden sm:block lg:inset-y-0 lg:right-0 lg:w-screen"
               >
                 <div
-                  class="
-                    inset-y-0
-                    right-1/2
-                    w-full
-                    rounded-r-3xl
-                    bg-gray-50
-                    lg:right-72
-                  "
+                  class="inset-y-0 right-1/2 w-full rounded-r-3xl bg-gray-50 lg:right-72"
                 />
-                <svg
-                  class="
-                    absolute
-                    top-8
-                    left-1/2
-                    -ml-3
-                    lg:-right-8 lg:left-[54%] lg:top-28
-                  "
-                  width="404"
-                  height="392"
-                  fill="none"
-                  viewBox="0 0 404 392"
-                >
-                  <defs>
-                    <pattern
-                      id="02f20b47-fd69-4224-a62a-4c9de5c763f7"
-                      x="0"
-                      y="0"
-                      width="20"
-                      height="20"
-                      patternUnits="userSpaceOnUse"
-                    >
-                      <rect
-                        x="0"
-                        y="0"
-                        width="4"
-                        height="4"
-                        class="text-gray-200"
-                        fill="currentColor"
-                      />
-                    </pattern>
-                  </defs>
-                  <rect
-                    width="404"
-                    height="392"
-                    fill="url(#02f20b47-fd69-4224-a62a-4c9de5c763f7)"
-                  />
-                </svg>
+                <IconDots />
               </div>
             </div>
 
             <div
-              class="
-                relative
-                mx-auto
-                max-w-md
-                px-8
-                py-3
-                sm:max-w-3xl sm:px-6
-                md:mx-0 md:py-0
-              "
+              class="relative mx-auto max-w-md px-8 py-3 sm:max-w-3xl sm:px-6 md:mx-0 md:py-0"
             >
               <!-- Content area -->
               <div>
@@ -173,14 +103,7 @@ function shareOnLinkedIn() {
                   </p>
                 </div>
                 <h2
-                  class="
-                    text-3xl
-                    font-extrabold
-                    tracking-tight
-                    text-gray-900
-                    md:text-4xl
-                    lg:text-5xl
-                  "
+                  class="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl lg:text-5xl"
                 >
                   {{ props.getCurrentEvent?.title }}
                 </h2>
@@ -200,12 +123,7 @@ function shareOnLinkedIn() {
               <!-- Stats section -->
               <div class="mt-10">
                 <dl
-                  class="
-                    grid grid-cols-1
-                    md:grid-cols-2
-                    gap-x-4 gap-y-4
-                    md:gap-y-8
-                  "
+                  class="grid grid-cols-1 md:grid-cols-2 gap-x-4 gap-y-4 md:gap-y-8"
                 >
                   <div
                     v-if="props.getCurrentEvent.Date"
@@ -213,13 +131,7 @@ function shareOnLinkedIn() {
                   >
                     <dt class="text-base font-medium text-gray-500">Date</dt>
                     <dd
-                      class="
-                        text-2xl
-                        font-extrabold
-                        tracking-tight
-                        text-gray-900
-                        md:text-3xl
-                      "
+                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
                       {{ new Date(props.getCurrentEvent.Date).toDateString() }}
                     </dd>
@@ -230,13 +142,7 @@ function shareOnLinkedIn() {
                   >
                     <dt class="text-base font-medium text-gray-500">Venue</dt>
                     <dd
-                      class="
-                        text-2xl
-                        font-extrabold
-                        tracking-tight
-                        text-gray-900
-                        md:text-3xl
-                      "
+                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
                       {{ props.getCurrentEvent.Venue }}
                     </dd>
@@ -247,13 +153,7 @@ function shareOnLinkedIn() {
                   >
                     <dt class="text-base font-medium text-gray-500">Time</dt>
                     <dd
-                      class="
-                        text-2xl
-                        font-extrabold
-                        tracking-tight
-                        text-gray-900
-                        md:text-3xl
-                      "
+                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
                       {{ props.getCurrentEvent.Time }}
                     </dd>
@@ -266,13 +166,7 @@ function shareOnLinkedIn() {
                       Location
                     </dt>
                     <dd
-                      class="
-                        text-2xl
-                        font-extrabold
-                        tracking-tight
-                        text-gray-900
-                        md:text-3xl
-                      "
+                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
                       {{ props.getCurrentEvent.Location }}
                     </dd>
@@ -285,13 +179,7 @@ function shareOnLinkedIn() {
                       Seats Limit
                     </dt>
                     <dd
-                      class="
-                        text-2xl
-                        font-extrabold
-                        tracking-tight
-                        text-gray-900
-                        md:text-3xl
-                      "
+                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
                       {{ props.getCurrentEvent.Attendees }}
                     </dd>
@@ -320,16 +208,7 @@ function shareOnLinkedIn() {
                       </button>
                     </div>
                     <dd
-                      class="
-                        flex
-                        justify-between
-                        rounded-md
-                        bg-gray-100
-                        mt-2
-                        px-2
-                        py-1
-                        lg:w-[450px]
-                      "
+                      class="flex justify-between rounded-md bg-gray-100 mt-2 px-2 py-1 lg:w-[450px]"
                     >
                       <input
                         id="myInput"
@@ -356,55 +235,17 @@ function shareOnLinkedIn() {
                   </div>
 
                   <div
-                    class="
-                      md:border-t-2
-                      border-gray-100
-                      pt-4
-                      md:pt-8
-                      flex flex-col
-                      justify-center
-                      items-center
-                      md:items-start
-                      gap-4
-                    "
-                    v-if="props.getCurrentEvent.Attendees"
+                    class="md:border-t-2 border-gray-100 pt-4 md:pt-8 flex flex-col justify-center items-center md:items-start gap-4"
+                    v-if="!isUpcoming"
                   >
                     <dd
-                      class="
-                        text-2xl
-                        font-extrabold
-                        tracking-tight
-                        text-gray-900
-                        md:text-3xl
-                      "
+                      class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
                       <a
                         v-if="props.getCurrentEvent.rsvplink"
                         :href="props.getCurrentEvent.rsvplink"
                         target="_blank"
-                        class="
-                          flex
-                          gap-4
-                          w-96
-                          md:w-48
-                          lg:w-56
-                          items-center
-                          justify-center
-                          md:justify-left
-                          rounded-md
-                          border border-transparent
-                          bg-yellow-500
-                          px-8
-                          py-3
-                          text-base
-                          tracking-wide
-                          font-extrabold
-                          text-white
-                          drop-shadow-2xl
-                          hover:bg-yellow-600
-                          md:py-2 md:px-4 md:text-lg
-                          italic
-                        "
+                        class="flex gap-4 w-96 md:w-48 lg:w-56 items-center justify-center md:justify-left rounded-md border border-transparent bg-yellow-500 px-8 py-3 text-base tracking-wide font-extrabold text-white drop-shadow-2xl hover:bg-yellow-600 md:py-2 md:px-4 md:text-lg italic"
                       >
                         <span>Book my seat</span>
 
@@ -422,13 +263,7 @@ function shareOnLinkedIn() {
               class="images mt-16 px-4 md:mt-48"
             >
               <div
-                class="
-                  pb-4
-                  text-center text-4xl
-                  font-extrabold
-                  text-black
-                  md:pb-8 md:text-6xl
-                "
+                class="pb-4 text-center text-4xl font-extrabold text-black md:pb-8 md:text-6xl"
               >
                 Gallery
               </div>
@@ -443,13 +278,7 @@ function shareOnLinkedIn() {
               class="images mt-16 px-4 md:mt-48"
             >
               <div
-                class="
-                  pb-4
-                  text-center text-4xl
-                  font-extrabold
-                  text-black
-                  md:pb-8 md:text-6xl
-                "
+                class="pb-4 text-center text-4xl font-extrabold text-black md:pb-8 md:text-6xl"
               >
                 Gallery
               </div>
@@ -463,22 +292,7 @@ function shareOnLinkedIn() {
 
         <!-- view-dashboard button -->
         <div
-          class="
-            dashboard-button
-            text-md
-            absolute
-            top-48
-            right-[-5rem]
-            rotate-90
-            rounded-b-lg
-            bg-yellow-500
-            py-2
-            px-8
-            font-medium
-            text-white
-            hover:bg-yellow-400
-            md:py-4 md:text-lg
-          "
+          class="dashboard-button text-md absolute top-48 right-[-5rem] rotate-90 rounded-b-lg bg-yellow-500 py-2 px-8 font-medium text-white hover:bg-yellow-400 md:py-4 md:text-lg"
           @click="open = true"
         >
           View meetups list
