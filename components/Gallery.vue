@@ -1,21 +1,24 @@
 <template>
   <div>
     <client-only>
-      <vue-picture-swipe
-        :items="imagesList === null ? galleryList : imagesList"
-        :key="imagesList === null ? galleryList : imagesList"
-      ></vue-picture-swipe>
+      <Splide :options="{ rewind: true }" aria-label="My Favorite Images">
+          <SplideSlide v-for="item in galleryList" :key="item">
+            <img :src="item" alt="Sample 1">
+          </SplideSlide>
+      </Splide>
     </client-only>
   </div>
 </template>
 <script>
-import VuePictureSwipe from "vue3-picture-swipe";
+import { Splide, SplideSlide } from '@splidejs/vue-splide';
+import '@splidejs/vue-splide/css';
 
 export default {
   props: ["eventImages"],
 
   components: {
-    VuePictureSwipe,
+    Splide,
+    SplideSlide,
   },
 
   data: () => {
@@ -32,12 +35,9 @@ export default {
         return [];
       }
       this.eventImages.forEach((element) => {
-        this.myArray.push({
-          src: `https://l4yporup.directus.app/assets/${element.directus_files_id}`,
-          thumbnail: `https://l4yporup.directus.app/assets/${element.directus_files_id}`,
-          w: 1280,
-          h: 720,
-        });
+        this.myArray.push(
+          `https://l4yporup.directus.app/assets/${element.directus_files_id}`,
+        );
       });
 
       return this.myArray;
@@ -48,12 +48,9 @@ export default {
         return [];
       }
       this.eventImages.forEach((element) => {
-        this.myArray.push({
-          src: element.imagename,
-          thumbnail: element.imagename,
-          w: 1280,
-          h: 720,
-        });
+        this.myArray.push(
+           element.imagename,
+        );
       });
 
       return this.myArray;
@@ -65,25 +62,21 @@ export default {
     },
   },
 
-  mounted() {
-    console.log(this.eventImages);
-  },
-
   beforeUpdate() {
     this.clear;
   },
 };
 </script>
 <style>
-.my-gallery {
-  @apply grid grid-cols-2 gap-x-4 gap-y-8 sm:grid-cols-3 sm:gap-x-6 lg:grid-cols-4 xl:gap-x-8;
+.splide {
+  @apply mx-auto  w-[80%] h-[70%];
 }
 
-.my-gallery figure {
-  @apply block w-full h-[200px] overflow-hidden rounded-lg bg-gray-100 focus-within:ring-2 focus-within:ring-indigo-500 focus-within:ring-offset-2 focus-within:ring-offset-gray-100;
+.splide__slide{
+@apply flex justify-center items-center;
 }
 
-.pswp img {
-  @apply object-contain;
+img {
+  @apply rounded-3xl lg:rounded-[3.5rem] max-h-[300px] lg:max-h-[700px];
 }
 </style>

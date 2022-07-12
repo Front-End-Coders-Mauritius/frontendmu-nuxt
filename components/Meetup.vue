@@ -292,7 +292,7 @@ function shareOnLinkedIn() {
 
         <!-- view-dashboard button -->
         <div
-          class="dashboard-button text-md absolute top-48 right-[-5rem] rotate-90 rounded-b-lg bg-yellow-500 py-2 px-8 font-medium text-white hover:bg-yellow-400 md:py-4 md:text-lg"
+          class="dashboard-button text-md absolute top-48 right-[-4.5rem] rotate-90 rounded-b-lg bg-yellow-500 py-2 px-8 font-medium text-white hover:bg-yellow-400 md:py-4 md:text-lg"
           @click="open = true"
         >
           View meetups list
