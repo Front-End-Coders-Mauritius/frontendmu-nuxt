@@ -1,6 +1,7 @@
 <template>
   <div>
     <router-view :key="$route.params?.id" />
-    <sponsors backgroundColor="bg-white" />
+    <sponsors />
+    <site-footer />
   </div>
 </template>

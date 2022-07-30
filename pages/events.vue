@@ -11,8 +11,6 @@ definePageMeta({
 export default {
   components: {
     ClockIcon,
-    MenuIcon,
-    XIcon,
     MetaTag,
   },
   data: () => {
@@ -20,7 +18,6 @@ export default {
       eventsListJson,
     }
   },
-
   computed: {
     eventsList() {
       if (this.eventsListJson.length === 0)

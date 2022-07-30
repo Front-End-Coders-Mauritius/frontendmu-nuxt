@@ -1,19 +1,19 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <script setup lang="ts">
-import HomeSocialPresence from "../components/home-social-presence.vue";
-import MetaTag from "~/components/MetaTag.vue";
-import sponsors from "~/components/sponsors.vue";
+import HomeSocialPresence from '../components/home-social-presence.vue'
+import MetaTag from '~/components/MetaTag.vue'
+import sponsors from '~/components/sponsors.vue'
 
 definePageMeta({
-  layout: "home",
+  layout: 'home',
   transition: {
-    name: "index",
+    name: 'index',
   },
-});
+})
 
-const title = "Front-End Coders Mauritius";
-const description =
-  "Community of Front-End developers who share their passions for the web. Events, workshops and conferences occurs regularly.";
+const title = 'Front-End Coders Mauritius'
+const description
+  = 'Community of Front-End developers who share their passions for the web. Events, workshops and conferences occurs regularly.'
 </script>
 
 <template>

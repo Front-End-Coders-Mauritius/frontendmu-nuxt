@@ -8,8 +8,7 @@
         class="bg-[#5865f2] text-sm md:text-normal"
       >
         <template #tagline>Discord</template>
-        <template #description
-          >Join the community, ask questions, livestream, chill!
+        <template #description>Join the community, ask questions, livestream, chill!
         </template>
         <template #icon>
           <icon-discord class="w-14 md:w-16" />
@@ -39,12 +38,33 @@
       </social-card>
 
       <social-card
+        href="https://twitter.com/frontendmu"
+        class="bg-[#1DA1F2] text-sm md:text-normal"
+      >
+        <template #tagline>Twitter</template>
+        <template #description>Short-form updates from us.</template>
+        <template #icon>
+          <icon-twitter class="w-14 md:w-16 p-2" />
+        </template>
+      </social-card>
+
+      <social-card
+        href="https://instagram.com/frontend.mu"
+        class="bg-[#d6249f] text-sm md:text-normal"
+      >
+        <template #tagline>Instagram</template>
+        <template #description>Pictures of frontend coders.</template>
+        <template #icon>
+          <icon-instagram class="w-14 md:w-16 p-2" />
+        </template>
+      </social-card>
+
+      <social-card
         href="https://www.linkedin.com/company/81846464/admin/"
         class="bg-[#007db1] text-sm md:text-normal"
       >
         <template #tagline>LinkedIn Page</template>
-        <template #description
-          >For those who don't use facebook and discord
+        <template #description>For those who don't use facebook and discord
         </template>
         <template #icon>
           <icon-linkedin class="w-14 md:w-16" />
