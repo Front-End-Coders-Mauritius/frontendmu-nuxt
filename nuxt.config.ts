@@ -25,8 +25,16 @@ export default defineNuxtConfig({
         name: 'Front-end Coders Mauritius',
         content: 'Front-end Coders Mauritius',
       },
+
       { property: 'og:image:width', content: '1200' },
       { property: 'og:image:height', content: '900' },
+    ],
+    link: [
+      { rel: 'icon', type: 'image/png', href: '/favicon.png' },
+      {
+        rel: 'stylesheet',
+        href: 'https://fonts.googleapis.com/css2?family=Electrolize&display=swap',
+      },
     ],
   },
   modules: ['nuxt-directus'],

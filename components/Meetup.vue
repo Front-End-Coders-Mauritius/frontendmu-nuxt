@@ -1,69 +1,69 @@
 <script setup lang="ts">
-import type { ComputedRef, PropType, Ref } from "vue";
-import type { IEvent } from "~/types/types";
+import type { ComputedRef, PropType, Ref } from 'vue'
+import type { IEvent } from '~/types/types'
 
 const props = defineProps({
   getCurrentEvent: {} as PropType<IEvent>,
   data: {},
   pending: Boolean,
-});
-const open: Ref<Boolean> = ref(false);
-const route = useRoute();
+})
+const open: Ref<Boolean> = ref(false)
+const route = useRoute()
 
 const meetupId = computed(() => {
-  return route.params.id;
-});
+  return route.params.id
+})
 
-const absoluteUrl = computed(() => window.location.href);
+const absoluteUrl = computed(() => window.location.href)
 
 // to get past or upcoming value base in Date
 const dateInPast = function (firstDate: Date, secondDate: Date) {
   if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0))
-    return true;
+    return true
 
-  return false;
-};
+  return false
+}
 
 const eventImages: ComputedRef<String[]> = computed(() => {
-  return props.getCurrentEvent.images;
-});
+  return props.getCurrentEvent.images
+})
 const eventGallery: ComputedRef<String[]> = computed(() => {
-  return props.getCurrentEvent.gallery;
-});
+  return props.getCurrentEvent.gallery
+})
 
 const isUpcoming: ComputedRef<Boolean> = computed(() => {
-  const past = new Date(props.getCurrentEvent.Date);
-  const today = new Date();
-  const verifyValue = dateInPast(past, today);
-  return verifyValue;
-});
+  const past = new Date(props.getCurrentEvent.Date)
+  const today = new Date()
+  const verifyValue = dateInPast(past, today)
+  return verifyValue
+})
 
 function copy() {
-  const copyText = document.getElementById("myInput");
-  copyText.select();
-  copyText.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(copyText.value);
+  const copyText = document.getElementById('myInput')
+  copyText.select()
+  copyText.setSelectionRange(0, 99999)
+  navigator.clipboard.writeText(copyText.value)
 }
 
 function shareOnFacebook() {
-  const navUrl =
-    "https://www.facebook.com/sharer/sharer.php?u=" + `${absoluteUrl.value}`;
-  window.open(navUrl, "_blank");
+  const navUrl
+    = 'https://www.facebook.com/sharer/sharer.php?u=' + `${absoluteUrl.value}`
+  window.open(navUrl, '_blank')
 }
 
 function shareOnTwitter() {
-  const str = encodeURIComponent(" #mauritius #frontendcoders ");
-  const navUrl =
-    `https://twitter.com/intent/tweet?text=${props.getCurrentEvent.title}${str}` +
-    `${absoluteUrl.value}`;
-  window.open(navUrl, "_blank");
+  const str = encodeURIComponent(' #mauritius #frontendcoders ')
+  const navUrl
+    = `https://twitter.com/intent/tweet?text=${props.getCurrentEvent.title}${str}`
+    + `${absoluteUrl.value}`
+  window.open(navUrl, '_blank')
 }
 
 function shareOnLinkedIn() {
-  const navUrl =
-    "http://www.linkedin.com/shareArticle?mini=true&url=" +
-    `${absoluteUrl.value}`;
-  window.open(navUrl, "_blank");
+  const navUrl
+    = 'http://www.linkedin.com/shareArticle?mini=true&url='
+    + `${absoluteUrl.value}`
+  window.open(navUrl, '_blank')
 }
 </script>
 
@@ -73,8 +73,8 @@ function shareOnLinkedIn() {
     <div v-else>
       <div class="relative">
         <div class="pt-8 pb-10 md:pt-16 md:pb-24">
-          <div class="lg:mx-auto lg:max-w-[1400px] lg:px-4">
-            <div class="relative">
+          <div class="lg:mx-auto overflow-hidden lg:max-w-[1400px] lg:px-4">
+            <div class="relative ">
               <div
                 aria-hidden="true"
                 class="hidden sm:block lg:inset-y-0 lg:right-0 lg:w-screen"
@@ -82,12 +82,12 @@ function shareOnLinkedIn() {
                 <div
                   class="inset-y-0 right-1/2 w-full rounded-r-3xl bg-gray-50 lg:right-72"
                 />
-                <IconDots />
+                <IconDots class="w-[600px] opacity-5 saturate-0" />
               </div>
             </div>
 
             <div
-              class="relative mx-auto max-w-md px-8 py-3 sm:max-w-3xl sm:px-6 md:mx-0 md:py-0"
+              class="relative mx-auto  px-8 py-3 sm:max-w-4xl sm:px-6 md:px-0 md:mx-0 md:py-0"
             >
               <!-- Content area -->
               <div>
@@ -96,17 +96,17 @@ function shareOnLinkedIn() {
                     :class="[
                       isUpcoming
                         ? 'tagStyle bg-yellow-100 text-yellow-800'
-                        : 'tagStyle animate-bounce bg-green-100 text-green-800',
+                        : 'tagStyle bg-green-100 text-green-800',
                     ]"
                   >
                     {{ isUpcoming ? "past" : "upcoming" }}
                   </p>
                 </div>
-                <h2
-                  class="text-3xl font-extrabold tracking-tight text-gray-900 md:text-4xl lg:text-5xl"
+                <h1
+                  class="text-3xl font-extrabold font-mono tracking-tight text-gray-900 md:text-4xl lg:text-5xl"
                 >
                   {{ props.getCurrentEvent?.title }}
-                </h2>
+                </h1>
                 <div
                   v-if="props.getCurrentEvent.description"
                   class="mt-6 space-y-6 text-gray-500"
@@ -189,20 +189,20 @@ function shareOnLinkedIn() {
                     <dt class="text-base font-medium text-gray-500">Share</dt>
                     <div class="flex gap-8 py-4">
                       <button
-                        @click="shareOnFacebook"
                         class="hover:text-[#4267B2]"
+                        @click="shareOnFacebook"
                       >
                         <icon-facebook class="w-10 md:w-12" />
                       </button>
                       <button
-                        @click="shareOnTwitter"
                         class="hover:text-[#00acee]"
+                        @click="shareOnTwitter"
                       >
                         <icon-twitter class="w-10 md:w-12" />
                       </button>
                       <button
-                        @click="shareOnLinkedIn"
                         class="hover:text-[#007db1]"
+                        @click="shareOnLinkedIn"
                       >
                         <icon-linkedin class="w-10 md:w-12" />
                       </button>
@@ -215,7 +215,7 @@ function shareOnLinkedIn() {
                         class="text-md break-words bg-gray-100pr-2 tracking-tight bg-gray-100 text-gray-600 line-clamp-3 w-[500px]"
                         type="text"
                         :value="`https://frontend.mu/meetup/${meetupId}/`"
-                      />
+                      >
                       <div class="cursor-pointer" @click="copy">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -235,22 +235,25 @@ function shareOnLinkedIn() {
                   </div>
 
                   <div
-                    class="md:border-t-2 border-gray-100 pt-4 md:pt-8 flex flex-col justify-center items-center md:items-start gap-4"
                     v-if="!isUpcoming"
+                    class="md:border-t-2 border-gray-100 pt-4 md:pt-8 flex flex-col justify-center items-center md:items-start gap-4"
                   >
                     <dd
                       class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
                     >
-                      <a
-                        v-if="props.getCurrentEvent.rsvplink"
-                        :href="props.getCurrentEvent.rsvplink"
-                        target="_blank"
+                      <!-- <a
+
                         class="flex gap-4 w-96 md:w-48 lg:w-56 items-center justify-center md:justify-left rounded-md border border-transparent bg-yellow-500 px-8 py-3 text-base tracking-wide font-extrabold text-white drop-shadow-2xl hover:bg-yellow-600 md:py-2 md:px-4 md:text-lg italic"
                       >
                         <span>Book my seat</span>
 
                         <icon-arrow-right class="md:animate-bounce" />
-                      </a>
+                      </a> -->
+                      <fec-anchor
+                        v-if="props.getCurrentEvent.rsvplink"
+                        :href="props.getCurrentEvent.rsvplink"
+                        target="_blank"
+                      >Book my seat</fec-anchor>
                     </dd>
                   </div>
                 </dl>
@@ -291,14 +294,14 @@ function shareOnLinkedIn() {
         </div>
 
         <!-- view-dashboard button -->
-        <div
+        <!-- <div
           class="dashboard-button text-md absolute top-48 right-[-4.5rem] rotate-90 rounded-b-lg bg-yellow-500 py-2 px-8 font-medium text-white hover:bg-yellow-400 md:py-4 md:text-lg"
           @click="open = true"
         >
           View meetups list
-        </div>
+        </div> -->
         <!-- slide-over -->
-        <SldeBarEvent :data="data" :open="open" />
+        <!-- <SldeBarEvent :data="data" :open="open" /> -->
       </div>
       <!-- ends -->
     </div>
