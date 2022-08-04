@@ -21,7 +21,7 @@ const description
 
   <home-hero />
 
-  <home-social-presence />
-
   <home-latest-meetups />
+
+  <home-social-presence />
 </template>
