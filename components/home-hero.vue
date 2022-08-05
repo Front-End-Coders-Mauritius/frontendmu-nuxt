@@ -20,9 +20,7 @@
               </h1>
               <!-- <flip-book class="mt-[-16%] md:mt-[-12%]" /> -->
               <p class="text-md md:text-lg text-gray-300 font-mono font-bold">
-                Front-End coders Mauritius is a free meetup that's dedicated to
-                all aspect of Front-End development. it occurs in general one a
-                month at announced date and place. Feel free to join!
+                Front-End Coders Mauritius is a community around front-end development based in Mauritius. We also organise monthly meetups free for anyone interested to attend.
               </p>
               <div>
                 <router-link
