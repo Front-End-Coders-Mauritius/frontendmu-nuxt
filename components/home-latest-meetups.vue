@@ -63,7 +63,7 @@ const upcomingData = computed(() => {
 
 const target = ref(null)
 
-const { x, y, isOutSide } = useMouse()
+const { x, y } = useMouse({ touch: false })
 
 const weight = 30
 const spanX = computed(() => {
@@ -143,6 +143,7 @@ const spanY = computed(() => {
 </template>
 
 <style scoped>
+@media screen  and (min-width: 768px) {
 .card-3d {
   transform-style: preserve-3d;
 }
@@ -151,21 +152,9 @@ const spanY = computed(() => {
   transform: perspective(1700px);
   transform-style: preserve-3d;
 }
+}
 
 /* From uiverse.io by @EmmaxPlay */
-.card-3d {
- /* padding: 0.9em 1.6em;
- border: none;
- outline: none;
- color: #FFF;
- font-family: inherit;
- font-weight: 500;
- font-size: 17px;
- cursor: pointer;
- position: relative;
- z-index: 0;
- border-radius: 12px; */
-}
 
 .card-3d::after {
  content: "";

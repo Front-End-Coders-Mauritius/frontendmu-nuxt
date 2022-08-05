@@ -55,10 +55,10 @@ const isUpcoming = (currentEventDate: string) => {
 
 <template>
   <div
-    class="mt-4 md:mt-0 relative rounded-xl group flex flex-col  items-start md:items-center gap-6 md:gap-16 group bg-white px-16 py-16 shadow-xl"
+    class="mt-4 md:mt-0 relative rounded-xl group flex flex-col  items-start md:items-center gap-6 md:gap-16 group bg-white p-8 md:p-16 shadow-xl"
   >
 
-    <logo-fec class="w-32 z-0 transition-all select-none top-0 saturate-100  opacity-100  overflow-hidden" />
+    <logo-fec class="w-32 z-0 transition-all hidden md:block select-none top-0 saturate-100  opacity-100  overflow-hidden" />
     <!-- <div class="w-64 top-0 h-64 z-10 bg-gradient-to-t from-white to-transparent absolute">&nbsp;</div> -->
 
     <h3 class="leading-2 text-xl md:text-5xl font-medium md:h-12 z-20">
@@ -71,7 +71,7 @@ const isUpcoming = (currentEventDate: string) => {
 
       </router-link>
     </h3>
-    <div class="flex w-full justify-between gap-4 border-gray-100">
+    <div class="flex flex-col md:flex-row w-full justify-between gap-4 border-gray-100">
       <span
         v-if="event.Date"
         class="inline-flex rounded-lg p-3 ring-4 ring-white"
@@ -86,7 +86,7 @@ const isUpcoming = (currentEventDate: string) => {
       </span>
 
       <div
-        class="flex gap-1 md:gap-0 items-center justify-start text-xl font-medium leading-3 md:leading-5 text-gray-500"
+        class="flex gap-1 md:gap-0 items-center justify-start text-xl font-medium leading-5 text-gray-500"
       >
         <UsersIcon
           class="mr-1.5 h-[15px] w-[15px] flex-shrink-0 truncate text-gray-500"
@@ -105,7 +105,7 @@ const isUpcoming = (currentEventDate: string) => {
           class="ml-[-1px] mr-1.5 h-4 w-4 flex-shrink-0 truncate text-gray-500"
           aria-hidden="true"
         />
-        <div class="pt-1 line-clamp-1 md:line-clamp-0">{{ event.Venue }}</div>
+        <div class="pt-1 ">{{ event.Venue }}</div>
       </div>
       <div v-else>No venue added.</div>
     </div>
