@@ -1,23 +1,23 @@
 <script setup lang="ts">
-import { LocationMarkerIcon, UsersIcon } from "@heroicons/vue/solid";
+import { LocationMarkerIcon, UsersIcon } from '@heroicons/vue/solid'
 import {
   CalendarIcon,
   MenuIcon,
   TrendingUpIcon,
   XIcon,
-} from "@heroicons/vue/outline";
+} from '@heroicons/vue/outline'
 
 interface Meetup {
-  id: string;
-  title: string;
-  Date: string;
-  Attendees: number;
-  Venue: string;
-  description: string;
-  Location: string;
-  Time: string;
-  images?: [];
-  gallery?: [];
+  id: string
+  title: string
+  Date: string
+  Attendees: number
+  Venue: string
+  description: string
+  Location: string
+  Time: string
+  images?: []
+  gallery?: []
 }
 
 const props = defineProps({
@@ -25,40 +25,55 @@ const props = defineProps({
     type: Object as PropType<Meetup>,
     default: () => ({}),
   },
-});
+})
 
-const { data, pending } = useEvents();
+const { data, pending } = useEvents()
 
 const filteredData = computed(() => {
   // Sort by date
   const sortedData = data.value.sort((a: Meetup, b: Meetup) => {
-    return new Date(b.Date).getTime() - new Date(a.Date).getTime();
-  });
-  return sortedData.slice(0, 6);
-});
+    return new Date(b.Date).getTime() - new Date(a.Date).getTime()
+  })
+  return sortedData.slice(0, 6)
+})
 
 // to get past or upcoming value base in Date
 const dateInPast = function (firstDate: Date, secondDate: Date) {
   if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0))
-    return true;
+    return true
 
-  return false;
-};
+  return false
+}
 
 const isUpcoming = (currentEventDate: string) => {
-  const past = new Date(currentEventDate);
-  const today = new Date();
-  const verifyValue = dateInPast(past, today);
-  return verifyValue;
-};
+  const past = new Date(currentEventDate)
+  const today = new Date()
+  const verifyValue = dateInPast(past, today)
+  return verifyValue
+}
 </script>
 
 <template>
   <div
-    class="mt-4 md:mt-0 relative rounded-xl flex flex-col md:flex-row items-start md:items-center gap-6 md:gap-8 group bg-white p-6 shadow-md"
+    class="mt-4 md:mt-0 relative rounded-xl group flex flex-col  items-start md:items-center gap-6 md:gap-16 group bg-white px-16 py-16 shadow-xl"
   >
-    <div v-if="event.Date" class="">
+
+    <logo-fec class="w-32 z-0 transition-all select-none top-0 saturate-100  opacity-100  overflow-hidden" />
+    <!-- <div class="w-64 top-0 h-64 z-10 bg-gradient-to-t from-white to-transparent absolute">&nbsp;</div> -->
+
+    <h3 class="leading-2 text-xl md:text-5xl font-medium md:h-12 z-20">
+      <router-link
+        :to="{ name: 'meetup-id', params: { id: event.id } }"
+        class="w-[300px] md:w-96 focus:outline-none"
+      >
+        <span class="absolute inset-0" aria-hidden="true" />
+        {{ event?.title }}
+
+      </router-link>
+    </h3>
+    <div class="flex w-full justify-between gap-4 border-gray-100">
       <span
+        v-if="event.Date"
         class="inline-flex rounded-lg p-3 ring-4 ring-white"
         :class="
           isUpcoming(event.Date)
@@ -69,55 +84,33 @@ const isUpcoming = (currentEventDate: string) => {
         <CalendarIcon class="mr-2 h-6 w-6" />
         <span>{{ new Date(event.Date).toDateString() }}</span>
       </span>
-    </div>
-    <div class="flex flex-col gap-4 md:gap-0">
-      <h3 class="leading-2 text-xl md:text-2xl font-medium md:h-12">
-        <router-link
-          :to="{ name: 'meetup-id', params: { id: event.id } }"
-          class="w-[300px] md:w-96 focus:outline-none"
-        >
-          <span class="absolute inset-0" aria-hidden="true" />
-          {{ event?.title }}
 
-          <p
-            :class="[
-              isUpcoming(event.Date)
-                ? 'tagStyle bg-yellow-100 text-yellow-800'
-                : 'tagStyle animate-bounce bg-green-100 text-green-800',
-            ]"
-          >
-            {{ isUpcoming(event.Date) ? " " : "upcoming" }}
-          </p>
-        </router-link>
-      </h3>
-      <div class="flex gap-4 border-gray-100">
-        <div
-          class="flex gap-1 md:gap-0 items-center justify-start text-base font-medium leading-3 md:leading-5 text-gray-500"
-        >
-          <UsersIcon
-            class="mr-1.5 h-[15px] w-[15px] flex-shrink-0 truncate text-gray-500"
-            aria-hidden="true"
-          />
-          <div v-if="event?.Attendees !== 0" class="pt-[2px] line-clamp-1 md:line-clamp-0">
-            Attendees {{ event?.Attendees }}
-          </div>
-          <div v-else class="pt-[2px]">Seats: {{ event?.Attendees }}</div>
+      <div
+        class="flex gap-1 md:gap-0 items-center justify-start text-xl font-medium leading-3 md:leading-5 text-gray-500"
+      >
+        <UsersIcon
+          class="mr-1.5 h-[15px] w-[15px] flex-shrink-0 truncate text-gray-500"
+          aria-hidden="true"
+        />
+        <div v-if="event?.Attendees !== 0" class="pt-[2px] line-clamp-1 md:line-clamp-0">
+          Attendees {{ event?.Attendees }}
         </div>
-        <div
-          v-if="event.Venue"
-          class="flex gap-1 md:gap-0 items-center justify-start text-base font-medium text-gray-500"
-        >
-          <LocationMarkerIcon
-            class="ml-[-1px] mr-1.5 h-4 w-4 flex-shrink-0 truncate text-gray-500"
-            aria-hidden="true"
-          />
-          <div class="pt-1 line-clamp-1 md:line-clamp-0">{{ event.Venue }}</div>
-        </div>
-        <div v-else>No venue added.</div>
+        <div v-else class="pt-[2px]">Seats: {{ event?.Attendees }}</div>
       </div>
+      <div
+        v-if="event.Venue"
+        class="flex gap-1 md:gap-0 items-center justify-start text-xl font-medium text-gray-500"
+      >
+        <LocationMarkerIcon
+          class="ml-[-1px] mr-1.5 h-4 w-4 flex-shrink-0 truncate text-gray-500"
+          aria-hidden="true"
+        />
+        <div class="pt-1 line-clamp-1 md:line-clamp-0">{{ event.Venue }}</div>
+      </div>
+      <div v-else>No venue added.</div>
     </div>
     <span
-      class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-red-400"
+      class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-green-500"
       aria-hidden="true"
     >
       <TrendingUpIcon class="h-6 w-6" />

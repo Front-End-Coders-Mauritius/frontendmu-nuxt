@@ -37,7 +37,10 @@ export default defineNuxtConfig({
       },
     ],
   },
-  modules: ['nuxt-directus'],
+  modules: [
+    '@vueuse/nuxt',
+    'nuxt-directus',
+  ],
   directus: {
     url: 'https://l4yporup.directus.app',
   },
