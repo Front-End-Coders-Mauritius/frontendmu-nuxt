@@ -1,17 +1,18 @@
 export interface IEvent {
-  id: string;
-  title?: string;
-  description?: string;
-  Venue?: string;
-  Date?: string;
-  Time?: string;
-  Attendees?: string;
-  gallery?: string[];
-  images?: string[];
+  id: string
+  title?: string
+  description?: string
+  Venue?: string
+  Date?: string
+  Time?: string
+  Attendees?: string
+  gallery?: string[]
+  images?: string[]
+  album: string
 }
 
 export interface IEvents {
-  data: IEvent[];
+  data: IEvent[]
 }
 
 //  Mappings

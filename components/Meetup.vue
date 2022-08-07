@@ -65,6 +65,33 @@ function shareOnLinkedIn() {
     + `${absoluteUrl.value}`
   window.open(navUrl, '_blank')
 }
+
+// Google Photos Album Section
+const source = 'https://raw.githubusercontent.com/Front-End-Coders-Mauritius/google-photos-sync/main/'
+// let currentAlbum = ref([])
+const { data: albumsPhotos, pending, error, refresh } = await useFetch(`${source}index.json`)
+const limit = ref(12)
+
+const maxAlbumLength = ref(0)
+
+const currentAlbum = computed(() => {
+  const albumName = props.getCurrentEvent.album
+  if (!albumName)
+    return []
+
+  const albumPhotos = JSON.parse(albumsPhotos.value)[albumName]
+  maxAlbumLength.value = albumPhotos.length
+  // filter all strings that end with .mp4
+  const filteredPhotos = albumPhotos.filter((photo) => {
+    return !photo.endsWith('.mp4')
+  })
+  return filteredPhotos.slice(0, limit.value)
+})
+
+const viewMore = () => {
+  if (limit.value < maxAlbumLength.value)
+    limit.value += 8
+}
 </script>
 
 <template>
@@ -261,49 +288,37 @@ function shareOnLinkedIn() {
             </div>
           </div>
           <div class="lg:mx-auto lg:max-w-[1400px]">
-            <div
-              v-if="props.getCurrentEvent.gallery.length > 0"
-              class="images mt-16 px-4 md:mt-48"
-            >
-              <div
-                class="pb-4 text-center text-4xl font-extrabold text-black md:pb-8 md:text-6xl"
-              >
-                Gallery
-              </div>
+            <div v-if="props.getCurrentEvent.album" class="flex flex-col items-center gap-8 py-20">
+              <!-- <pre>
+                {{ currentAlbum }}
+              </pre> -->
 
-              <Gallery :key="eventGallery" :event-images="eventGallery" />
+              <div class="w-full grid grid-cols-4  gap-4">
+
+                <div v-for="photo in currentAlbum" :key="photo" class="rounded-md overflow-hidden aspect-video">
+                  <img :src="`${source}timeliner_repo/${photo}`" class="object-cover w-full h-full object-center block">
+                </div>
+
+              </div>
+              <div v-if="limit < maxAlbumLength" class="cursor-pointer hover:opacity-90 transition-all text-md block w-48 rounded-md bg-blue-600 px-4 py-4 text-center font-medium text-white md:w-64 md:px-8 md:text-xl" @click="viewMore()">
+                View more
+              </div>
             </div>
 
-            <div v-else />
-
-            <!-- <div
-              v-if="props.getCurrentEvent?.images"
-              class="images mt-16 px-4 md:mt-48"
-            >
-              <div
-                class="pb-4 text-center text-4xl font-extrabold text-black md:pb-8 md:text-6xl"
-              >
-                Gallery
-              </div>
-
-              <Gallery :key="eventImages" :event-images="eventImages" />
-            </div>
-
-            <div v-else /> -->
           </div>
-        </div>
 
-        <!-- view-dashboard button -->
-        <!-- <div
+          <!-- view-dashboard button -->
+          <!-- <div
           class="dashboard-button text-md absolute top-48 right-[-4.5rem] rotate-90 rounded-b-lg bg-yellow-500 py-2 px-8 font-medium text-white hover:bg-yellow-400 md:py-4 md:text-lg"
           @click="open = true"
         >
           View meetups list
         </div> -->
-        <!-- slide-over -->
-        <!-- <SldeBarEvent :data="data" :open="open" /> -->
+          <!-- slide-over -->
+          <!-- <SldeBarEvent :data="data" :open="open" /> -->
+        </div>
+        <!-- ends -->
       </div>
-      <!-- ends -->
     </div>
   </div>
 </template>

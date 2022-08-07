@@ -22,6 +22,7 @@
     "@mapbox/node-pre-gyp": "^1.0.9",
     "@splidejs/vue-splide": "^0.6.7",
     "@vueuse/nuxt": "^9.1.0",
+    "googlephotos": "^0.3.5",
     "nuxt-directus": "^2.0.2",
     "vue-vanta": "^0.0.1",
     "vue3-carousel": "^0.1.40",
