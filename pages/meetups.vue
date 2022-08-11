@@ -5,8 +5,8 @@ import { IEvent } from '~/types/types'
 
 definePageMeta({
   layout: 'custom',
-  transition: {
-    name: 'meetups',
+  layoutTransition: {
+    name: 'fade',
   },
   keepAlive: {
     exclude: ['modal'],

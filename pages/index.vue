@@ -6,8 +6,8 @@ import sponsors from '~/components/sponsors.vue'
 
 definePageMeta({
   layout: 'home',
-  transition: {
-    name: 'index',
+  layoutTransition: {
+    name: 'fade',
   },
 })
 

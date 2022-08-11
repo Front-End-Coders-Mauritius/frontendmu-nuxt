@@ -6,6 +6,9 @@ import MetaTag from '~/components/MetaTag.vue'
 
 definePageMeta({
   layout: 'custom',
+  layoutTransition: {
+    name: 'fade',
+  },
 })
 
 export default {

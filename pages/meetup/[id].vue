@@ -4,7 +4,9 @@ import type { IEvent } from '~/types/types'
 definePageMeta({
   layout: 'custom',
   scrollToTop: true,
-
+  layoutTransition: {
+    name: 'fade',
+  },
 })
 
 const { data, pending } = useEvents()
