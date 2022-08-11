@@ -1,12 +1,6 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <script setup lang="ts">
-import { LocationMarkerIcon, UsersIcon } from '@heroicons/vue/solid'
-import {
-  ClockIcon,
-  MenuIcon,
-  TrendingUpIcon,
-  XIcon,
-} from '@heroicons/vue/outline'
+import Tilt from 'vanilla-tilt-vue'
 
 interface Meetup {
   id: string
@@ -61,30 +55,10 @@ const upcomingData = computed(() => {
   })
 })
 
-const target = ref(null)
-
-const { x, y } = useMouse({ touch: false })
-
-const weight = 30
-const spanX = computed(() => {
-  if (process.client) {
-    const centerx = window.innerWidth / 2
-    const screenx = centerx - x.value
-    const angle = (screenx / centerx) * -weight
-    return angle
-  }
-})
-
-const spanY = computed(() => {
-  if (process.client) {
-    const centery = window.innerWidth / 2
-    const screeny = centery - y.value
-    const angle = (screeny / centery) * -weight
-    return angle
-  }
-})
-
-// to get past or upcoming value base in Date
+const tiltOptions = {
+  reverse: false,
+  speed: 1000,
+}
 </script>
 
 <template>
@@ -100,11 +74,10 @@ const spanY = computed(() => {
         <h2 class="text-center text-black md:text-left">Upcoming meetups</h2>
       </div>
 
-      <div class="card-3d-wrapper">
+      <Tilt :options="tiltOptions" parallax="true">
 
         <div
-          ref="target" class="sm:grid sm:grid-cols-1 gap-8 px-4 md:px-0 card-3d"
-          :style="`transform: rotateX(${spanY}deg) rotateY(${spanX}deg);`"
+          class="sm:grid sm:grid-cols-1 gap-8 px-4 md:px-0 card-3d"
         >
           <template
             v-for="(event, eventID) in (upcomingData as Meetup)"
@@ -113,7 +86,8 @@ const spanY = computed(() => {
             <event-card :event="event" />
           </template>
         </div>
-      </div>
+
+      </Tilt>
 
       <div
         class="py-4 text-4xl font-extrabold tracking-tight text-gray-900 sm:text-5xl md:py-8 md:text-4xl"
@@ -143,17 +117,6 @@ const spanY = computed(() => {
 </template>
 
 <style scoped>
-@media screen  and (min-width: 768px) {
-.card-3d {
-  transform-style: preserve-3d;
-}
-
-.card-3d-wrapper {
-  transform: perspective(1700px);
-  transform-style: preserve-3d;
-}
-}
-
 /* From uiverse.io by @EmmaxPlay */
 
 .card-3d::after {
