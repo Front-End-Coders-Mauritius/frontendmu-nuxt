@@ -74,7 +74,7 @@ const tiltOptions = {
         <h2 class="text-center text-black md:text-left">Upcoming meetups</h2>
       </div>
 
-      <Tilt :options="tiltOptions" parallax="true">
+      <Tilt :options="tiltOptions">
 
         <div
           class="sm:grid sm:grid-cols-1 gap-8 px-4 md:px-0 card-3d"
