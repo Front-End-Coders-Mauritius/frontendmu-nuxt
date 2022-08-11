@@ -287,7 +287,7 @@ const viewMore = () => {
               </div>
             </div>
           </div>
-          <div class="lg:mx-auto lg:max-w-[1400px]">
+          <div class="lg:mx-auto lg:max-w-[1400px] px-4">
             <div v-if="props.getCurrentEvent.album" class="flex flex-col items-center gap-8 py-20">
               <!-- <pre>
                 {{ currentAlbum }}
