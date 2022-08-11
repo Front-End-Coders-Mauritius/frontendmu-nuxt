@@ -12,6 +12,9 @@ export default defineNuxtConfig({
       },
     },
   },
+  vite: {
+    resolve: { dedupe: ['vue'] },
+  },
   css: [
     '~/assets/css/styles.css',
     '~/assets/css/tailwind.css',
