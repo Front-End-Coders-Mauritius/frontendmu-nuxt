@@ -1,6 +1,7 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <script setup lang="ts">
 import Tilt from 'vanilla-tilt-vue'
+import type { ComputedRef } from 'vue'
 
 interface Meetup {
   id: string
@@ -13,6 +14,7 @@ interface Meetup {
   Time: string
   images?: []
   gallery?: []
+  album?: string
 }
 
 const { data, pending } = useEvents()
@@ -31,7 +33,7 @@ const isUpcoming = (currentEventDate: string) => {
   return verifyValue
 }
 
-const filteredData = computed(() => {
+const filteredData: ComputedRef<Meetup[]> = computed(() => {
   if (!data.value)
     return []
   const sortedData = data.value.sort((a: Meetup, b: Meetup) => {
@@ -42,10 +44,10 @@ const filteredData = computed(() => {
     return isUpcoming(item.Date)
   })
 
-  return withoutUpcoming.slice(0, 10)
+  return withoutUpcoming.slice(0, 10) as Meetup[]
 })
 
-const upcomingData = computed(() => {
+const upcomingData: ComputedRef<Meetup[]> = computed(() => {
   if (!data.value)
     return []
   const sortedData = data.value.sort((a: Meetup, b: Meetup) => {
@@ -54,7 +56,7 @@ const upcomingData = computed(() => {
 
   return sortedData.filter((item: Meetup) => {
     return !isUpcoming(item.Date)
-  })
+  }) as Meetup[]
 })
 
 const tiltOptions = {
@@ -82,7 +84,7 @@ const tiltOptions = {
           class="sm:grid sm:grid-cols-1 gap-8 px-4 md:px-0 card-3d"
         >
           <template
-            v-for="(event, eventID) in (upcomingData as Meetup)"
+            v-for="(event, eventID) in (upcomingData as any)"
             :key="eventID"
           >
             <event-card :event="event" />
@@ -99,7 +101,7 @@ const tiltOptions = {
 
       <div class="sm:grid sm:grid-cols-2 gap-8 px-4 md:px-0">
         <template
-          v-for="(event, eventID) in (filteredData as Meetup)"
+          v-for="(event, eventID) in (filteredData as any)"
           :key="eventID"
         >
           <small-event-card :event="event" />
