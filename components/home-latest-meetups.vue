@@ -32,7 +32,8 @@ const isUpcoming = (currentEventDate: string) => {
 }
 
 const filteredData = computed(() => {
-  // Sort by date
+  if (!data.value)
+    return []
   const sortedData = data.value.sort((a: Meetup, b: Meetup) => {
     return new Date(b.Date).getTime() - new Date(a.Date).getTime()
   })
@@ -45,7 +46,8 @@ const filteredData = computed(() => {
 })
 
 const upcomingData = computed(() => {
-  // Sort by date
+  if (!data.value)
+    return []
   const sortedData = data.value.sort((a: Meetup, b: Meetup) => {
     return new Date(b.Date).getTime() - new Date(a.Date).getTime()
   })

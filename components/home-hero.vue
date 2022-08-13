@@ -7,7 +7,7 @@
       <main class>
         <div class="relative z-0 h-[700px] w-full md:h-[850px]">
           <div
-            class="relative z-20 mx-auto flex flex-col-reverse md:flex-row h-full justify-center max-w-6xl px-12 lg:px-0"
+            class="relative z-20 mx-auto flex flex-col-reverse md:flex-row h-full justify-center max-w-6xl px-12 "
           >
             <div
               class="flex flex-col justify-center text-center md:text-left gap-10  md:w-1/2"
@@ -22,7 +22,7 @@
               <p class="text-md md:text-lg text-gray-300 font-mono font-bold">
                 Front-End Coders Mauritius is a community around front-end development based in Mauritius. We also organise monthly meetups free for anyone interested to attend.
               </p>
-              <div>
+              <div class="grid place-items-center md:place-items-start">
                 <router-link
                   :to="{ path: '/meetups' }"
                   class="text-md block w-48 rounded-md bg-blue-600 px-4 py-4 text-center font-medium text-white md:w-64 md:px-8 md:text-xl"
@@ -38,7 +38,6 @@
                 <logo-fec class="img-src text-white" />
               </div>
             </div>
-
           </div>
         </div>
       </main>
