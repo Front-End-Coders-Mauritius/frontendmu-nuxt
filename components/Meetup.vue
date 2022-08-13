@@ -300,7 +300,7 @@ const viewMore = () => {
                 </div>
 
               </div>
-              <div v-if="limit < maxAlbumLength" class="cursor-pointer hover:opacity-90 transition-all text-md block w-48 rounded-md bg-blue-600 px-4 py-4 text-center font-medium text-white md:w-64 md:px-8 md:text-xl" @click="viewMore()">
+              <div v-if="limit < maxAlbumLength" class="cursor-pointer hover:opacity-90 transition-all text-md block w-48 rounded-md bg-brand-600 px-4 py-4 text-center font-medium text-white md:w-64 md:px-8 md:text-xl" @click="viewMore()">
                 View more
               </div>
             </div>

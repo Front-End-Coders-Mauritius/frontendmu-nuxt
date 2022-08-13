@@ -2,13 +2,27 @@
 <script setup lang="ts">
 import HomeSocialPresence from '../components/home-social-presence.vue'
 import MetaTag from '~/components/MetaTag.vue'
-import sponsors from '~/components/sponsors.vue'
 
 definePageMeta({
   layout: 'home',
   layoutTransition: {
     name: 'fade',
   },
+})
+
+onMounted(() => {
+  if (!process.client)
+    return
+  // Initialize colors from localStorage when app loads
+  document.body.setAttribute('style',
+    `
+        --brand-hue: ${window.localStorage.getItem('hueValue')}; 
+        --brand-saturation: ${window.localStorage.getItem('saturationValue')}%; 
+        --brand-lightness: ${window.localStorage.getItem('lightnessValue')}%; 
+        --light-threshold: ${window.localStorage.getItem('lightThresholdValue')}%;
+        `)
+
+  document.body.setAttribute('color-scheme', window.localStorage.getItem('preffered') || 'light')
 })
 
 const title = 'Front-End Coders Mauritius'

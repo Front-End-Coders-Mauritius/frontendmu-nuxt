@@ -107,7 +107,7 @@ const isUpcoming = (currentEventDate: string) => {
       </div>
     </div>
     <span
-      class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-blue-500"
+      class="pointer-events-none absolute top-6 right-6 text-gray-300 group-hover:text-verse-500"
       aria-hidden="true"
     >
       <TrendingUpIcon class="h-6 w-6" />

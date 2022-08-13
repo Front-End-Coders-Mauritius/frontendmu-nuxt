@@ -12,7 +12,7 @@
             <h1 class="sr-only">Front-end Coders Mauritius</h1>
             <logo-fec class="w-16" />
             <span
-              class="text-lg font-mono leading-none font-bold md:text-3xl text-blue-500 tracking-tighter hidden md:block"
+              class="text-lg font-mono leading-none font-bold md:text-3xl text-verse-500 tracking-tighter hidden md:block"
             >
               Front-End Coders
             </span>

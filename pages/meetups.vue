@@ -47,7 +47,7 @@ const isUpcoming = (currentEventDate: string) => {
     <div v-if="pending">loading...</div>
     <div v-else>
       <!-- start  -->
-      <div class="past-events-container bg-gray-50 pb-4 md:pb-16">
+      <div class="past-events-container bg-brand-50 pb-4 md:pb-16">
         <div
           class="past-events-wrapper mx-auto py-8 px-4 md:px-20"
         >

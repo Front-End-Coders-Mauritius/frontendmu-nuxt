@@ -67,7 +67,7 @@ const tiltOptions = {
 
 <template>
   <div
-    class="latest-events-container relative z-20 sm:py-6 md:pt-8 md:px-8 bg-gray-100 px-0"
+    class="latest-events-container relative z-20 sm:py-6 md:pt-8 md:px-8 bg-brand-100 px-0"
   >
     <div
       class="latest-events-wrapper mx-auto px-4 pt-8 md:max-w-3xl md:px-0 lg:max-w-5xl"
@@ -111,7 +111,7 @@ const tiltOptions = {
       <div class="flex h-32 items-center justify-center">
         <router-link
           :to="{ path: '/meetups' }"
-          class="text-md w-48 rounded-md bg-blue-600 px-4 py-4 text-center font-medium text-white md:w-64 md:px-8 md:text-xl"
+          class="text-md w-48 rounded-md bg-brand-600 px-4 py-4 text-center font-medium text-white md:w-64 md:px-8 md:text-xl"
         >
           View all meetups
         </router-link>
@@ -138,8 +138,8 @@ const tiltOptions = {
  content: "";
  background: linear-gradient(
     45deg,
-    #16a34a, #2563eb, #16a34a, #2563eb,
-      #16a34a, #2563eb, #16a34a, #2563eb
+    var(--color-brand-200), var(--color-brand-500), var(--color-brand-200), var(--color-brand-500),
+      var(--color-brand-200), var(--color-brand-500), var(--color-brand-200), var(--color-brand-500)
 );
  position: absolute;
  top: -2px;
