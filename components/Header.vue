@@ -19,11 +19,15 @@
           </router-link>
         </div>
 
-        <div class="md:flex items-center justify-end md:flex-1 lg:w-0">
+        <div class="md:flex items-center justify-end md:flex-1 lg:w-0 gap-4">
           <router-link
             to="/meetups"
             class="whitespace-nowrap text-md md:text-base font-medium text-gray-500 hover:text-red-600"
           >View all meetups</router-link>
+          <router-link
+            to="/about"
+            class="whitespace-nowrap text-md md:text-base font-medium text-gray-500 hover:text-red-600"
+          >About</router-link>
         </div>
       </div>
     </div>
