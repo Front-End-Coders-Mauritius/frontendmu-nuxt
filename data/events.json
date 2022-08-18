@@ -92,7 +92,7 @@
       "timezone": "Indian/Mauritius"
     },
     "link": "https://www.meetup.com/frontendcodersmauritius/events/232560779/",
-    "description": "<p> <div class='font-mono'>Schedule: <br/>10:00 - 10:10 :: Welcome<br/> 10:15 - 10:45 :: Vue 3 by Jules Michael Giovanni <br/> 10:50 - 11:30 :: Intro TailwindCSS by Mahima Ramgolam<br/> 11:45 - 12:45 :: Lunch<br/> 12:50 - 13:15 :: Open Data in Mauritius by Sun <br/> 13.20 - 14:00 :: Open Session  <br/><br/> </div> Rsvp link: <br/><a href='https://fb.me/e/4E7CmRAsq'>https://fb.me/e/4E7CmRAsq</a></p><br/><p>Host: Sandeep Ramgolam</p><br/><p>Covid Guidelines:</p><p>Please wear your mask at all times except during lunch and practice social distancing.</p>",
+    "description": "<p> <div class='font-mono'>Schedule: <br/>10:00 - 10:10 :: Welcome<br/> 10:15 - 10:45 :: Vue 3 by Michaël Jules <br/> 10:50 - 11:30 :: Intro TailwindCSS by Mahima Ramgolam<br/> 11:45 - 12:45 :: Lunch<br/> 12:50 - 13:15 :: Open Data in Mauritius by Sun <br/> 13.20 - 14:00 :: Open Session  <br/><br/> </div> Rsvp link: <br/><a href='https://fb.me/e/4E7CmRAsq'>https://fb.me/e/4E7CmRAsq</a></p><br/><p>Host: Sandeep Ramgolam</p><br/><p>Covid Guidelines:</p><p>Please wear your mask at all times except during lunch and practice social distancing.</p>",
     "visibility": "public",
     "images": null,
     "member_pay_fee": false
@@ -583,7 +583,7 @@
       "timezone": "Indian/Mauritius"
     },
     "link": "https://www.meetup.com/frontendcodersmauritius/events/263025328/",
-    "description": "<p>Front End Coders welcomes you to July's monthly meetup!<br/>Join us for front-end presentations and tech discussions!</p> <p># Location:<br/>Techsphere Labs,<br/>Moka<br/><a href=\"https://goo.gl/maps/b3mp3Aa57rfFFex8A\" class=\"linkified\">https://goo.gl/maps/b3mp3Aa57rfFFex8A</a></p> <p>Date: 20 July 2019</p> <p># Timing:<br/>Start: 10:00<br/>Finish: 12:00</p> <p>Max capacity: 25 attendees</p> <p>Agenda:<br/>- Three presentations<br/>- Announcements</p> <p># Topic - Speaker</p> <p>\"Set up a blog with Netlify in less than 10 minutes. \" - Humeira Diljore</p> <p>\"What the Svelte!?\" - Jules Michaël</p> <p>\"Angular tips - solving some common problems\" - Bilkiss Dulloo</p> ",
+    "description": "<p>Front End Coders welcomes you to July's monthly meetup!<br/>Join us for front-end presentations and tech discussions!</p> <p># Location:<br/>Techsphere Labs,<br/>Moka<br/><a href=\"https://goo.gl/maps/b3mp3Aa57rfFFex8A\" class=\"linkified\">https://goo.gl/maps/b3mp3Aa57rfFFex8A</a></p> <p>Date: 20 July 2019</p> <p># Timing:<br/>Start: 10:00<br/>Finish: 12:00</p> <p>Max capacity: 25 attendees</p> <p>Agenda:<br/>- Three presentations<br/>- Announcements</p> <p># Topic - Speaker</p> <p>\"Set up a blog with Netlify in less than 10 minutes. \" - Humeira Diljore</p> <p>\"What the Svelte!?\" - Michaël Jules</p> <p>\"Angular tips - solving some common problems\" - Bilkiss Dulloo</p> ",
     "how_to_find_us": "Please call Bilkiss for instructions at 5740 4845",
     "visibility": "public",
     "images": [
@@ -856,7 +856,7 @@
       "timezone": "Indian/Mauritius"
     },
     "link": "https://www.meetup.com/frontendcodersmauritius/events/270040148/",
-    "description": "<p>Join us for an online meetup to talk about the front-end world and a few interesting topics !</p> <p>Also joining us will be GophersMU group to talk about go and do some small presentations.</p> <p># Topics<br/>- Exploring Vue Composition API (Sandeep)<br/>- Vue experience sharing (Kushul)<br/>- Go Routines (Jules)<br/>- A Telegram Bot in Go (Yusuf)</p> <p>Join on the following link:<br/><a href=\"https://meet.mscc.mu/FabulousFrontendFantasies\" class=\"linkified\">https://meet.mscc.mu/FabulousFrontendFantasies</a></p> <p>We only have simple rules:<br/>- Kindly mute your mic when you're not speaking<br/>- Use the chat to ask questions<br/>- Be nice<br/>- Be Friendly<br/>- Be Courteous</p> ",
+    "description": "<p>Join us for an online meetup to talk about the front-end world and a few interesting topics !</p> <p>Also joining us will be GophersMU group to talk about go and do some small presentations.</p> <p># Topics<br/>- Exploring Vue Composition API (Sandeep)<br/>- Vue experience sharing (Kushul)<br/>- Go Routines (Michaël Jules)<br/>- A Telegram Bot in Go (Yusuf)</p> <p>Join on the following link:<br/><a href=\"https://meet.mscc.mu/FabulousFrontendFantasies\" class=\"linkified\">https://meet.mscc.mu/FabulousFrontendFantasies</a></p> <p>We only have simple rules:<br/>- Kindly mute your mic when you're not speaking<br/>- Use the chat to ask questions<br/>- Be nice<br/>- Be Friendly<br/>- Be Courteous</p> ",
     "visibility": "public",
     "images": null,
     "member_pay_fee": false
@@ -1041,7 +1041,7 @@
       "timezone": "Indian/Mauritius"
     },
     "link": "https://www.meetup.com/frontendcodersmauritius/events/273573909/",
-    "description": "<p>A series of interesting talks to reignite the meetup vibes on the island !</p> <p>.topics {<br/>- ReactivityEverywhere.js - Giovanni Jules Mikeal<br/>- Developers are not just code writers - Cedric Poilly<br/>- to be announced soon!<br/>}</p> <p>Bocasay has been very kind and agreed to host us once again!</p> <p>to book your seat and let your friends know :D</p> <p>HEALTH AND SAFETY PRECAUTIONS:</p> <p>- Please wear a mask.<br/>- Use hand sanitizers at the entrance.<br/>- Social distancing rules apply inside the meetup.</p> ",
+    "description": "<p>A series of interesting talks to reignite the meetup vibes on the island !</p> <p>.topics {<br/>- ReactivityEverywhere.js - Michaël Jules <br/>- Developers are not just code writers - Cedric Poilly<br/>- to be announced soon!<br/>}</p> <p>Bocasay has been very kind and agreed to host us once again!</p> <p>to book your seat and let your friends know :D</p> <p>HEALTH AND SAFETY PRECAUTIONS:</p> <p>- Please wear a mask.<br/>- Use hand sanitizers at the entrance.<br/>- Social distancing rules apply inside the meetup.</p> ",
     "visibility": "public",
     "images": null,
     "member_pay_fee": false

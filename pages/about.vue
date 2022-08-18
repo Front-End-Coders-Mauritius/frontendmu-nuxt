@@ -20,7 +20,7 @@ const people = [
       'https://github.com/kushul.png',
   },
   {
-    name: 'Jules Michael Giovanni',
+    name: 'Michaël Jules',
     role: 'Active Community Member',
     imageUrl:
       'https://github.com/mgjules.png',
