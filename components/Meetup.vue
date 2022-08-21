@@ -79,13 +79,18 @@ const currentAlbum = computed(() => {
   if (!albumName)
     return []
 
-  const albumPhotos = JSON.parse(albumsPhotos.value)[albumName]
-  maxAlbumLength.value = albumPhotos.length
-  // filter all strings that end with .mp4
-  const filteredPhotos = albumPhotos.filter((photo) => {
-    return !photo.endsWith('.mp4')
-  })
-  return filteredPhotos.slice(0, limit.value)
+  if (albumsPhotos.value) {
+    const albumPhotosParsed = JSON.parse(albumsPhotos.value as string)[albumName]
+    // check if array
+    if (Array.isArray(albumPhotosParsed)) {
+      maxAlbumLength.value = albumPhotosParsed.length
+      // filter all strings that end with .mp4
+      const filteredPhotos = albumPhotosParsed.filter((photo) => {
+        return !photo.endsWith('.mp4')
+      })
+      return filteredPhotos.slice(0, limit.value)
+    }
+  }
 })
 
 const viewMore = () => {
