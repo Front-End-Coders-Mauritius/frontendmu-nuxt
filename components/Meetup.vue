@@ -301,7 +301,7 @@ const viewMore = () => {
               <div class="w-full grid grid-cols-4  gap-4">
 
                 <div v-for="photo in currentAlbum" :key="photo" class="rounded-md overflow-hidden aspect-video">
-                  <img :src="`${source}timeliner_repo/${photo}`" class="object-cover w-full h-full object-center block">
+                  <img :src="`${source}/${photo}`" class="object-cover w-full h-full object-center block">
                 </div>
 
               </div>
