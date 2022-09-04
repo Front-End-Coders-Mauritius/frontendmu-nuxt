@@ -1,5 +1,9 @@
+<script setup lang="ts">
+import sponsors from '../data/sponsors.js'
+</script>
+
 <template>
-<div class="homepage-container bg-brand-100">
+  <div class="homepage-container bg-brand-100">
     <div class="homepage-wrapper">
       <main class>
         <div class="relative py-20 z-0 h-[auto] w-full">
@@ -16,7 +20,7 @@
               </h1>
               <!-- <flip-book class="mt-[-16%] md:mt-[-12%]" /> -->
               <p class="text-md md:text-lg text-black font-mono font-bold">
-                Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+                We're lucky to have sponsors support our community. If you're interested in sponsoring us, please reach out to us <a href="mailto:hello@frontend.mu">here</a>
               </p>
               <div class="grid place-items-center md:place-items-start">
                 <router-link
@@ -29,42 +33,23 @@
             </div>
 
             <div class="grid grid-cols-2 gap-4">
-                <div class="mt-4 md:mt-0 relative rounded-xl flex justify-center items-center h-30 flex-col gap-2 group bg-white p-6 shadow-md transition-all hover:shadow-lg border-t-8 border-solid border-blue-500">
-                  <a target="_blank" href="https://www.ringier.com/about-us/south-africa/">
-                    <logo-ringier class="w-32 h-auto opacity-80" />
-                  </a>
-                <div class="bg-brand-200 py-1 px-4 text-xs w-full text-center text-verse-600 font-medium rounded-2xl">Domain sponsor</div>
-                </div>
-                <div class="mt-4 md:mt-0 relative rounded-xl flex justify-center items-center h-30 flex-col gap-2 group bg-white p-6 shadow-md transition-all hover:shadow-lg border-t-8 border-solid border-blue-500">
-                  <a target="_blank" href="https://www.ringier.com/about-us/south-africa/">
-                    <logo-ringier class="w-32 h-auto opacity-80" />
-                  </a>
-                <div class="bg-brand-200 py-1 px-4 text-xs w-full text-center text-verse-600 font-medium rounded-2xl">Domain sponsor</div>
-                </div>
-                 <div class="mt-4 md:mt-0 relative rounded-xl flex justify-center items-center h-30 flex-col gap-2 group bg-white p-6 shadow-md transition-all hover:shadow-lg border-t-8 border-solid border-blue-500">
-                  <a target="_blank" href="https://www.ringier.com/about-us/south-africa/">
-                    <logo-ringier class=" w-32 h-auto opacity-80" />
-                  </a>
-                <div class="bg-brand-200 py-1 px-4 text-xs w-full text-center text-verse-600 font-medium rounded-2xl">Domain sponsor</div>
-                </div>
-                 <div class="mt-4 md:mt-0 relative rounded-xl flex justify-center items-center h-30 flex-col gap-2 group bg-white p-6 shadow-md transition-all hover:shadow-lg border-t-8 border-solid border-blue-500">
-                  <a target="_blank" href="https://www.ringier.com/about-us/south-africa/">
-                    <logo-ringier class="w-32 h-auto opacity-80" />
-                  </a>
-                <div class="bg-brand-200 py-1 px-4 text-xs w-full text-center text-verse-600 font-medium rounded-2xl">Domain sponsor</div>
-                </div>
-                 <div class="mt-4 md:mt-0 relative rounded-xl flex justify-center items-center h-30 flex-col gap-2 group bg-white p-6 shadow-md transition-all hover:shadow-lg border-t-8 border-solid border-blue-500">
-                  <a target="_blank" href="https://www.ringier.com/about-us/south-africa/">
-                    <logo-ringier class="w-32 h-auto opacity-80" />
-                  </a>
-                <div class="bg-brand-200 py-1 px-4 text-xs w-full text-center text-verse-600 font-medium rounded-2xl">Domain sponsor</div>
-                </div>
-                 <div class="mt-4 md:mt-0 relative rounded-xl flex justify-center items-center h-30 flex-col gap-2 group bg-white p-6 shadow-md transition-all hover:shadow-lg border-t-8 border-solid border-blue-500">
-                  <a target="_blank" href="https://www.ringier.com/about-us/south-africa/">
-                    <logo-ringier class="w-32 h-auto opacity-80" />
-                  </a>
-                <div class="bg-brand-200 py-1 px-4 text-xs w-full text-center text-verse-600 font-medium rounded-2xl">Domain sponsor</div>
-                </div>
+              <div v-for="(sponsorType, index) in sponsors" :key="index">
+                <a
+                  v-for="sponsor in sponsorType.sponsors" :key="sponsor.name"
+                  :title="sponsor.description"
+                  target="_blank"
+                  :href="sponsor.sponsorUrl"
+                  class="mt-4 h-full md:mt-0 relative rounded-xl  flex justify-center items-center flex-col gap-4 group bg-white p-6 shadow-md transition-all hover:shadow-lg"
+                >
+                  <img v-if="sponsor.logo" :src="`/img/sponsors/${sponsor.logo}`">
+                  <div v-else>
+                    <span class="text-2xl font-bold">{{ sponsor.name }}</span>
+                  </div>
+                  <div v-if="sponsor.description" class="bg-brand-200 py-1 px-4 text-xs w-full text-center text-verse-600 font-medium rounded-2xl">
+                    {{ sponsor.description }}</div>
+                </a>
+
+              </div>
             </div>
           </div>
         </div>

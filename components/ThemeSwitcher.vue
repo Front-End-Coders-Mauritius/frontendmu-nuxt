@@ -59,7 +59,7 @@ watch(watchHSL, (n) => {
         <MenuButton
           class="bg-brand-50 flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-brand-500 "
         >
-          <span>Toggle Theme Switcher {{ huePointer }}</span>
+          Toggle Theme Switcher {{ huePointer || '' }}
 
         </MenuButton>
       </div>
@@ -113,7 +113,7 @@ watch(watchHSL, (n) => {
             >
           </div>
           <div class="flex justify-center">
-            <art-button class="text-center" @click="reset">Reset</art-button>
+            <button class="text-center" @click="reset">Reset</button>
           </div>
         </MenuItems>
       </transition>
