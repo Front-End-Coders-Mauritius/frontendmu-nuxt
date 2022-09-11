@@ -1,80 +1,105 @@
 <script setup lang="ts">
-import type { ComputedRef, PropType, Ref } from "vue";
-import type { IEvent } from "~/types/types";
+import type { ComputedRef, PropType, Ref } from 'vue'
+import { supabase } from '../utils/supabase.js'
+import type { IEvent } from '~/types/types'
 
 const props = defineProps({
   getCurrentEvent: {} as PropType<IEvent>,
   data: {},
   pending: Boolean,
-});
-const open: Ref<Boolean> = ref(false);
-const route = useRoute();
+})
+
+const fetchRSVP = async () => {
+  const { data: rsvp } = await supabase.from('RSVP').select('*')
+  console.log(rsvp)
+}
+
+// const { data, error } = await supabase.from('RSVP').insert([{
+//   name: 'sam',
+//   email: 'sam@gmail.com',
+//   veg: true,
+// }], { returning: 'minimal' })
+
+// const { data, error } = await supabase
+//   .from('RSVP')
+//   .insert([
+//     { name: 'x', email: 'sam@gmail.com', veg: false },
+//   ])
+
+onMounted(() => {
+  fetchRSVP()
+})
+
+const open: Ref<Boolean> = ref(false)
+const showPopup: Ref<Boolean> = ref(false)
+const route = useRoute()
 
 const meetupId = computed(() => {
-  return route.params.id;
-});
+  return route.params.id
+})
 
-const absoluteUrl = computed(() => window.location.href);
+const absoluteUrl = computed(() => window.location.href)
 
 // to get past or upcoming value base in Date
 const dateInPast = function (firstDate: Date, secondDate: Date) {
   if (firstDate.setHours(0, 0, 0, 0) <= secondDate.setHours(0, 0, 0, 0))
-    return true;
+    return true
 
-  return false;
-};
+  return false
+}
 
 const eventImages: ComputedRef<String[]> = computed(() => {
-  return props.getCurrentEvent.images;
-});
+  return props.getCurrentEvent.images
+})
 const eventGallery: ComputedRef<String[]> = computed(() => {
-  return props.getCurrentEvent.gallery;
-});
+  return props.getCurrentEvent.gallery
+})
 
 const isUpcoming: ComputedRef<Boolean> = computed(() => {
-  const past = new Date(props.getCurrentEvent.Date);
-  const today = new Date();
-  const verifyValue = dateInPast(past, today);
-  return verifyValue;
-});
+  const past = new Date(props.getCurrentEvent.Date)
+  const today = new Date()
+  const verifyValue = dateInPast(past, today)
+  return verifyValue
+})
 
 function copy() {
-  const copyText = document.getElementById("myInput");
-  copyText.select();
-  copyText.setSelectionRange(0, 99999);
-  navigator.clipboard.writeText(copyText.value);
+  const copyText = document.getElementById('myInput')
+  copyText.select()
+  copyText.setSelectionRange(0, 99999)
+  navigator.clipboard.writeText(copyText.value)
 }
 
 function shareOnFacebook() {
-  const navUrl =
-    "https://www.facebook.com/sharer/sharer.php?u=" + `${absoluteUrl.value}`;
-  window.open(navUrl, "_blank");
+  const navUrl
+    = 'https://www.facebook.com/sharer/sharer.php?u=' + `${absoluteUrl.value}`
+  window.open(navUrl, '_blank')
 }
 
 function shareOnTwitter() {
-  const str = encodeURIComponent(" #mauritius #frontendcoders ");
-  const navUrl =
-    `https://twitter.com/intent/tweet?text=${props.getCurrentEvent.title}${str}` +
-    `${absoluteUrl.value}`;
-  window.open(navUrl, "_blank");
+  const str = encodeURIComponent(' #mauritius #frontendcoders ')
+  const navUrl
+    = `https://twitter.com/intent/tweet?text=${props.getCurrentEvent.title}${str}`
+    + `${absoluteUrl.value}`
+  window.open(navUrl, '_blank')
 }
 
 function shareOnLinkedIn() {
-  const navUrl =
-    "http://www.linkedin.com/shareArticle?mini=true&url=" +
-    `${absoluteUrl.value}`;
-  window.open(navUrl, "_blank");
+  const navUrl
+    = 'http://www.linkedin.com/shareArticle?mini=true&url='
+    + `${absoluteUrl.value}`
+  window.open(navUrl, '_blank')
 }
 </script>
 
 <template>
-  <div>
+  <div class="relative">
     <div v-if="pending">loading...</div>
     <div v-else>
       <div class="relative">
         <div class="pt-8 pb-10 md:pt-16 md:pb-24">
           <div class="lg:mx-auto lg:max-w-[1400px] lg:px-4">
             <div class="relative">
+
               <div
                 aria-hidden="true"
                 class="hidden sm:block lg:inset-y-0 lg:right-0 lg:w-screen"
@@ -84,6 +109,7 @@ function shareOnLinkedIn() {
                 />
                 <IconDots />
               </div>
+
             </div>
 
             <div
@@ -185,24 +211,25 @@ function shareOnLinkedIn() {
                     </dd>
                   </div>
 
+                  <button @click="showPopup = true">RSVP</button>
                   <div class="border-y-2 border-gray-100 pt-4 md:pt-6">
                     <dt class="text-base font-medium text-gray-500">Share</dt>
                     <div class="flex gap-8 py-4">
                       <button
-                        @click="shareOnFacebook"
                         class="hover:text-[#4267B2]"
+                        @click="shareOnFacebook"
                       >
                         <icon-facebook class="w-10 md:w-12" />
                       </button>
                       <button
-                        @click="shareOnTwitter"
                         class="hover:text-[#00acee]"
+                        @click="shareOnTwitter"
                       >
                         <icon-twitter class="w-10 md:w-12" />
                       </button>
                       <button
-                        @click="shareOnLinkedIn"
                         class="hover:text-[#007db1]"
+                        @click="shareOnLinkedIn"
                       >
                         <icon-linkedin class="w-10 md:w-12" />
                       </button>
@@ -215,7 +242,7 @@ function shareOnLinkedIn() {
                         class="text-md break-words bg-gray-100pr-2 tracking-tight bg-gray-100 text-gray-600 line-clamp-3 w-[500px]"
                         type="text"
                         :value="`https://frontend.mu/meetup/${meetupId}/`"
-                      />
+                      >
                       <div class="cursor-pointer" @click="copy">
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
@@ -235,8 +262,8 @@ function shareOnLinkedIn() {
                   </div>
 
                   <div
-                    class="md:border-t-2 border-gray-100 pt-4 md:pt-8 flex flex-col justify-center items-center md:items-start gap-4"
                     v-if="!isUpcoming"
+                    class="md:border-t-2 border-gray-100 pt-4 md:pt-8 flex flex-col justify-center items-center md:items-start gap-4"
                   >
                     <dd
                       class="text-2xl font-extrabold tracking-tight text-gray-900 md:text-3xl"
@@ -299,8 +326,12 @@ function shareOnLinkedIn() {
         </div>
         <!-- slide-over -->
         <SldeBarEvent :data="data" :open="open" />
+
       </div>
+
       <!-- ends -->
     </div>
+    <div v-if="showPopup"><RsvpPopup /></div>
   </div>
 </template>
+

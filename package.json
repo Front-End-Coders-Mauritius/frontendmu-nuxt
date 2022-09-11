@@ -21,6 +21,7 @@
     "@heroicons/vue": "^1.0.6",
     "@mapbox/node-pre-gyp": "^1.0.9",
     "@splidejs/vue-splide": "^0.6.7",
+    "@supabase/supabase-js": "^1.35.6",
     "nuxt-directus": "^2.0.2",
     "vue-vanta": "^0.0.1",
     "vue3-carousel": "^0.1.40",
