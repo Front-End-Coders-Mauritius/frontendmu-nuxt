@@ -16,7 +16,7 @@
                 class="uppercase flex flex-col text-4xl font-extrabold xl:leading-tight text-verse-500 sm:text-5xl lg:text-5xl xl:text-6xl"
               >
                 Frontend Coders
-                <span class="block font-sans text-gray-200 xl:inline capitalize font-mono"> Mauritius</span>
+                <span class="flex items-start font-sans text-gray-200 xl:inline justify-center sm:justify-start capitalize font-mono spotlight" data-text="Mauritius">Mauritius</span>
               </h1>
               <!-- <flip-book class="mt-[-16%] md:mt-[-12%]" /> -->
               <p class="text-md md:text-lg text-gray-300 font-mono font-bold">
@@ -83,6 +83,38 @@
 .image-container:hover  .image-bg {
     background-position: -300px -300px;
     transition: all 0.3s ease-in-out;
+}
+
+.spotlight {
+  position: relative;
+}
+
+.spotlight::before {
+   content: attr(data-text);
+  position: absolute;
+  background: linear-gradient(to right, #EA2839 0, #1A206D 33.3%, #FFD500 66.6%, #00A551 100%);
+  background-clip: text;
+  color: transparent;
+  background-size: 100% 90%;
+  clip-path: ellipse(60px 60px at -2.54% -9.25%);
+  animation: swing 5s infinite;
+  animation-direction: alternate;
+}
+
+@keyframes swing{
+  0% {
+    -webkit-clip-path: ellipse(60px 60px at -2.54% -9.25%);
+    clip-path: ellipse(60px 60px at -2.54% -9.25%);
+  }
+  50% {
+    -webkit-clip-path: ellipse(60px 60px at 49.66% 64.36%);
+    clip-path: ellipse(60px 60px at 49.66% 64.36%);
+
+  }
+  100%{
+     -webkit-clip-path: ellipse(60px 60px at 102.62% -1.61%);
+    clip-path: ellipse(60px 60px at 102.62% -1.61%);
+  }
 }
 
 @media  (min-width: 768px) {
